@@ -34,18 +34,11 @@ in buidling...
 You need to have the assembling data stocked somewhere before run the script. To explore the DeepVirFinder results we need to associate the
 contig IDs to their sequence (the sequences are not given as a result of the tool).
 
-So, make sure you have samtools installed on your machine. If not :
+So, make sure you have seqtk installed on your machine. If not :
 ```bash
-sudo apt install samtools
+git clone https://github.com/lh3/seqtk.git;
+cd seqtk; make
 ```
-
-Or you can use Conda :
-```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
-source ~/miniconda3/bin/activate
-conda install -c bioconda samtools
-``
 
 Maybe you will have to modify the different paths in the script.
 
