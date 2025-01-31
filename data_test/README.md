@@ -1,5 +1,6 @@
 # Collecting test data from multi-run viral predictions to perfom analysis with a subdataset !
 
+
 ## Description
 
 In the bin/ folder you can retrieve a script that aims to collect some of predicted viral sequences in fasta format.
@@ -38,4 +39,7 @@ Maybe you will have to modify the different paths in the script.
 
 ## Results 
 
-'schéma'
+<p align="center">
+  <img src="img/schema_readme.png" alt="Description" width="300">
+</p>
+
