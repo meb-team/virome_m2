@@ -40,6 +40,6 @@ Maybe you will have to modify the different paths in the script.
 ## Results 
 
 <p align="center">
-  <img src="img/schema_readme.png" alt="Description" width="80%">
+  <img src="img/schema_readme.png" alt="Description" width="100%">
 </p>
 
