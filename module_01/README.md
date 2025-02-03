@@ -25,9 +25,24 @@ data_test/results/
 
 I suggest you to work on a HPC because this step can take a while...
 
-CheckV v1.0.1 
-singularity
+For this module, you will need of some programs on your machine.
 
+Firstly, Singularity v.3.7.4 is used. I suggest you to read the [documentation](https://docs.sylabs.io/guides/3.0/user-guide/installation.html)
+
+Check if you have Singularity already installed on your machine :
+```bash
+singularity --version
+```
+If not :
+```bash
+sudo apt update
+sudo apt install singularity-container
+```
+
+Then, you have to install CheckV (v1.0.1) via singularity :
+```bash
+singularity pull shub://DerrickWood/CheckV
+```
 ## usage
 
 ### Module all-in-one
