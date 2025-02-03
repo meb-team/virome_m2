@@ -60,7 +60,7 @@ for txt_file in "$TXT_DIR"/*.txt; do
     fasta_file="$FASTA_DIR/${ssr_name}.fasta.gz"
 
     if [[ ! -f "$fasta_file" ]]; then
-        echo "Fichier FASTA non trouvé pour $ssr_name, ignoré."
+        echo "Missing FASTA file for :$ssr_name, ignored."
         continue
     fi
     seqtk subseq <(zcat "$fasta_file") "$txt_file" >> "$OUTPUT_FASTA"
@@ -91,7 +91,7 @@ for txt_file in "$TXT_DIR"/*.txt; do
     fasta_file="$FASTA_DIR/${ssr_name}.fasta.gz"
 
     if [[ ! -f "$fasta_file" ]]; then
-        echo "Fichier FASTA non trouvé pour $ssr_name, ignoré."
+        echo "Missing FASTA file for : $ssr_name, ignored."
         continue
     fi
     seqtk subseq <(zcat "$fasta_file") "$txt_file" >> "$OUTPUT_FASTA"
@@ -122,7 +122,7 @@ for txt_file in "$TXT_DIR"/*.txt; do
     fasta_file="$FASTA_DIR/${ssr_name}.fasta.gz"
 
     if [[ ! -f "$fasta_file" ]]; then
-        echo "Fichier FASTA non trouvé pour $ssr_name, ignoré."
+        echo "Missing FASTA file for : $ssr_name, ignored."
         continue
     fi
     seqtk subseq <(zcat "$fasta_file") "$txt_file" >> "$OUTPUT_FASTA"
