@@ -146,5 +146,7 @@ done
 
 echo "Job finished !"
 
+./data_prep/bin/data_visu.py -p "data_prep/results/" -o "data_prep/figure/"
+
 exit 0
 

@@ -178,3 +178,9 @@ find "$vib_file/metalakes" -mindepth 1 -maxdepth 1 -type d | head -n 100 | while
         echo "Missing file : $fna_file"
     fi
 done
+
+echo "Job finished !"
+
+./data_prep/bin/data_visu.py -p "data_test/results/" -o "data_prep/figure/"
+
+exit 0
