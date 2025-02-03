@@ -5,6 +5,7 @@ This first module includes the steps of quality control of the predicted viral c
 First, you need to be sure that you have the correct files. I suggest you to look after the data_prep/ or data_test/ folders.
 You should have a result folder like this : 
 
+```
 data_test/results/
 ├── dvf/
 │   ├── air_predicted_seq.fa
@@ -18,6 +19,7 @@ data_test/results/
     ├── air_predicted_seq.fa
     ├── human_predicted_seq.fa
     └── metalakes_predicted_seq.fa
+```
 
 ## Requirements
 
