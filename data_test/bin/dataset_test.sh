@@ -24,19 +24,21 @@ vib_output="data_test/results/vibrant"
 
 dvf_file="/data/mnt/prophage/dvf" # Path to the results of DeepVirFinder
 dvf_output="data_test/results/dvf" # Path to the output of this script
+
+cutoff=50 # Number of SSR pick for the subdataset
 # === Process for VirSorter2===
 
 rm -f "$vs2_output/air_predicted_seq.fa"
 rm -f "$vs2_output/human_predicted_seq.fa"
 rm -f "$vs2_output/metalakes_predicted_seq.fa"
 
-find "$vs2_file/air" -mindepth 2 -maxdepth 2 -type f -name "*.fa" | head -n 50 | xargs cat >> "$vs2_output/air_predicted_seq.fa"
-find "$vs2_file/human" -mindepth 2 -maxdepth 2 -type f -name "*.fa" | head -n 50 | xargs cat >> "$vs2_output/human_predicted_seq.fa"
-find "$vs2_file/metalakes" -mindepth 2 -maxdepth 2 -type f -name "*.fa" | head -n 50 | xargs cat >> "$vs2_output/metalakes_predicted_seq.fa"
+find "$vs2_file/air" -mindepth 2 -maxdepth 2 -type f -name "*.fa" | head -n "$cutoff" | xargs cat >> "$vs2_output/air_predicted_seq.fa"
+find "$vs2_file/human" -mindepth 2 -maxdepth 2 -type f -name "*.fa" | head -n "$cutoff" | xargs cat >> "$vs2_output/human_predicted_seq.fa"
+find "$vs2_file/metalakes" -mindepth 2 -maxdepth 2 -type f -name "*.fa" | head -n "$cutoff" | xargs cat >> "$vs2_output/metalakes_predicted_seq.fa"
 
 # === Process for DeepVirFinder ===
 
-ls -d "$dvf_file/air"/*/ | head -n 50 | while read -r ssr; do
+ls -d "$dvf_file/air"/*/ | head -n "$cutoff" | while read -r ssr; do
     if [ -d "$ssr" ]; then
         ssr_name=$(basename "$ssr")
     fi
@@ -68,7 +70,7 @@ rm data_test/results/dvf/*.txt
 
 
 
-ls -d "$dvf_file/human"/*/ | head -n 50 | while read -r ssr; do
+ls -d "$dvf_file/human"/*/ | head -n "$cutoff" | while read -r ssr; do
     if [ -d "$ssr" ]; then
         ssr_name=$(basename "$ssr")
     fi
@@ -99,7 +101,7 @@ rm data_test/results/dvf/*.txt
 
 
 
-ls -d "$dvf_file/metalakes"/*/ | head -n 50 | while read -r ssr; do
+ls -d "$dvf_file/metalakes"/*/ | head -n "$cutoff" | while read -r ssr; do
     if [ -d "$ssr" ]; then
         ssr_name=$(basename "$ssr")
     fi
@@ -133,7 +135,7 @@ output_file="$vib_output/air_predicted_seq.fa"
 
 rm -f "$output_file"
 
-find "$vib_file/air" -mindepth 1 -maxdepth 1 -type d | head -n 50 | while read -r dir; do
+find "$vib_file/air" -mindepth 1 -maxdepth 1 -type d | head -n "$cutoff" | while read -r dir; do
     foldername=$(basename "$dir")
 
     fna_file="$dir/VIBRANT_phages_${foldername}/${foldername}.phages_combined.fna"
@@ -150,7 +152,7 @@ output_file="$vib_output/human_predicted_seq.fa"
 
 rm -f "$output_file"
 
-find "$vib_file/human" -mindepth 1 -maxdepth 1 -type d | head -n 50 | while read -r dir; do
+find "$vib_file/human" -mindepth 1 -maxdepth 1 -type d | head -n "$cutoff" | while read -r dir; do
     foldername=$(basename "$dir")
 
     fna_file="$dir/VIBRANT_phages_${foldername}/${foldername}.phages_combined.fna"
@@ -167,7 +169,7 @@ output_file="$vib_output/metalakes_predicted_seq.fa"
 
 rm -f "$output_file"
 
-find "$vib_file/metalakes" -mindepth 1 -maxdepth 1 -type d | head -n 50 | while read -r dir; do
+find "$vib_file/metalakes" -mindepth 1 -maxdepth 1 -type d | head -n "$cutoff" | while read -r dir; do
     foldername=$(basename "$dir")
 
     fna_file="$dir/VIBRANT_phages_${foldername}/${foldername}.phages_combined.fna"
