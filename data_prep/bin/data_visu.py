@@ -82,7 +82,10 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    print("Start the visualization..."
+    pathin = args.path
+    pathout = args.out
+
+    print("Start the visualization...")
 
     nb_contigs = count("data_test/results")
     visual(nb_contigs)
