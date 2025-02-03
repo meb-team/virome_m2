@@ -12,7 +12,7 @@ This script works on different ecosystem analysis. Make sure you have this kind 
 
 At the end, you will have one fasta file for each tool for each ecosytem (3 ecosystems here). 
 
-This dataset for running tests has a volume of 2.5Go.
+This dataset for running tests has a volume of 1.5Go.
 
 ## Usage
 
