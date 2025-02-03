@@ -64,6 +64,8 @@ In building (slurm)... XXXXXXXXXXXXXXXXXXX
 ```
 
 ## Computational analysis 
+This computational analysis has been performed on the subdataset created by the data_test/ folder/
+The total volume of input data was 2.5 Go. 
 
 1. CheckV : time : XXXXXX (number of CPUs used here : 16)
 2. XXXXX
