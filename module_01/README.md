@@ -69,9 +69,9 @@ The **second step** is ..
 
 ## Computational analysis 
 This computational analysis has been performed on the subdataset created by the data_test/ folder/
-The total volume of input data was 2.5 Go. 
+The total volume of input data was 1.5 Go. 
 
-1. CheckV : time : XXXXXX (number of CPUs used here : 16). For a 2.5Go of inputs, the volume of the output is XXXXXX.
+1. CheckV : time : XXXXXX (number of CPUs used here : 16). For a 1.5Go of inputs, the volume of the output is XXXXXX.
 2. XXXXX
 
 ## Results 
