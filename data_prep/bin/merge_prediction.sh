@@ -4,7 +4,7 @@
 # DESCRIPTION :
 # This script aims to merge all the predicted sequences in one fasta file format for each tools (VIBRANT, VirSorter2, DeepVirFinder) for each ecosystems.
 # Author  : SERVILLE Hugo
-# Date    : 29/01/2024
+# Date    : 29/01/2025
 # Version : 1.0
 # ==========================
 
