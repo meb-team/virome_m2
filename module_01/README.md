@@ -1,4 +1,4 @@
-# Welcome to the module number one ! 🎈 🎈 🎈 
+# 🎈 🎈 🎈 Welcome to the module number one ! 🎈 🎈 🎈 
 
 This first module includes the steps of quality control of the predicted viral contigs. 
 
@@ -21,7 +21,7 @@ data_test/results/
     └── metalakes_predicted_seq.fa
 ```
 
-You probably will have to modify the paths in the scripts.
+You will probably have to modify the paths in the scripts.
 
 ## Requirements
 
@@ -45,6 +45,9 @@ Then, you have to install CheckV (v1.0.1) via singularity :
 singularity pull shub://DerrickWood/CheckV
 ```
 ## usage
+
+I recommand you to follow the all-in-one steps. This option is running the entire module automatically. Make sure you have snakemake (cf. Requirements).
+If you want to look after the different steps you can follow the step-by-step part (you don't need snakemake for this).
 
 ### Module all-in-one
 
