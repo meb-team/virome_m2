@@ -38,6 +38,7 @@ cd seqtk; make
 Maybe you will have to modify the different paths in the script.
 
 ## Results 
+You can retrieve a summary plot of the data here : data_prep/figure/.
 
 <p align="center">
   <img src="img/schema_readme.png" alt="Description" width="100%">

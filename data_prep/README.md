@@ -46,3 +46,4 @@ Maybe you will have to modify the different paths in the script.
 
 You should have a results folder. Inside you should have three folders corresponding to the three prediction tools (vs2, dvf, vibrant).
 Inside of each folders, you should have fasta files for each ecosystems corresponding to viral predicted sequences.
+You can retrieve a summary plot of the data here : data_prep/figure/.
