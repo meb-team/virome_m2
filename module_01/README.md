@@ -1,0 +1,58 @@
+# Welcome to the module number one ! 🎈 🎈 🎈 
+
+This first module includes the steps of quality control of the predicted viral contigs. 
+
+First, you need to be sure that you have the correct files. I suggest you to look after the data_prep/ or data_test/ folders.
+You should have a result folder like this : 
+
+data_test/results/
+├── dvf/
+│   ├── air_predicted_seq.fa
+│   ├── human_predicted_seq.fa
+│   └── metalakes_predicted_seq.fa
+├── vibrant/
+│   ├── air_predicted_seq.fa
+│   ├── human_predicted_seq.fa
+│   └── metalakes_predicted_seq.fa
+└── vs2/
+    ├── air_predicted_seq.fa
+    ├── human_predicted_seq.fa
+    └── metalakes_predicted_seq.fa
+
+## Requirements
+
+I suggest you to work on a HPC because this step can take a while...
+
+CheckV v1.0.1 
+singularity
+
+## usage
+
+### Module all-in-one
+
+faire snakemake XXXXXXXXXXXXXx 
+
+### Module step-by-step
+
+The first step is to run the CheckV tool for each fasta file.
+
+If you are not working on a HPC : 
+```bash
+chmod+x module_01/checkV/bin/qc_checkv.sh
+./module_01/checkV/bin/qc_checkv.sh
+```
+
+If you are working on a HPC (recommended) :
+```bash
+In building (slurm)... XXXXXXXXXXXXXXXXXXX
+```
+
+## Computational analysis 
+
+1. CheckV : time : XXXXXX (number of CPUs used here : 16)
+2. XXXXX
+
+## Results 
+
+XXXXXXXXXXXx
+
