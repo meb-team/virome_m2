@@ -42,34 +42,37 @@ def count(path):
 
 
 def visual(contig_count):
-
     if not os.path.exists("data_prep/figure"):
-        subprocess.run(['mkdir', "data_prep/figure"])
-    else:
-        None
+        os.makedirs("data_prep/figure")
 
     ecosystems = list(contig_count.keys())
     tools = list(next(iter(contig_count.values())).keys())
 
-    colors = {'dvf': 'blue', 'vibrant': 'orange', 'vs2': 'green'}
+    colors = {'dvf': '#6A5ACD', 'vibrant': '#FFB347', 'vs2': '#2E8B57'}
+
     fig, ax = plt.subplots(figsize=(10, 6))
     bar_width = 0.2
     index = np.arange(len(ecosystems))
 
     for i, tool in enumerate(tools):
-        counts = [contig_count[ecosystem][tool] for ecosystem in ecosystems]
-        ax.bar(index + i * bar_width, counts, bar_width, label=tool, color=colors[tool])
+        counts = [int(contig_count[ecosystem][tool]) for ecosystem in ecosystems]
+        ax.bar(index + i * bar_width, counts, bar_width, label=tool, color=colors[tool], edgecolor='black', alpha=0.85)
 
-    ax.set_xlabel('Ecosystems')
-    ax.set_ylabel('Number of predicted viral contigs')
-    ax.set_title('Comparison of the number of contigs per tools per ecosystems.')
-    ax.set_xticks(index + bar_width)
-    ax.set_xticklabels(ecosystems)
-    ax.legend(title='Tools')
+    ax.set_xlabel('Ecosystems', fontsize=12, fontweight='bold')
+    ax.set_ylabel('Number of predicted viral contigs', fontsize=12, fontweight='bold')
+    ax.set_title('Comparison of the number of contigs per tools per ecosystems.', fontsize=14, fontweight='bold')
+
+    ax.set_xticks(index + bar_width * (len(tools) / 2))
+    ax.set_xticklabels(ecosystems, fontsize=11)
+
+    ax.legend(title='Tools', fontsize=11, title_fontsize=12)
+
+    ax.set_ylim(0, max(sum(([int(contig_count[eco][t]) for t in tools] for eco in ecosystems), [])) * 1.1)
+
+    ax.yaxis.grid(True, linestyle='--', alpha=0.7)
 
     plt.tight_layout()
     plt.savefig('data_prep/figure/ecosystem_comparison.png', format='png')
-
 
 
 if __name__ == '__main__':
