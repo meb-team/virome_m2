@@ -24,10 +24,9 @@ data_test/results/
 ## Requirements
 
 I suggest you to work on a HPC because this step can take a while...
-
 For this module, you will need of some programs on your machine.
 
-Firstly, Singularity v.3.7.4 is used. I suggest you to read the [documentation](https://docs.sylabs.io/guides/3.0/user-guide/installation.html)
+Firstly, Singularity v.3.7.4 is used. I suggest you to read the [documentation](https://docs.sylabs.io/guides/3.0/user-guide/installation.html).
 
 Check if you have Singularity already installed on your machine :
 ```bash
