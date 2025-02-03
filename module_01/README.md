@@ -21,6 +21,8 @@ data_test/results/
     └── metalakes_predicted_seq.fa
 ```
 
+You probably will have to modify the paths in the scripts.
+
 ## Requirements
 
 I suggest you to work on a HPC because this step can take a while...
@@ -50,7 +52,7 @@ faire snakemake XXXXXXXXXXXXXx
 
 ### Module step-by-step
 
-The first step is to run the CheckV tool for each fasta file.
+The **first step** is to run the CheckV tool for each fasta file.
 
 If you are not working on a HPC : 
 ```bash
@@ -62,12 +64,14 @@ If you are working on a HPC (recommended) :
 ```bash
 In building (slurm)... XXXXXXXXXXXXXXXXXXX
 ```
+The **second step** is ..
+
 
 ## Computational analysis 
 This computational analysis has been performed on the subdataset created by the data_test/ folder/
 The total volume of input data was 2.5 Go. 
 
-1. CheckV : time : XXXXXX (number of CPUs used here : 16)
+1. CheckV : time : XXXXXX (number of CPUs used here : 16). For a 2.5Go of inputs, the volume of the output is XXXXXX.
 2. XXXXX
 
 ## Results 
