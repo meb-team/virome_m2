@@ -67,7 +67,19 @@ If you are working on a HPC (recommended) :
 ```bash
 In building (slurm)... XXXXXXXXXXXXXXXXXXX
 ```
-The **second step** is ..
+The **second step** is to annotate the contigs with their prediction tool and their ecosystems before the clustering. This step is usefull because some contigs could have
+the same IDs between prediction tools because the same SSR has been analyzed for the three prediction tools.
+
+If you are not working on a HPC :
+```bash
+XXXXXX
+```
+
+If you are working on a HPC (recommended) :
+```bash
+XXXXXXXX
+```
+The **third step** is to cluster the different contigs.
 
 
 ## Computational analysis 
