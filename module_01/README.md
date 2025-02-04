@@ -76,7 +76,11 @@ chmod +x module_01/annotate/bin/annotate.sh
 ./module_01/annotate/bin/annotate.sh
 ```
 The **third step** is to cluster the different contigs. The MMseq2 tool is used to cluster the annotate sequences.
-
+```bash
+chmod +x module_01/MMseq2/bin/clustering.sh
+./module_01/MMseq2/bin/clustering.sh
+```
+The **forth step** is...XXXXXXXX
 
 ## Computational analysis 
 This computational analysis has been performed on the subdataset created by the data_test/ folder. This dataset is containing approximately 180,000 contigs.
@@ -84,7 +88,7 @@ The total volume of input data was 1.5 Go.
 
 Here are the results collected working with shell (no HPC) : 
 1. CheckV : time : around 6 hours (number of CPUs used here : 16). For a 1.5Go of inputs, the total volume of the outputs is 20Go.
-2. XXXXX
+2. MMseq2 : time : around 40 s for a 1.4Go of inputs corresponding of the test dataset.
 
 Here are the results collected working with HPC :
 1. XXXXXXXX
