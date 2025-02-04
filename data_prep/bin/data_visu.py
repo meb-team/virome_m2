@@ -41,7 +41,7 @@ def count(path):
 
 
 
-def visual(contig_count):
+def visual(contig_count, pathout):
     if not os.path.exists("data_prep/figure"):
         os.makedirs("data_prep/figure")
 
@@ -72,7 +72,7 @@ def visual(contig_count):
     ax.yaxis.grid(True, linestyle='--', alpha=0.7)
 
     plt.tight_layout()
-    plt.savefig('data_prep/figure/ecosystem_comparison.png', format='png')
+    plt.savefig(f'{pathout}/ecosystem_comparison.png', format='png')
 
 
 if __name__ == '__main__':
@@ -91,6 +91,6 @@ if __name__ == '__main__':
     print("Start the visualization...")
 
     nb_contigs = count("data_test/results")
-    visual(nb_contigs)
+    visual(nb_contigs, pathout)
 
     print("End of the program. You can see the results here : data_prep/figure")

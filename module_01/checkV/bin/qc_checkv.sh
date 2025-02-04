@@ -16,7 +16,8 @@ set -o pipefail
 
 # === Variable definition ===
 
-home="/home/serville/" # Path to your home (useful to link your home to the singularity VM)
+#home="/home/serville/"
+home="/databis/serville/" # Path to your home (useful to bind yoyr home to the singularity structure)
 path_checkv="module_01/checkV/bin/checkv.sif" # Path to the checkV tool
 
 dvf_file="data_test/results/dvf/" # path to the merged results of DeepVirFinder for different ecosystems
