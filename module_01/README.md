@@ -75,7 +75,7 @@ This computational analysis has been performed on the subdataset created by the 
 The total volume of input data was 1.5 Go. 
 
 Here are the results collected working with shell (no HPC) : 
-1. CheckV : time : around 6 hours (number of CPUs used here : 16). For a 1.5Go of inputs, the volume of the output is XXXXXX.
+1. CheckV : time : around 6 hours (number of CPUs used here : 16). For a 1.5Go of inputs, the total volume of the outputs is 20Go.
 2. XXXXX
 
 Here are the results collected working with HPC :
