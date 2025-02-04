@@ -87,5 +87,7 @@ for eco in "${ecosystems[@]}"; do
 
 done
 
+./module_01/checkV/bin/qc_visu.py 
+
 exit 0
 
