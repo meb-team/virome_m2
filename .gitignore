@@ -3,4 +3,4 @@ data_test/results/
 module_01/checkV/bin/checkv.sif
 module_01/checkV/results/
 tmp/
-module_01/annotate/results
+module_01/annotate/results/
