@@ -67,10 +67,15 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    path = args.path
-    out = args.out
-    path="module_01/checkV/results"
-    out="module_01/checkV/figure"
+    if args.path:
+        path = args.path
+    then:
+        path="module_01/checkV/results"
+
+    if args.out:
+        out = args.out
+    then:
+        out="module_01/checkV/figure"
 
     print("Start the visualizations for quality...")
 
