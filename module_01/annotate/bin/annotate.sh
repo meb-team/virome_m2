@@ -20,7 +20,7 @@ mkdir -p "module_01/annotate/results"
 OUTPUT_FILE="module_01/annotate/results/all_modified_contigs.fasta"
 > "$OUTPUT_FILE"
 
-# === Function definition ===a
+# === Function definition ===
 process_fasta() {
     local fasta_file="$1"
     local ecosystem="$2"
