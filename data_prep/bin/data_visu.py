@@ -82,6 +82,8 @@ def visual(contig_count, pathout):
     plt.tight_layout()
     plt.savefig(f'{pathout}/ecosystem_comparison.png', format='png')
 
+    return None
+
 
 if __name__ == '__main__':
 
