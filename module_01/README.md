@@ -67,19 +67,15 @@ If you are working on a HPC (recommended) :
 ```bash
 In building (slurm)... XXXXXXXXXXXXXXXXXXX
 ```
-The **second step** is to annotate the contigs with their prediction tool and their ecosystems before the clustering. This step is usefull because some contigs could have
+The **second step** is to annotate the contigs with their prediction tool, their ecosystems and if they are viruses or proviruses before the clustering. This step is usefull because some contigs could have
 the same IDs between prediction tools because the same SSR has been analyzed for the three prediction tools.
 
-If you are not working on a HPC :
+No need to work on a slurm script here :
 ```bash
-XXXXXX
+chmod +x module_01/annotate/bin/annotate.sh
+./module_01/annotate/bin/annotate.sh
 ```
-
-If you are working on a HPC (recommended) :
-```bash
-XXXXXXXX
-```
-The **third step** is to cluster the different contigs.
+The **third step** is to cluster the different contigs. The MMseq2 tool is used to cluster the annotate sequences.
 
 
 ## Computational analysis 
