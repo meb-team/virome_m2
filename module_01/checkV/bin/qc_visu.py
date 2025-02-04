@@ -52,7 +52,7 @@ def parse_data(path, pathout):
             except:
                 print(f"Missing file 'quality_summary' in {path}/{tool}/{folder}")
 
-            visual(file, eco, tool, pathout)
+            visual(path_file, eco, tool, pathout)
 
     return None
 
