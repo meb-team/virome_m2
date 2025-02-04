@@ -21,6 +21,7 @@ def visual(file_quality, eco, tool, out):
     """
 
     df_quality = pd.read_csv(file_quality, sep="\t", header=0)
+
     Lorder=["Complete","High-quality","Medium-quality","Low-quality","Not-determined"]
     Lcolor=["#07ce04","#8ffa37","#fffb00","#ff8513","#d4d4d4"]
 
@@ -33,6 +34,13 @@ def visual(file_quality, eco, tool, out):
 
 
 def parse_data(path, pathout):
+    """
+    Function to parse the results folder to research the CheckV summary quality file for each prediction tools for each ecosystems.
+
+    :param path : the path where the results are stored
+    :param pathout : the path where the figures will be stored
+    :return None
+    """
 
     if not os.path.exists(pathout):
         os.makedirs(pathout)
