@@ -42,6 +42,14 @@ def count(path):
 
 
 def visual(contig_count, pathout):
+    """
+    Function to create a barplot of the different counts of predicted contigs per tools per ecosystems.
+
+    :param contig_count : a dictionnary of dictionnary {Ecosystem1 : { Tool1 : count, Tool2 : count}}
+    :param pathout : the path where the figure will be saved
+    :return : None
+    """
+
     if not os.path.exists("data_prep/figure"):
         os.makedirs("data_prep/figure")
 
@@ -81,7 +89,7 @@ if __name__ == '__main__':
         description = """This script aims to create some figures using the contigs predicted by the prediction tools.""")
 
     parser.add_argument("--path", "-p", help="Defines the path where the data are located. Usage : -p path folder/", type=str)
-    parser.add_argument("--out", "-o", help="Defines the path where the figure created can be stored. Usage : -p path folder/", type=str)
+    parser.add_argument("--out", "-o", help="Defines the path where the figure created can be stored. Usage : -o path folder/", type=str)
 
     args = parser.parse_args()
 
