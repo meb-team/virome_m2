@@ -16,7 +16,7 @@ fasta_input="module_01/annotate/results/all_modified_contigs.fasta"
 output_dir="module_01/MMSeq2/results"
 
 mmseqs easy-linclust "$fasta_input" "$output_dir/clusterRes" "$output_dir/tmp" --min-seq-id 0.95 -c 0.85 --cov-mode 1
-``
+```
 - param easy-linclust : linear clustering, scalable with a huge mount of data.
 - param --min-seq-id : minimum of % of identity between sequences to cluster them
 - param -c : minimum of % of coverage between sequences to cluster them
