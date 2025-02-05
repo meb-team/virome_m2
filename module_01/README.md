@@ -83,7 +83,8 @@ chmod +x module_01/MMseq2/bin/clustering.sh
 The **forth step** is the exploration and the filtration of the clustering results. At the end, only clusters with contigs predicted by at least 2 different prediction tools will
 be keep for the next  analysis. 
 ```
-XXXXXXX
+chmod +x module_01/filtering/bin/filtering.py
+./module_01/filtering/bin/filtering.py
 ```
 
 ## Computational analysis 
@@ -97,9 +98,5 @@ Here are the results collected working with shell (no HPC) :
 Here are the results collected working with HPC :
 1. XXXXXXXX
 2. XXXXXXXX
-
-## Results 
-
-XXXXXXXXXXXx
 
 

@@ -24,6 +24,7 @@ mmseqs easy-linclust "$fasta_input" "$output_dir/clusterRes" "$output_dir/tmp" -
 
 # Results 
 As a result, you should have something like that :
+
 ```
 module_01/MMseq2/results/
 ├── clusterRes_all_seqs.fasta
@@ -37,5 +38,7 @@ module_01/MMseq2/results/
 │   │   ├── clu.lookup
 │   │   ├── clu.source
 │   ├── latest
+
 ```
+
 
