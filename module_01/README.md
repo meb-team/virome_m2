@@ -80,7 +80,11 @@ The **third step** is to cluster the different contigs. The MMseq2 tool is used 
 chmod +x module_01/MMseq2/bin/clustering.sh
 ./module_01/MMseq2/bin/clustering.sh
 ```
-The **forth step** is...XXXXXXXX
+The **forth step** is the exploration and the filtration of the clustering results. At the end, only clusters with contigs predicted by at least 2 different prediction tools will
+be keep for the next  analysis. 
+```
+XXXXXXX
+```
 
 ## Computational analysis 
 This computational analysis has been performed on the subdataset created by the data_test/ folder. This dataset is containing approximately 180,000 contigs.
@@ -98,4 +102,4 @@ Here are the results collected working with HPC :
 
 XXXXXXXXXXXx
 
-4
+
