@@ -2,6 +2,13 @@
 
 This first module includes the steps of quality control of the predicted viral contigs. 
 
+<p align="center">
+  <img src="img/module_01_schema.png" alt="Description" width="100%">
+</p>
+
+
+## Requirements
+
 First, you need to be sure that you have the correct files. I suggest you to look after the data_prep/ or data_test/ folders.
 You should have a result folder like this : 
 
@@ -22,8 +29,7 @@ data_test/results/
 ```
 
 You will probably have to modify the paths in the scripts.
-
-## Requirements
+s
 
 I suggest you to work on a HPC because this step can take a while...
 For this module, you will need of some programs on your machine.
