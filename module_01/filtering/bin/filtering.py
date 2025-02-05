@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
 
 import argparse
-import os 
+import os
 import pandas as pd
 
 
 def cluster_num(data):
+    """
+    Function to attribute each cluster to a number from 1 to n clusters.
+
+    param data : the TSV file resulting of MMseq2 clustering
+    return : a dataframe containing the contigs, the representant of each clusters and the cluster in int format.
+    """
     cluster_dict = {}
     cluster_id = 1
 
@@ -20,6 +26,12 @@ def cluster_num(data):
 
 
 def parse_info(identifier):
+    """
+    Function to identify the ecosystem and the prediction tool for each contigs
+
+    param identifier : contig IDs from a dataframe
+    return : a dictionnary containing the IDs contigs, the ecosystems and the tool as keys
+    """
     parts = identifier.split("==")
 
     return {
@@ -30,6 +42,12 @@ def parse_info(identifier):
 
 
 def merge_info(data):
+    """
+    Function to merge all the informations into one dataframe. For each contigs, there are prediction_tool, cluster, cluster representative and ecosystem columns.
+
+    param data : a dataframe resulting of cluster_num().
+    return : a dataframe containing all the informations relative to the contigs and the clusters.
+    """
     records = []
 
     for _, row in data.iterrows():
@@ -51,6 +69,13 @@ def merge_info(data):
 
 
 def filter_clusters(df):
+    """
+    Function to filter the dataframe resulting of merge_info(). The clusters with less than 2 contigs are deleted. And the clusters containing less than 2
+    different prediction tools are deleted. Only contigs with double-cross validation are kept.
+
+    :param df : the dataframe resulting of merge_info().
+    : return : a filtered dataframe.
+    """
     start = len(df)
 
     print(f"Start with {start} contigs") 
@@ -73,6 +98,15 @@ def filter_clusters(df):
 
 
 def add_checkv_info(df, checkv_base_path):
+    """
+    Function to retrieve, collect and merge some CheckV results to each contigs present in the dataframe after filtering. The following informations are
+    associated for each contigs : the lenght of each contig, if the contig is a provirus/prophage, the number of viral genes, the number of host genes, the
+    CheckV quality results and the CheckV quality score.
+
+    :param df : the dataframe after filtering resulting from filter_clusters.
+    :param checkv_base_path : the path where the results of CheckV are stored
+    :return : a dataframe containing all these informations.
+    """
     checkv_columns = ["contig_length", "provirus", "viral_genes", "host_genes", "checkv_quality", "completeness"]
     checkv_data = []
 
