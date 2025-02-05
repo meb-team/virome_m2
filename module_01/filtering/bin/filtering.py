@@ -127,7 +127,7 @@ def add_checkv_info(df, checkv_base_path):
             checkv_info = {col: "NA" for col in checkv_columns}
 
         checkv_data.append(checkv_info)
-        print(len(checkv_data))
+        print("Contig processed :",len(checkv_data))
 
     checkv_df = pd.DataFrame(checkv_data, index=df.index)
     df = pd.concat([df, checkv_df], axis=1)
