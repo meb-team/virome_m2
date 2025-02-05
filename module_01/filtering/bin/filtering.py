@@ -50,6 +50,27 @@ def merge_info(data):
     return df
 
 
+def filter_clusters(df):
+    start = len(df)
+
+    print(f"Start with {start} contigs") 
+
+    cluster_counts = df['Cluster'].value_counts()
+    valid_clusters = cluster_counts[cluster_counts > 1].index
+    df = df[df['Cluster'].isin(valid_clusters)]
+
+    cluster_tool_counts = df.groupby("Cluster")['Prediction tool'].nunique()
+    valid_clusters = cluster_tool_counts[cluster_tool_counts > 1].index
+    df = df[df['Cluster'].isin(valid_clusters)]
+
+    end = len(df)
+    deleted = start - end 
+
+    print(f"End with {end} contigs")
+    print(f"Number of contigs deleted : {deleted}")
+
+    return df
+
 
 if __name__ == '__main__':
 
@@ -77,9 +98,11 @@ if __name__ == '__main__':
     print("Start the filtering...")
 
     data = pd.read_csv(path, sep='\t', header=None, names=['representative', 'member'])
-    test = cluster_num(data)
-    test2 = merge_info(test)
-    print(test2.head())
+
+    df_cluster_num = cluster_num(data)
+    cluster_df = merge_info(df_cluster_num)
+    filter_df = filter_clusters(cluster_df)
+    print(len(filter_df))
 
     print("Job finish !")
 
