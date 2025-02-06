@@ -198,9 +198,7 @@ if __name__ == '__main__':
     complete_df = add_checkv_info(filter_df, path_checkv)
     complete_df_NA = retry_checkv_for_na(complete_df, path_checkv)
 
-    print(complete_df)
-
-    complete_df_NA.to_csv(f"{out}/representative_clusterTEST.tsv", sep='\t')
+    complete_df_NA.to_csv(f"{out}/representative_cluster.tsv", sep='\t')
 
     print("Job finish !")
 
