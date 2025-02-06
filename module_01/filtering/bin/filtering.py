@@ -135,15 +135,15 @@ def add_checkv_info(df, checkv_base_path):
     return df
 
 
-def retry_checkv_for_na(df, checkv_base_path):
-    """
+"""def retry_checkv_for_na(df, checkv_base_path):
+
     Function to handle some NA. Some NA are here because of an issue of non-unique contig during the clustering.
     For every NA we re-check the informations for the IDs but we remove the '_1' at the end of the name of the contigs.
 
     :param df : the dataframe resulting of add_checkv_info()
     :param checkv_base_path : the path where the results of CheckV are stored
     :return : the dataframe with less NA (hopefully).
-    """
+
     na_rows = df[df.isna().any(axis=1)].copy()
     na_rows["Contig_modified"] = na_rows.index.str.rstrip("_1")
 
@@ -160,7 +160,7 @@ def retry_checkv_for_na(df, checkv_base_path):
                 if not checkv_row.empty:
                     df.loc[contig, checkv_row.columns] = checkv_row.iloc[0]
 
-    return df
+    return df"""
 
 
 
@@ -196,9 +196,8 @@ if __name__ == '__main__':
     cluster_df = merge_info(df_cluster_num)
     filter_df = filter_clusters(cluster_df)
     complete_df = add_checkv_info(filter_df, path_checkv)
-    complete_df_NA = retry_checkv_for_na(complete_df, path_checkv)
 
-    complete_df_NA.to_csv(f"{out}/representative_cluster.tsv", sep='\t')
+    complete_df.to_csv(f"{out}/representative_cluster.tsv", sep='\t')
 
     print("Job finish !")
 
