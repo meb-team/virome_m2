@@ -108,8 +108,29 @@ def seq_tool(data, path_tool):
 
 
 
-def retrieve_checkV_info(data, eco_dict, path_checkv):
+def get_tool(row):
+    if row["vs2_seed"] == 1:
+        return "vs2"
+    elif row["dvf_seed"] == 1:
+        return "dvf"
+    elif row["vibrant_seed"] == 1:
+        return "vibrant"
     return None
+
+
+
+def get_checkv_data(contig, tool, ecosystem):
+    file_path = f"module_01/checkV/results/{tool}/{ecosystem}_vs2_checkv/quality_summary.tsv"
+    try:
+        checkv_df = pd.read_csv(file_path, sep="\t", index_col=0)
+        if contig in checkv_df.index:
+            return checkv_df.loc[contig, ["checkv_quality", "completeness"]].tolist()
+    except FileNotFoundError:
+        print(f"File not found : {file_path}")
+    except Exception as e:
+        print(f"Error during the reading of the file :  {file_path}: {e}")
+
+    return [None, None]
 
 
 
@@ -141,8 +162,11 @@ if __name__ == '__main__':
 
     data_df,eco_rep = filter(data)
     df_rep = rep_tool(data_df, path_tool)
-    # df_tool = seq_tool(data_df, path_tool)
-    full_data = retrieve_checkV_info(data_df, eco_rep, path_checkv)
+    df_tool = seq_tool(df_rep, path_tool)
+
+    df_tool["tool"] = df_tool.apply(get_tool, axis=1)
+    df_tool["ecosystem"] = df_tool.index.map(eco_rep)
+    full_data = df_tool[["checkv_quality", "completeness"]] = df_tool.apply(lambda row: pd.Series(get_checkv_data(row.name, row["tool"], row["ecosystem"])), axis=1)
 
     full_data.to_csv(f"{out}/representative_cluster.tsv", sep='\t')
 
