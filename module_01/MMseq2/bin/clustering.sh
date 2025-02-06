@@ -15,7 +15,7 @@ set -o pipefail
 
 # === Variable definition ===
 
-fasta_input="module_01/annotate/results/all_modified_contigs.fasta"
+fasta_input="module_01/annotate/results/all_annotated_contigs.fasta"
 output_dir="module_01/MMseq2/results"
 
 mkdir -p "$output_dir"
