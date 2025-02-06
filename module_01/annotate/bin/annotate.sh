@@ -1,11 +1,10 @@
-#!/bin/bash
-
 # ==========================
 # DESCRIPTION :
-# This script annotates contig names with tool names and ecosystems from checkV results and merges all sequences into one fasta file.
+# This script annotates contig names with ecosystem names from CheckV results and generates a separate TSV file
+# containing the list of contig names and their corresponding tools.
 # Author  : SERVILLE Hugo
-# Date    : 04/02/2025
-# Version : 1.2
+# Date    : 06/02/2025
+# Version : 1.0
 # ==========================
 
 # === Initialization ===
@@ -17,8 +16,10 @@ set -o pipefail
 
 RESULTS_DIR="module_01/checkV/results"
 mkdir -p "module_01/annotate/results"
-OUTPUT_FILE="module_01/annotate/results/all_modified_contigs.fasta"
+OUTPUT_FILE="module_01/annotate/results/all_annotated_contigs.fasta"
+TSV_FILE="module_01/annotate/results/contig_tools_list.tsv"
 > "$OUTPUT_FILE"
+> "$TSV_FILE"
 
 # === Function definition ===
 process_fasta() {
@@ -26,19 +27,25 @@ process_fasta() {
     local ecosystem="$2"
     local tool="$3"
 
+    # Annotate the FASTA file with the ecosystem name
     awk -v eco="$ecosystem" -v tool="$tool" '
         /^>/ {
             sub(/\|\|.*/, "", $0);  # Remove everything after "||" (for vs2)
-            print $0 "==" eco "==" tool; 
+            print $0 "==" eco;
             next
         }
         {print}
     ' "$fasta_file" >> "$OUTPUT_FILE"
-}
 
+    # Record the contig names and the tools used in the TSV file
+    grep "^>" "$fasta_file" | sed 's/^>//' | while read contig; do
+        echo -e "$contig\t$tool" >> "$TSV_FILE"
+    done
+}
 
 # === Process data ===
 echo "Starting job..."
+
 for tool_dir in "$RESULTS_DIR"/*/; do
     tool=$(basename "$tool_dir")  # Collect the tool name
 
@@ -53,6 +60,8 @@ for tool_dir in "$RESULTS_DIR"/*/; do
     done
 done
 
-echo "Job finished! You can retrieve the results here: module_01/annotate/results"
+echo "Job finished! You can retrieve the results here:"
+echo "FASTA file: module_01/annotate/results/all_annotated_contigs.fasta"
+echo "TSV file: module_01/annotate/results/contig_tools_list.tsv"
 
 exit 0
