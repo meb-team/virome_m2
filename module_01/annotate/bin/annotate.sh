@@ -2,10 +2,10 @@
 
 # ==========================
 # DESCRIPTION :
-# This script aims to annotate the contigs name from the checkV results and merge all the sequence into one fasta file.
+# This script annotates contig names with tool names and ecosystems from checkV results and merges all sequences into one fasta file.
 # Author  : SERVILLE Hugo
 # Date    : 04/02/2025
-# Version : 1.0
+# Version : 1.2
 # ==========================
 
 # === Initialization ===
@@ -25,10 +25,13 @@ process_fasta() {
     local fasta_file="$1"
     local ecosystem="$2"
     local tool="$3"
-    local extra_tag="$4"
 
-    awk -v eco="$ecosystem" -v tool="$tool" -v tag="$extra_tag" '
-        /^>/ {print $0 "==" eco "==" tool "==" tag; next}
+    awk -v eco="$ecosystem" -v tool="$tool" '
+        /^>/ {
+            sub(/\|\|.*/, "", $0);  # Remove everything after "||" (for vs2)
+            print $0 "==" eco "==" tool; 
+            next
+        }
         {print}
     ' "$fasta_file" >> "$OUTPUT_FILE"
 }
@@ -44,14 +47,12 @@ for tool_dir in "$RESULTS_DIR"/*/; do
 
         for fasta in "$eco_dir"/viruses.fna "$eco_dir"/proviruses.fna; do
             if [[ -f "$fasta" ]]; then
-                extra_tag=""
-                [[ "$fasta" == *"proviruses.fna" ]] && extra_tag="==proviruses"
-                process_fasta "$fasta" "$ecosystem" "$tool" "$extra_tag"
+                process_fasta "$fasta" "$ecosystem" "$tool"
             fi
         done
     done
 done
 
-echo "Job finish ! You can retrieve the results here : module_01/annotate/results
+echo "Job finished! You can retrieve the results here: module_01/annotate/results"
 
 exit 0
