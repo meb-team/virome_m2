@@ -27,17 +27,22 @@ process_fasta() {
     local ecosystem="$2"
     local tool="$3"
 
-    # Annotate the FASTA file with the ecosystem name
+    # Annoter le fichier FASTA avec le nom de l'écosystème
     awk -v eco="$ecosystem" -v tool="$tool" '
         /^>/ {
-            sub(/\|\|.*/, "", $0);  # Remove everything after "||" (for vs2)
+            # Supprimer tout après "||" (pour vs2)
+            sub(/\|\|.*/, "", $0);
+
+            # Supprimer tout après le premier espace
+            sub(/ .*/, "", $0);  # Suppression après le premier espace
+
             print $0 "==" eco;
             next
         }
         {print}
     ' "$fasta_file" >> "$OUTPUT_FILE"
 
-    # Record the contig names and the tools used in the TSV file
+    # Enregistrer les noms de contig et les outils utilisés dans le fichier TSV
     grep "^>" "$fasta_file" | sed 's/^>//' | while read contig; do
         echo -e "$contig\t$tool" >> "$TSV_FILE"
     done
