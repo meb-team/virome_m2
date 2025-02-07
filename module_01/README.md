@@ -90,7 +90,10 @@ The **forth step** is the exploration and the filtration of the clustering resul
 be keep for the next  analysis. 
 ```
 chmod +x module_01/filtering/bin/filtering.py
+chmod +x module_01/filtering/bin/data_visu.py
+
 ./module_01/filtering/bin/filtering.py
+./module_01/filtering/bin/data_visu.py
 ```
 
 ## Computational analysis 
