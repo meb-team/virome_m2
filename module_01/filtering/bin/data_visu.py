@@ -89,9 +89,9 @@ if __name__ == '__main__':
     if not os.path.exists(out):
         os.makedirs(out)
 
-
     print("Start the visualizations for quality...")
 
     quality(path, out)
     prophage_quality(path, out)
+
     print("Job finish : figure created !")
