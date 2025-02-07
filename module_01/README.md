@@ -50,7 +50,7 @@ Then, you have to install CheckV (v1.0.1) via singularity :
 ```bash
 singularity pull shub://DerrickWood/CheckV
 ```
-## usage
+## Usage
 
 I recommand you to follow the all-in-one steps. This option is running the entire module automatically. Make sure you have snakemake (cf. Requirements).
 If you want to look after the different steps you can follow the step-by-step part (you don't need snakemake for this).
