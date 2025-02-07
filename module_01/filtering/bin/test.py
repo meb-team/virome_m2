@@ -124,13 +124,13 @@ def get_checkv_data(contig, tool, ecosystem):
     try:
         checkv_df = pd.read_csv(file_path, sep="\t", index_col=0)
         if contig in checkv_df.index:
-            return checkv_df.loc[contig, ["checkv_quality", "completeness", "contig_length"]].tolist()
+            return checkv_df.loc[contig, ["checkv_quality", "completeness", "contig_length", "provirus"]].tolist()
     except FileNotFoundError:
         print(f"File not found : {file_path}")
     except Exception as e:
         print(f"Error during the reading of the file :  {file_path}: {e}")
 
-    return [None, None, None]
+    return [None, None, None, None]
 
 
 
@@ -167,7 +167,7 @@ if __name__ == '__main__':
     df_tool["tool"] = df_tool.apply(get_tool, axis=1)
     df_tool["ecosystem"] = df_tool.index.map(eco_rep)
 
-    full_data = df_tool[["checkv_quality", "completeness", "seed_length"]] = df_tool.apply(lambda row: pd.Series(get_checkv_data(row.name, row["tool"], row["ecosystem"])), axis=1)
+    full_data = df_tool[["checkv_quality", "completeness", "seed_length", "provirus_seed"]] = df_tool.apply(lambda row: pd.Series(get_checkv_data(row.name, row["tool"], row["ecosystem"])), axis=1)
 
     full_data.drop(columns=['tool', 'ecosystem'], inplace=True)
     full_data.to_csv(f"{out}/representative_cluster.tsv", sep='\t')
