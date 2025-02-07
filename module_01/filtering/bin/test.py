@@ -141,6 +141,7 @@ if __name__ == '__main__':
 
     parser.add_argument("--path", "-p", help="Defines the path where the report  are located. Usage : -p path folder/", type=str)
     parser.add_argument("--out", "-o", help="Defines the path where the figure created can be stored. Usage : -o path folder/", type=str)
+    parser.add_argument("--tool", "-t", help="Defines the path where the metadata of tool predictions are stored for each contigs. Usage : -t path/folder/", type=str)
 
     args = parser.parse_args()
 
@@ -148,6 +149,11 @@ if __name__ == '__main__':
         path = args.path
     else:
         path="module_01/MMseq2/results/clusterRes_cluster.tsv"
+
+    if args.tool:
+        path_tool = args.tool
+    else:
+        path_tool = "module_01/annotate/results/contig_tools_list.tsv"
 
     if args.out:
         out = args.out
@@ -158,7 +164,6 @@ if __name__ == '__main__':
         os.makedirs(out)
 
     data = pd.read_csv(path, sep='\t', header=None, names=['representative', 'member'])
-    path_tool = "module_01/annotate/results/contig_tools_list.tsv"
 
     data_df,eco_rep = filter(data)
     df_rep = rep_tool(data_df, path_tool)
@@ -170,6 +175,7 @@ if __name__ == '__main__':
     full_data = df_tool[["checkv_quality", "completeness", "seed_length", "provirus_seed"]] = df_tool.apply(lambda row: pd.Series(get_checkv_data(row.name, row["tool"], row["ecosystem"])), axis=1)
 
     full_data.drop(columns=['tool', 'ecosystem'], inplace=True)
+
     full_data.to_csv(f"{out}/representative_cluster.tsv", sep='\t')
 
 
