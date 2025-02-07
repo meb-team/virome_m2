@@ -65,8 +65,6 @@ def rep_tool(data, path_tool):
          print(f"Done for representative contigs: {count}/{total_row}")
          count+=1
 
-    print(data)
-
     return data
 
 
@@ -103,7 +101,7 @@ def seq_tool(data, path_tool):
 
         print(f"Done for contigs : {count}/{total_row}")
         count+=1
-    print(data)
+
     return data
 
 
@@ -123,14 +121,38 @@ def get_checkv_data(contig, tool, ecosystem):
     file_path = f"module_01/checkV/results/{tool}/{ecosystem}_{tool}_checkv/quality_summary.tsv"
     try:
         checkv_df = pd.read_csv(file_path, sep="\t", index_col=0)
-        if contig in checkv_df.index:
-            return checkv_df.loc[contig, ["checkv_quality", "completeness", "contig_length", "provirus"]].tolist()
+        matched_rows = checkv_df[checkv_df.index.astype(str).str.contains(contig, na=False, regex=False)]
+
+        if not matched_rows.empty:
+            print(f"Success for {contig}, {tool}, {ecosystem}")
+            return matched_rows.iloc[0][["checkv_quality", "completeness", "contig_length", "provirus"]].tolist()
+        else:
+            print(f"FAIL for {contig}, {tool}, {ecosystem}")
+
     except FileNotFoundError:
         print(f"File not found : {file_path}")
     except Exception as e:
-        print(f"Error during the reading of the file :  {file_path}: {e}")
+        print(f"Error during the reading of the file {file_path} : {e}")
 
     return [None, None, None, None]
+
+#def get_checkv_data(contig, tool, ecosystem):
+#    file_path = f"module_01/checkV/results/{tool}/{ecosystem}_{tool}_checkv/quality_summary.tsv"
+#    try:
+#        checkv_df = pd.read_csv(file_path, sep="\t", index_col=0)
+#        checkv_df.index = checkv_df.index.astype(str).str.split("||").str[0]
+#        print(checkv_df)
+#        if contig in checkv_df.index:
+#            print(contig)
+#            return checkv_df.loc[contig, ["checkv_quality", "completeness", "contig_length", "provirus"]].tolist()
+#        else:
+#            print("AAAAAAAH", contig, tool, ecosystem, file_path)
+#    except FileNotFoundError:
+#        print(f"File not found : {file_path}")
+#    except Exception as e:
+#        print(f"Error during the reading of the file :  {file_path}: {e}")
+#
+#    return [None, None, None, None]
 
 
 
@@ -164,19 +186,23 @@ if __name__ == '__main__':
         os.makedirs(out)
 
     data = pd.read_csv(path, sep='\t', header=None, names=['representative', 'member'])
+    # data2 = data.head(100)
 
     data_df,eco_rep = filter(data)
     df_rep = rep_tool(data_df, path_tool)
     df_tool = seq_tool(df_rep, path_tool)
 
     df_tool["tool"] = df_tool.apply(get_tool, axis=1)
+
     df_tool["ecosystem"] = df_tool.index.map(eco_rep)
 
     full_data = df_tool[["checkv_quality", "completeness", "seed_length", "provirus_seed"]] = df_tool.apply(lambda row: pd.Series(get_checkv_data(row.name, row["tool"], row["ecosystem"])), axis=1)
+    full_data.columns = ["checkv_quality", "completeness", "seed_length", "provirus_seed"]
 
-    full_data.drop(columns=['tool', 'ecosystem'], inplace=True)
+    df_tool = df_tool.merge(full_data, left_index=True, right_index=True, how="left")
+    df_tool.drop(columns=["tool", "ecosystem"], inplace=True)
 
-    full_data.to_csv(f"{out}/representative_cluster.tsv", sep='\t')
+    df_tool.to_csv(f"{out}/representative_cluster.tsv", sep='\t')
 
 
 
