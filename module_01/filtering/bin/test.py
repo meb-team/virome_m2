@@ -130,7 +130,7 @@ def get_checkv_data(contig, tool, ecosystem):
     except Exception as e:
         print(f"Error during the reading of the file :  {file_path}: {e}")
 
-    return [None, None]
+    return [None, None, None]
 
 
 
