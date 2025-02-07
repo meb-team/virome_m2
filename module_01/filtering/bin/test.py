@@ -117,6 +117,14 @@ def get_tool(row):
 
 
 
+def log_error(message):
+    error_file = "module_01/filtering/results/errors_log.txt"
+    with open(error_file, 'a') as f:
+        f.write(message + "\n")
+
+    print(message)
+
+
 def get_checkv_data(contig, tool, ecosystem):
     file_path = f"module_01/checkV/results/{tool}/{ecosystem}_{tool}_checkv/quality_summary.tsv"
     try:
@@ -127,14 +135,19 @@ def get_checkv_data(contig, tool, ecosystem):
             print(f"Success for {contig}, {tool}, {ecosystem}")
             return matched_rows.iloc[0][["checkv_quality", "completeness", "contig_length", "provirus"]].tolist()
         else:
-            print(f"FAIL for {contig}, {tool}, {ecosystem}")
+            err = f"FAIL for {contig}, {tool}, {ecosystem}"
+            log_error(err)
 
     except FileNotFoundError:
-        print(f"File not found : {file_path}")
+        err = f"File not found : {contig} : {file_path}"
+        log_error(err)
     except Exception as e:
-        print(f"Error during the reading of the file {file_path} : {e}")
+        err = f"Error during the reading of the file {file_path} : {e}"
+        log_error(err)
 
     return [None, None, None, None]
+
+
 
 #def get_checkv_data(contig, tool, ecosystem):
 #    file_path = f"module_01/checkV/results/{tool}/{ecosystem}_{tool}_checkv/quality_summary.tsv"
@@ -186,7 +199,7 @@ if __name__ == '__main__':
         os.makedirs(out)
 
     data = pd.read_csv(path, sep='\t', header=None, names=['representative', 'member'])
-    # data2 = data.head(100)
+    # data2 = data.head(1000)
 
     data_df,eco_rep = filter(data)
     df_rep = rep_tool(data_df, path_tool)
@@ -197,12 +210,10 @@ if __name__ == '__main__':
     df_tool["ecosystem"] = df_tool.index.map(eco_rep)
 
     full_data = df_tool[["checkv_quality", "completeness", "seed_length", "provirus_seed"]] = df_tool.apply(lambda row: pd.Series(get_checkv_data(row.name, row["tool"], row["ecosystem"])), axis=1)
-    full_data.columns = ["checkv_quality", "completeness", "seed_length", "provirus_seed"]
 
-    df_tool = df_tool.merge(full_data, left_index=True, right_index=True, how="left")
-    df_tool.drop(columns=["tool", "ecosystem"], inplace=True)
+    df_tool.drop(columns=["tool", "ecosystem", "member"], inplace=True)
 
-    df_tool.to_csv(f"{out}/representative_cluster.tsv", sep='\t')
+    df_tool.to_csv(f"{out}/representative_cluster.tsv", sep='\t', index_label="Representative_contig")
 
 
 
