@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 import argparse
 import os
 import pandas as pd
@@ -42,6 +43,13 @@ def filter(data):
 
 
 def rep_tool(data, path_tool):
+    """
+    Function to retrieve the different prediction tools for the seeds (Representative contigs for each clusters).
+
+    :param data : the dataframe containing clusters 
+    :param path_tool : the path to a TSV file containing informations about the prediction tools and contigs.
+    :return data : the dataframe with 3 new columns for each prediction tools (VirSorter2, VIBRANT, DeepVirFinder)
+    """
     data["vs2_seed"] = 0
     data["vibrant_seed"] = 0
     data["dvf_seed"] = 0
@@ -70,7 +78,13 @@ def rep_tool(data, path_tool):
 
 
 def seq_tool(data, path_tool):
+    """
+    Function to collect the prediction tools for each contigs present in the clusters.
 
+    :param data : the dataframe containing clusters
+    :param path_tool : the path to a TSV file containing informations about the prediction tools and contigs.
+    :return data : the dataframe with 3 new columns for each prediction tools (VirSorter2, VIBRANT, DeepVirFinder)
+    """
     data["vs2_cluster"] = 0
     data["vibrant_cluster"] = 0
     data["dvf_cluster"] = 0
@@ -126,6 +140,14 @@ def log_error(message):
 
 
 def get_checkv_data(contig, tool, ecosystem):
+    """
+    Function to collect the informations of each representative contigs for each ecosystems for each prediction tools
+    from the results of CheckV quality summary.
+
+    :param contig : the representative contig ID
+    :param tool : the tool associated to {contig} (column vs2 or vib or dvf == 1)
+    :param ecosystem :  the ecosystem associated to {contig}
+    """
     file_path = f"module_01/checkV/results/{tool}/{ecosystem}_{tool}_checkv/quality_summary.tsv"
     try:
         checkv_df = pd.read_csv(file_path, sep="\t", index_col=0)
@@ -146,26 +168,6 @@ def get_checkv_data(contig, tool, ecosystem):
         log_error(err)
 
     return [None, None, None, None]
-
-
-
-#def get_checkv_data(contig, tool, ecosystem):
-#    file_path = f"module_01/checkV/results/{tool}/{ecosystem}_{tool}_checkv/quality_summary.tsv"
-#    try:
-#        checkv_df = pd.read_csv(file_path, sep="\t", index_col=0)
-#        checkv_df.index = checkv_df.index.astype(str).str.split("||").str[0]
-#        print(checkv_df)
-#        if contig in checkv_df.index:
-#            print(contig)
-#            return checkv_df.loc[contig, ["checkv_quality", "completeness", "contig_length", "provirus"]].tolist()
-#        else:
-#            print("AAAAAAAH", contig, tool, ecosystem, file_path)
-#    except FileNotFoundError:
-#        print(f"File not found : {file_path}")
-#    except Exception as e:
-#        print(f"Error during the reading of the file :  {file_path}: {e}")
-#
-#    return [None, None, None, None]
 
 
 
