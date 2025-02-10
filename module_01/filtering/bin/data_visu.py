@@ -40,20 +40,17 @@ def prophage_quality(file, out):
     :param file: The path to the TSV file containing the data.
     :param out: The path where the figure will be saved.
     :return: None
-    """s
+    """
     df_quality = pd.read_csv(file, sep="\t", header=0)
+
+    df_quality['provirus_seed'] = df_quality['provirus_seed'].astype(str)
 
     Lorder = ["Complete", "High-quality", "Medium-quality", "Low-quality", "Not-determined"]
     Lcolor = ["#07ce04", "#8ffa37", "#fffb00", "#ff8513", "#d4d4d4"]
 
-    df_no_provirus = df_quality[df_quality['provirus_seed'] == 'no']
-    df_yes_provirus = df_quality[df_quality['provirus_seed'] == 'yes']
-
     plt.figure(figsize=(12, 6))
 
-    sns.countplot(x="checkv_quality", data=df_no_provirus, order=Lorder, palette=Lcolor, label="Non-provirus", width=0.4, position=0)
-
-    sns.countplot(x="checkv_quality", data=df_yes_provirus, order=Lorder, palette=Lcolor, label="Provirus", width=0.4, position=1)
+    seaborn.countplot(x="checkv_quality", data=df_quality, order=Lorder, palette=Lcolor, hue="provirus_seed")
 
     plt.legend(title="Provirus Seed", loc="upper left")
     plt.xlabel("Quality Categories")
@@ -64,7 +61,6 @@ def prophage_quality(file, out):
     plt.savefig(f"{out}/quality_summary_provirus.png", format='png')
 
     return None
-
 
 if __name__ == '__main__':
 
@@ -84,7 +80,7 @@ if __name__ == '__main__':
     if args.out:
         out = args.out
     else:
-        out="module_01/filtering/results/figure"
+        out="module_01/filtering/figure"
 
     if not os.path.exists(out):
         os.makedirs(out)
