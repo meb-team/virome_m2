@@ -62,6 +62,7 @@ def prophage_quality(file, out):
 
     return None
 
+
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(
