@@ -157,8 +157,15 @@ def get_checkv_data(contig, tool, ecosystem):
             print(f"Success for {contig}, {tool}, {ecosystem}")
             return matched_rows.iloc[0][["checkv_quality", "completeness", "contig_length", "provirus"]].tolist()
         else:
-            err = f"FAIL for {contig}, {tool}, {ecosystem}"
-            log_error(err)
+            if contig.endswith("_1"):
+                new_contig = contig[:-2]
+                print(f"Retrying with modified contig: {new_contig}")
+                return get_checkv_data(new_contig, tool, ecosystem)
+
+            else:
+               err = f"FAIL for {contig}, {tool}, {ecosystem}"
+               log_error(err)
+
 
     except FileNotFoundError:
         err = f"File not found : {contig} : {file_path}"
