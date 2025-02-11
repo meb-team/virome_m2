@@ -20,10 +20,9 @@ def filter(data):
 
     df_grouped = data.groupby('representative')['member'].apply(list).reset_index()
     df_grouped['cluster_size'] = df_grouped['member'].apply(len)
-    df_filtered = df_grouped[df_grouped['cluster_size'] > 1]
-    df_filtered.set_index('representative', inplace=True)
+    df_grouped.set_index('representative', inplace=True)
 
-    for contig in df_filtered.index:
+    for contig in df_grouped.index:
         parts = contig.split('==')
 
         if len(parts) == 2:
@@ -34,8 +33,8 @@ def filter(data):
         ecosystem_dict[nomcontig] = ecosysteme
         new_index.append(nomcontig)
 
-    df_filtered.index = new_index
-    df_copy = df_filtered.copy()
+    df_grouped.index = new_index
+    df_copy = df_grouped.copy()
     df_copy['member'] = df_copy['member'].apply(lambda members: [m.split('==')[0] for m in members])
 
     return df_copy, ecosystem_dict
@@ -222,7 +221,7 @@ if __name__ == '__main__':
 
     df_tool.drop(columns=["tool", "ecosystem", "member"], inplace=True)
 
-    df_tool.to_csv(f"{out}/representative_cluster.tsv", sep='\t', index_label="Representative_contig")
+    df_tool.to_csv(f"{out}/representative_cluster2.tsv", sep='\t', index_label="Representative_contig")
 
 
 
