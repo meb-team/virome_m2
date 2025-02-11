@@ -4,7 +4,7 @@
 library("ggplot2")
 library("ComplexUpset")
 
-file <- read.table("../representative_cluster2.tsv",header=TRUE,sep="\t")
+file <- read.table("../results/representative_cluster.tsv",header=TRUE,sep="\t")
 TAB <- file[, c("Representative_contig", "vs2_seed", "vibrant_seed", "dvf_seed", "checkv_quality")]
 names(TAB) <- c("Contigs", "VS2", "vibrant", "DVF", "checkV")
 
