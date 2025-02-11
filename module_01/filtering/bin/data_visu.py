@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 
 import argparse
+from collections import Counter
 import matplotlib.pyplot as plt
 import os
 import pandas as pd
 import seaborn
+from upsetplot import UpSet
 
 
 def quality(file, out):
@@ -63,6 +65,39 @@ def prophage_quality(file, out):
     return None
 
 
+
+def upset_plot(file, out):
+    data_upset = file.copy()
+    data_upset['vs2'] = (data_upset['vs2_seed'] == 1).astype(int)
+    data_upset['vibrant'] = (data_upset['vibrant_seed'] == 1).astype(int)
+    data_upset['dvf'] = (data_upset['dvf_seed'] == 1).astype(int)
+
+    data_upset = data_upset[['vs2', 'vibrant', 'dvf', 'checkv_quality']]
+
+
+    upset_data = Counter(map(tuple, data_upset[['vs2', 'vibrant', 'dvf']].values))
+    upset = UpSet(upset_data)
+
+    fig, ax = plt.subplots(figsize=(10, 8))
+    upset.plot(ax=ax)
+
+    quality_colors = {
+    "Complete": "green",
+    "High-quality": "limegreen",
+    "Medium-quality": "yellow",
+    "Low-quality": "orange",
+    "Not-determined": "grey"
+    }
+
+    quality_counts = data_upset['checkv_quality'].value_counts()
+    sns.barplot(x=quality_counts.index, y=quality_counts.values, palette=quality_colors, ax=ax)
+    ax.set_title("Distribution des qualités")
+
+    plt.savefig(f"{out}/UpsetPlot_before_filter.png", dpi=300, bbox_inches="tight")
+
+    return None
+
+
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(
@@ -87,8 +122,8 @@ if __name__ == '__main__':
         os.makedirs(out)
 
     print("Start the visualizations for quality...")
-
-    quality(path, out)
-    prophage_quality(path, out)
-
+    test_path="module_01/filtering/results/representative_clusterTEST.tsv"
+    #quality(path, out)
+    #prophage_quality(path, out)
+    upset_plot(test_path, out)
     print("Job finish : figure created !")
