@@ -1,0 +1,495 @@
+Representative_contig	cluster_size	vs2_seed	vibrant_seed	dvf_seed	vs2_cluster	vibrant_cluster	dvf_cluster	checkv_quality	completeness	seed_length	provirus_seed
+4_S2_L001_3320	3	1	1	1	0	0	0	Low-quality	2.48	10012	No
+4_S2_L001_3327	1	0	0	1	0	0	0	Low-quality	17.06	10021	No
+4_S2_L001_3330	3	1	1	1	0	0	0	Low-quality	2.87	10011	No
+4_S2_L001_3331	3	1	1	1	0	0	0	Low-quality	28.68	10012	No
+4_S2_L001_3340	3	1	1	1	0	0	0	Low-quality	25.22	10001	No
+4_S2_L001_3341	3	1	1	1	0	0	0	Low-quality	5.65	9999	No
+4_S2_L001_3345	2	1	0	1	0	0	0	Low-quality	15.49	9993	No
+4_S2_L001_3356	3	1	1	1	0	0	0	Medium-quality	67.48	9972	No
+4_S2_L001_3370	3	1	1	1	0	0	0	Medium-quality	66.31	9945	No
+4_S2_L001_3377	3	1	1	1	0	0	0	Low-quality	6.78	9932	No
+4_S2_L001_3381	3	1	1	1	0	0	0	Low-quality	17.5	9923	No
+4_S2_L001_3385	1	0	0	1	0	0	0	Low-quality	1.71	9920	No
+4_S2_L001_3399	3	1	1	1	0	0	0	Low-quality	27.86	9882	No
+4_S2_L001_3402	3	1	1	1	0	0	0	Low-quality	2.84	9878	No
+4_S2_L001_3411	3	1	1	1	0	0	0	Low-quality	14.96	9086	No
+4_S2_L001_3414	3	1	1	1	0	0	0	Low-quality	20.97	9648	No
+4_S2_L001_3416	1	0	0	1	0	0	0	Not-determined		9851	No
+4_S2_L001_3422	2	1	0	1	0	0	0	Not-determined		9831	No
+4_S2_L001_3427	3	1	1	1	0	0	0	Low-quality	26.57	9836	No
+4_S2_L001_3432	3	1	1	1	0	0	0	Low-quality	25.98	9831	No
+4_S2_L001_3433	3	1	1	1	0	0	0	Medium-quality	61.89	9831	No
+4_S2_L001_3435	2	1	0	1	0	0	0	Low-quality	15.86	9656	No
+4_S2_L001_3437	3	1	1	1	0	0	0	Low-quality	28.99	9829	No
+4_S2_L001_3459	3	1	1	1	0	0	0	Low-quality	17.7	9796	No
+4_S2_L001_3466	3	1	1	1	0	0	0	Low-quality	27.01	9788	No
+4_S2_L001_3488	3	1	1	1	0	0	0	Low-quality	33.27	9747	No
+4_S2_L001_3491	3	1	1	1	0	0	0	Low-quality	27.27	9744	No
+4_S2_L001_3500	3	1	1	1	0	0	0	Medium-quality	65.03	9735	No
+4_S2_L001_3506	1	0	0	1	0	0	0	Low-quality	2.39	9727	No
+4_S2_L001_3510	2	1	0	1	0	0	0	Low-quality	17.15	9709	No
+4_S2_L001_3530	2	1	0	1	0	0	0	Low-quality	3.73	9685	No
+4_S2_L001_3550	3	1	1	1	0	0	0	Not-determined		9639	No
+4_S2_L001_3554	3	1	1	1	0	0	0	Low-quality	16.21	9634	No
+4_S2_L001_3555	3	1	1	1	0	0	0	Low-quality	1.76	9609	No
+4_S2_L001_3556	3	1	1	1	0	0	0	Medium-quality	64.32	9628	No
+4_S2_L001_3581	3	1	1	1	0	0	0	Low-quality	23.67	9472	No
+4_S2_L001_3589	3	1	1	1	0	0	0	Low-quality	28.4	9579	No
+50m_S10_L004_20702	2	1	0	1	0	0	0	Low-quality	1.14	4642	No
+50m_S10_L004_20706	2	1	0	1	0	0	0	Low-quality	2.02	4670	No
+50m_S10_L004_20708	3	1	1	1	0	0	0	Low-quality	2.49	4646	No
+50m_S10_L004_20711	3	1	1	1	0	0	0	Low-quality	1.29	4666	No
+50m_S10_L004_20717	3	1	1	1	0	0	0	Low-quality	10.98	4665	No
+50m_S10_L004_20720	3	1	1	1	0	0	0	Low-quality	13.17	4664	No
+50m_S10_L004_20725	1	0	0	1	0	0	0	Not-determined		4666	No
+50m_S10_L004_20726	2	1	0	1	0	0	0	Low-quality	1.85	4666	No
+50m_S10_L004_20732	3	1	1	1	0	0	0	Low-quality	7.36	4661	No
+50m_S10_L004_20742	1	0	0	1	0	0	0	Not-determined		4665	No
+50m_S10_L004_20772	1	0	0	1	0	0	0	Not-determined		4660	No
+50m_S10_L004_20787	3	1	1	1	0	0	0	Low-quality	12.51	4653	No
+50m_S10_L004_20795	3	1	1	1	0	0	0	Low-quality	2.49	4654	No
+50m_S10_L004_20803	1	0	0	1	0	0	0	Not-determined		4657	No
+50m_S10_L004_20804	3	1	1	1	0	0	0	Low-quality	4.73	4656	No
+50m_S10_L004_20808	2	1	0	1	0	0	0	Low-quality	2.5	4653	No
+50m_S10_L004_20809	1	0	0	1	0	0	0	Not-determined		4657	No
+50m_S10_L004_20817	3	1	1	1	0	0	0	Low-quality	1.35	4657	No
+50m_S10_L004_20821	2	1	0	1	0	0	0	Low-quality	1.72	4655	No
+50m_S10_L004_20827	3	1	1	1	0	0	0	Low-quality	5.87	4652	No
+50m_S10_L004_20837	2	1	0	1	0	0	0	Low-quality	3.29	4652	No
+50m_S10_L004_20853	1	0	0	1	0	0	0	Not-determined		4652	No
+50m_S10_L004_20859	1	0	0	1	0	0	0	Not-determined		4651	No
+50m_S10_L004_20861	3	1	1	1	0	0	0	Low-quality	2.58	4649	No
+50m_S10_L004_20871	1	0	0	1	0	0	0	Low-quality	1.65	4649	No
+50m_S10_L004_20873	3	1	1	1	0	0	0	Low-quality	2.12	4602	No
+50m_S10_L004_20883	2	1	0	1	0	0	0	Not-determined		4647	No
+50m_S10_L004_20898	2	1	0	1	0	0	0	Low-quality	1.7	3564	No
+50m_S10_L004_20905	2	1	0	1	0	0	0	Not-determined		4643	No
+50m_S10_L004_20907	3	1	1	1	0	0	0	Low-quality	2.72	4390	No
+50m_S10_L004_20910	1	0	0	1	0	0	0	Not-determined		4644	No
+50m_S10_L004_20911	2	1	0	1	0	0	0	Low-quality	10.44	4642	No
+50m_S10_L004_20922	1	0	0	1	0	0	0	Not-determined		4643	No
+50m_S10_L004_20926	3	1	1	1	0	0	0	Low-quality	2.09	4640	No
+50m_S10_L004_20937	2	1	0	1	0	0	0	Low-quality	2.79	4633	No
+50m_S10_L004_20951	2	1	0	1	0	0	0	Low-quality	8.76	4052	No
+50m_S10_L004_20952	3	1	1	1	0	0	0	Low-quality	1.5	4416	No
+50m_S10_L004_20961	3	1	1	1	0	0	0	Low-quality	4.6	4605	No
+50m_S10_L004_20962	3	1	1	1	0	0	0	Low-quality	2.79	4635	No
+50m_S10_L004_20964	1	0	0	1	0	0	0	Not-determined		4637	No
+50m_S10_L004_20978	5	1	1	1	2	0	2	Low-quality	11.26	4635	No
+50m_S10_L004_20988	1	0	0	1	0	0	0	Not-determined		4634	No
+50m_S10_L004_20995	2	1	0	1	0	0	0	Not-determined		4457	No
+50m_S10_L004_20999	3	1	1	1	0	0	0	Low-quality	2.58	4630	No
+50m_S10_L004_21002	2	1	0	1	0	0	0	Low-quality	13.72	4629	No
+50m_S10_L004_21003	1	0	0	1	0	0	0	Not-determined		4632	No
+50m_S10_L004_21004	1	0	0	1	0	0	0	Medium-quality	60.86	4632	No
+50m_S10_L004_21021	1	0	0	1	0	0	0	Not-determined		4629	No
+50m_S10_L004_21027	2	1	0	1	0	0	0	Low-quality	2.94	4580	No
+50m_S10_L004_21028	1	0	0	1	0	0	0	Not-determined		4629	No
+50m_S10_L004_21044	2	1	0	1	0	0	0	Low-quality	2.77	4576	No
+50m_S10_L004_21045	2	1	0	1	0	0	0	Low-quality	0.37	4541	No
+50m_S10_L004_21046	2	1	0	1	0	0	0	Low-quality	2.38	4606	No
+50m_S10_L004_21052	3	1	1	1	0	0	0	Low-quality	16.34	4621	No
+50m_S10_L004_21057	1	0	0	1	0	0	0	Low-quality	2.47	4624	No
+50m_S10_L004_21061	3	1	1	1	0	0	0	Low-quality	10.92	4623	No
+50m_S10_L004_21066	1	0	0	1	0	0	0	Not-determined		4624	No
+50m_S10_L004_21067	1	0	0	1	0	0	0	Not-determined		4624	No
+50m_S10_L004_21085	2	1	0	1	0	0	0	Not-determined		4547	No
+50m_S10_L004_21103	1	0	0	1	0	0	0	Low-quality	1.51	4619	No
+50m_S10_L004_21110	2	0	1	1	0	0	0	Low-quality	2.14	4618	No
+50m_S10_L004_21113	1	0	0	1	0	0	0	Not-determined		4618	No
+50m_S10_L004_21116	2	1	0	1	0	0	0	Low-quality	3.24	4617	No
+50m_S10_L004_21129	2	1	0	1	0	0	0	Low-quality	1.48	4613	No
+50m_S10_L004_21134	2	1	0	1	0	0	0	Low-quality	0.62	2720	No
+50m_S10_L004_21136	3	1	1	1	0	0	0	Low-quality	4.27	4612	No
+50m_S10_L004_21139	3	1	1	1	0	0	0	Low-quality	7.27	4569	No
+50m_S10_L004_21140	2	1	0	1	0	0	0	Low-quality	2.31	4612	No
+50m_S10_L004_21145	2	1	0	1	0	0	0	Not-determined		4610	No
+50m_S10_L004_21151	2	1	0	1	0	0	0	Not-determined		4612	No
+50m_S10_L004_21153	2	1	0	1	0	0	0	Low-quality	2.15	4551	No
+50m_S10_L004_21155	3	1	1	1	0	0	0	Low-quality	12.01	4611	No
+50m_S10_L004_21157	3	1	1	1	0	0	0	Low-quality	1.69	4235	No
+50m_S10_L004_21161	3	1	1	1	0	0	0	Low-quality	2.53	4565	No
+50m_S10_L004_21164	1	0	0	1	0	0	0	Not-determined		4610	No
+50m_S10_L004_21166	1	0	0	1	0	0	0	Not-determined		4610	No
+50m_S10_L004_21168	1	0	0	1	0	0	0	Not-determined		4610	No
+50m_S10_L004_21173	2	1	0	1	0	0	0	Low-quality	1.57	4608	No
+50m_S10_L004_21174	1	0	0	1	0	0	0	Not-determined		4610	No
+50m_S10_L004_21178	1	0	0	1	0	0	0	Not-determined		4609	No
+50m_S10_L004_21180	1	0	0	1	0	0	0	Not-determined		4609	No
+50m_S10_L004_21188	2	1	0	1	0	0	0	Low-quality	2.61	4535	No
+50m_S10_L004_21197	3	1	1	1	0	0	0	Low-quality	15.82	4605	No
+50m_S10_L004_21201	3	1	1	1	0	0	0	Low-quality	1.89	4492	No
+50m_S10_L004_21202	3	1	1	1	0	0	0	Low-quality	7.38	4604	No
+50m_S10_L004_21211	3	1	1	1	0	0	0	Low-quality	7.95	4602	No
+50m_S10_L004_21214	1	0	0	1	0	0	0	Not-determined		4604	No
+50m_S10_L004_21218	1	0	0	1	0	0	0	Not-determined		4604	No
+50m_S10_L004_21223	1	0	0	1	0	0	0	Not-determined		4603	No
+50m_S10_L004_21224	1	0	0	1	0	0	0	Not-determined		4602	No
+50m_S10_L004_21231	3	1	1	1	0	0	0	Low-quality	3.27	4601	No
+50m_S10_L004_21237	1	0	0	1	0	0	0	Low-quality	6.92	4600	No
+50m_S10_L004_21247	2	1	0	1	0	0	0	Low-quality	1.03	4598	No
+50m_S10_L004_38298	1	0	0	1	0	0	0	Not-determined		3144	No
+50m_S10_L004_38299	1	0	0	1	0	0	0	Not-determined		3144	No
+50m_S10_L004_38300	2	1	0	1	0	0	0	Low-quality	0.83	3047	No
+50m_S10_L004_38302	3	1	1	1	0	0	0	Low-quality	3.11	2167	No
+50m_S10_L004_38305	2	1	0	1	0	0	0	Low-quality	7.87	3141	No
+50m_S10_L004_38307	1	0	0	1	0	0	0	Not-determined		3144	No
+50m_S10_L004_38309	3	1	1	1	0	0	0	Low-quality	8.87	3140	No
+50m_S10_L004_38316	1	0	0	1	0	0	0	Low-quality	1.19	3144	No
+50m_S10_L004_38317	2	1	0	1	0	0	0	Low-quality	2.5	3142	No
+50m_S10_L004_38323	1	0	0	1	0	0	0	Not-determined		3143	No
+50m_S10_L004_38324	1	0	0	1	0	0	0	Not-determined		3143	No
+50m_S10_L004_38338	2	1	0	1	0	0	0	Low-quality	5.14	3141	No
+50m_S10_L004_38341	3	1	1	1	0	0	0	Low-quality	1.58	2833	No
+50m_S10_L004_38346	2	1	0	1	0	0	0	Low-quality	3.26	3141	No
+50m_S10_L004_38350	1	0	0	1	0	0	0	Not-determined		3142	No
+50m_S10_L004_38358	3	1	1	1	0	0	0	Low-quality	1.74	3141	No
+50m_S10_L004_38359	2	1	0	1	0	0	0	Low-quality	6.61	3139	No
+50m_S10_L004_38366	1	0	0	1	0	0	0	Not-determined		3141	No
+50m_S10_L004_38380	1	0	0	1	0	0	0	Not-determined		3141	No
+50m_S10_L004_38382	1	0	0	1	0	0	0	Not-determined		3141	No
+50m_S10_L004_38385	2	1	0	1	0	0	0	Not-determined		3140	No
+50m_S10_L004_38386	1	0	0	1	0	0	0	Not-determined		3140	No
+50m_S10_L004_38392	2	1	0	1	0	0	0	Not-determined		3138	No
+50m_S10_L004_38393	1	0	0	1	0	0	0	Not-determined		3140	No
+50m_S10_L004_38394	1	0	0	1	0	0	0	Low-quality	4.59	3140	No
+50m_S10_L004_38398	1	0	0	1	0	0	0	Not-determined		3140	No
+50m_S10_L004_38400	3	1	1	1	0	0	0	Low-quality	16.09	3138	No
+50m_S10_L004_38401	1	0	0	1	0	0	0	Not-determined		3140	No
+50m_S10_L004_38404	1	0	0	1	0	0	0	Not-determined		3139	No
+50m_S10_L004_38406	1	0	0	1	0	0	0	Not-determined		3139	No
+50m_S10_L004_38412	2	1	0	1	0	0	0	Low-quality	2.03	3136	No
+50m_S10_L004_38422	2	1	0	1	0	0	0	Low-quality	10.64	3084	No
+50m_S10_L004_38424	1	0	0	1	0	0	0	Not-determined		3138	No
+50m_S10_L004_38425	1	0	0	1	0	0	0	Not-determined		3138	No
+50m_S10_L004_38427	1	0	0	1	0	0	0	Not-determined		3138	No
+50m_S10_L004_38428	3	1	1	1	0	0	0	Low-quality	1.14	3105	No
+50m_S10_L004_38438	2	1	0	1	0	0	0	Low-quality	10.34	3138	No
+50m_S10_L004_38440	2	1	0	1	0	0	0	Low-quality	1.8	3135	No
+50m_S10_L004_38443	2	1	0	1	0	0	0	Low-quality	0.91	3136	No
+50m_S10_L004_38454	1	0	0	1	0	0	0	Not-determined		3136	No
+50m_S10_L004_38456	1	0	0	1	0	0	0	Not-determined		3136	No
+50m_S10_L004_38457	1	0	0	1	0	0	0	Not-determined		3136	No
+50m_S10_L004_38466	3	1	1	1	0	0	0	Low-quality	1.65	3093	No
+50m_S10_L004_38467	3	1	1	1	0	0	0	Low-quality	7.65	3136	No
+50m_S10_L004_38470	1	0	0	1	0	0	0	Low-quality	13.46	3136	No
+50m_S10_L004_38488	1	0	0	1	0	0	0	Not-determined		3135	No
+50m_S10_L004_38503	1	0	0	1	0	0	0	Not-determined		3134	No
+50m_S10_L004_38505	2	0	1	1	0	0	0	Not-determined		3134	No
+50m_S10_L004_38511	2	1	0	1	0	0	0	Low-quality	5.01	3004	No
+50m_S10_L004_38516	1	0	0	1	0	0	0	Not-determined		3133	No
+50m_S10_L004_38518	2	1	0	1	0	0	0	Not-determined		3133	No
+50m_S10_L004_38519	3	1	1	1	0	0	0	Low-quality	3.21	2751	No
+50m_S10_L004_38534	2	1	0	1	0	0	0	Low-quality	3.12	3132	No
+50m_S10_L004_38540	1	0	0	1	0	0	0	Not-determined		3132	No
+50m_S10_L004_38544	3	1	1	1	0	0	0	Not-determined		3131	No
+50m_S10_L004_38547	1	0	0	1	0	0	0	Not-determined		3132	No
+50m_S10_L004_38548	2	1	0	1	0	0	0	Low-quality	1.91	3132	No
+50m_S10_L004_38562	3	1	1	1	0	0	0	Low-quality	1.75	3129	No
+50m_S10_L004_38564	1	0	0	1	0	0	0	Not-determined		3131	No
+50m_S10_L004_38570	2	1	0	1	0	0	0	Low-quality	0.75	2743	No
+50m_S10_L004_38573	1	0	0	1	0	0	0	Not-determined		3131	No
+50m_S10_L004_38574	3	1	1	1	0	0	0	Low-quality	5.83	3129	No
+50m_S10_L004_38580	1	0	0	1	0	0	0	Not-determined		3130	No
+50m_S10_L004_38583	2	1	0	1	0	0	0	Low-quality	8.72	3127	No
+50m_S10_L004_38601	2	1	0	1	0	0	0	Low-quality	0.84	3129	No
+50m_S10_L004_38603	2	1	0	1	0	0	0	Not-determined		2968	No
+50m_S10_L004_38604	3	1	1	1	0	0	0	Low-quality	6.4	3128	No
+50m_S10_L004_38607	2	1	0	1	0	0	0	Low-quality	0.46	3000	No
+50m_S10_L004_38611	1	0	0	1	0	0	0	Not-determined		3128	No
+50m_S10_L004_38612	1	0	0	1	0	0	0	Not-determined		3128	No
+50m_S10_L004_38615	1	0	0	1	0	0	0	Not-determined		3128	No
+50m_S10_L004_38616	1	0	0	1	0	0	0	Not-determined		3128	No
+50m_S10_L004_38623	3	1	1	1	0	0	0	Low-quality	1.5	2745	No
+50m_S10_L004_38625	1	0	0	1	0	0	0	Not-determined		3128	No
+50m_S10_L004_38629	1	0	0	1	0	0	0	Not-determined		3128	No
+50m_S10_L004_38630	3	1	1	1	0	0	0	Low-quality	5.15	3125	No
+50m_S10_L004_38632	3	1	1	1	0	0	0	Low-quality	4.73	3082	No
+50m_S10_L004_38633	1	0	0	1	0	0	0	Low-quality	0.25	3127	No
+50m_S10_L004_38636	2	1	0	1	0	0	0	Low-quality	1.85	3047	No
+50m_S10_L004_38638	1	0	0	1	0	0	0	Not-determined		3127	No
+50m_S10_L004_38639	2	1	0	1	0	0	0	Low-quality	10.43	3119	No
+50m_S10_L004_38642	1	0	0	1	0	0	0	Not-determined		3127	No
+50m_S10_L004_38644	3	1	1	1	0	0	0	Low-quality	9.3	3028	No
+50m_S10_L004_38655	1	0	0	1	0	0	0	Not-determined		3126	No
+50m_S10_L004_38663	1	0	0	1	0	0	0	Not-determined		3126	No
+50m_S10_L004_38666	2	1	0	1	0	0	0	Not-determined		3095	No
+50m_S10_L004_38679	2	1	0	1	0	0	0	Low-quality	1.69	3125	No
+50m_S10_L004_38680	3	1	1	1	0	0	0	Low-quality	7.68	2935	No
+50m_S10_L004_38683	2	1	0	1	0	0	0	Not-determined		3123	No
+50m_S10_L004_38684	1	0	0	1	0	0	0	Not-determined		3125	No
+50m_S10_L004_38685	3	1	1	1	0	0	0	Not-determined		3121	No
+50m_S10_L004_38687	1	0	0	1	0	0	0	Low-quality	3.3	3124	No
+50m_S10_L004_38690	2	1	0	1	0	0	0	Low-quality	1.79	3123	No
+50m_S10_L004_38699	1	0	0	1	0	0	0	Not-determined		3124	No
+50m_S10_L004_38705	1	0	0	1	0	0	0	Not-determined		3123	No
+50m_S10_L004_38728	1	0	0	1	0	0	0	Not-determined		3122	No
+50m_S10_L004_38740	2	1	0	1	0	0	0	Not-determined		3118	No
+50m_S10_L004_4553	3	1	1	1	0	0	0	Low-quality	2.68	11539	No
+50m_S10_L004_4564	2	1	0	1	0	0	0	Low-quality	6.05	11528	No
+50m_S10_L004_4565	1	0	0	1	0	0	0	Low-quality	1.66	11527	No
+50m_S10_L004_4581	1	0	0	1	0	0	0	Not-determined		11502	No
+50m_S10_L004_4584	3	1	1	1	0	0	0	Low-quality	11.45	11499	No
+50m_S10_L004_4596	3	1	1	1	0	0	0	Low-quality	11.75	11486	No
+50m_S10_L004_4606	3	1	1	1	0	0	0	Low-quality	28.52	11471	No
+50m_S10_L004_4608	1	0	0	1	0	0	0	Low-quality	4.79	11468	No
+50m_S10_L004_4617	3	1	1	1	0	0	0	Low-quality	6.23	11420	No
+50m_S10_L004_4629	3	1	1	1	0	0	0	Low-quality	6.36	11274	No
+50m_S10_L004_4644	3	1	1	1	0	0	0	Low-quality	19.58	11321	No
+50m_S10_L004_4648	2	1	0	1	0	0	0	Low-quality	3.46	11357	No
+50m_S10_L004_4655	1	0	0	1	0	0	0	Not-determined		11389	No
+50m_S10_L004_4674	3	1	1	1	0	0	0	Low-quality	17.45	11355	No
+50m_S10_L004_4678	3	1	1	1	0	0	0	Low-quality	30.07	11348	No
+50m_S10_L004_4707	2	0	1	1	0	0	0	Low-quality	2.24	11317	No
+50m_S10_L004_4712	3	1	1	1	0	0	0	Low-quality	38.71	11310	No
+50m_S10_L004_4717	3	1	1	1	0	0	0	Low-quality	6.74	11161	No
+50m_S10_L004_4729	2	1	0	1	0	0	0	Low-quality	17.55	11240	No
+50m_S10_L004_4735	3	1	1	1	0	0	0	Low-quality	7.56	11282	No
+50m_S10_L004_4741	6	1	1	1	3	3	3	Low-quality	6.21	11267	No
+50m_S10_L004_4751	1	0	0	1	0	0	0	Not-determined		11256	No
+50m_S10_L004_4752	3	1	1	1	0	0	0	Low-quality	6.25	11252	No
+50m_S10_L004_4755	2	0	0	1	0	0	1	Low-quality	3.58	11252	No
+50m_S10_L004_4760	2	1	0	1	0	0	0	Low-quality	5.1	11188	No
+50m_S10_L004_4780	3	1	1	1	0	0	0	Low-quality	4.98	11193	No
+50m_S10_L004_4787	3	1	1	1	0	0	0	Low-quality	3.4	11204	No
+50m_S10_L004_4789	1	0	0	1	0	0	0	Not-determined		11199	No
+50m_S10_L004_4790	3	1	1	1	0	0	0	Low-quality	4.74	11129	No
+50m_S10_L004_4792	2	1	0	1	0	0	0	Low-quality	7.31	11196	No
+50m_S10_L004_4803	3	1	1	1	0	0	0	Low-quality	9.61	11178	No
+50m_S10_L004_4815	3	1	1	1	0	0	0	Low-quality	8.85	11095	No
+50m_S10_L004_4825	3	1	1	1	0	0	0	Low-quality	31.92	10953	No
+50m_S10_L004_4851	4	1	1	1	1	0	0	Low-quality	14.71	11115	No
+50m_S10_L004_4852	3	1	1	1	0	0	0	Low-quality	29.06	10780	No
+50m_S10_L004_4855	3	1	1	1	0	0	0	Low-quality	18.21	11110	No
+50m_S10_L004_4871	3	1	1	1	0	0	0	Low-quality	3.0	11082	No
+50m_S10_L004_4895	3	1	1	1	0	0	0	Low-quality	3.1	10841	No
+50m_S10_L004_4905	3	1	1	1	0	0	0	Low-quality	18.65	10348	No
+50m_S10_L004_4913	2	1	0	1	0	0	0	Low-quality	3.76	9680	No
+50m_S10_L004_4917	1	0	0	1	0	0	0	Not-determined		11016	No
+50m_S10_L004_4918	2	1	0	1	0	0	0	Low-quality	16.91	11012	No
+50m_S10_L004_4924	1	0	0	1	0	0	0	Not-determined		11003	No
+50m_S10_L004_4925	3	1	1	1	0	0	0	Low-quality	6.86	9144	No
+50m_S10_L004_4929	3	1	1	1	0	0	0	Low-quality	36.26	10997	No
+50m_S10_L004_4937	3	1	1	1	0	0	0	Low-quality	11.4	10984	No
+50m_S10_L004_4943	2	1	0	1	0	0	0	Low-quality	7.72	10679	No
+50m_S10_L004_4944	3	1	1	1	0	0	0	Low-quality	20.91	10977	No
+50m_S10_L004_4945	2	1	0	1	0	0	0	Low-quality	6.51	10978	No
+50m_S10_L004_4959	3	1	1	1	0	0	0	Low-quality	21.79	10966	No
+50m_S10_L004_4965	2	1	0	1	0	0	0	Not-determined		10962	No
+50m_S10_L004_4971	3	1	1	1	0	0	0	Low-quality	29.74	10950	No
+50m_S10_L004_4973	3	1	1	1	0	0	0	Low-quality	18.76	10110	No
+50m_S10_L004_4982	3	1	1	1	0	0	0	Low-quality	10.29	10453	No
+50m_S10_L004_4992	3	1	0	1	1	0	0	Low-quality	5.51	10923	No
+50m_S10_L004_5003	3	1	1	1	0	0	0	Low-quality	17.3	10909	No
+50m_S10_L004_5004	3	1	1	1	0	0	0	Low-quality	5.76	10725	No
+50m_S10_L004_5030	1	0	0	1	0	0	0	Low-quality	2.51	10880	No
+50m_S10_L004_5031	3	1	1	1	0	0	0	Low-quality	2.97	10580	No
+50m_S10_L004_5033	3	1	1	1	0	0	0	Low-quality	16.82	10797	No
+50m_S10_L004_5034	2	1	0	1	0	0	0	Low-quality	2.16	10821	No
+50m_S10_L004_5039	3	1	1	1	0	0	0	Low-quality	19.06	10869	No
+50m_S10_L004_5053	2	1	0	1	0	0	0	Low-quality	3.04	10850	No
+50m_S10_L004_5054	3	1	1	1	0	0	0	Low-quality	42.52	10719	No
+50m_S10_L004_5055	3	1	1	1	0	0	0	Not-determined		10812	No
+50m_S10_L004_5061	2	1	0	1	0	0	0	Low-quality	4.81	10839	No
+50m_S10_L004_5067	3	1	1	1	0	0	0	Low-quality	16.93	10666	No
+50m_S10_L004_5071	3	1	1	1	0	0	0	Low-quality	5.07	10833	No
+50m_S10_L004_5077	3	1	1	1	0	0	0	Low-quality	3.84	10822	No
+50m_S10_L004_5086	3	1	1	1	0	0	0	Low-quality	17.54	10716	No
+50m_S10_L004_5100	3	1	1	1	0	0	0	Low-quality	15.16	10646	No
+50m_S10_L004_5108	3	1	1	1	0	0	0	Low-quality	3.33	10749	No
+50m_S10_L004_5115	3	1	1	1	0	0	0	Low-quality	19.28	10781	No
+50m_S10_L004_5119	3	1	1	1	0	0	0	Low-quality	5.72	10771	No
+50m_S10_L004_5131	3	1	1	1	0	0	0	Low-quality	4.26	10423	No
+50m_S10_L004_5132	3	1	1	1	0	0	0	Low-quality	16.97	10763	No
+50m_S10_L004_5135	3	1	1	1	0	0	0	Low-quality	25.43	9940	No
+50m_S10_L004_5139	3	1	1	1	0	0	0	Low-quality	9.21	10748	No
+50m_S10_L004_5166	3	1	1	1	0	0	0	Low-quality	20.79	10537	No
+50m_S10_L004_5176	3	1	1	1	0	0	0	Low-quality	4.96	10701	No
+50m_S10_L004_5182	2	1	0	1	0	0	0	Not-determined		10695	No
+50m_S10_L004_5183	3	1	1	1	0	0	0	Low-quality	5.24	10659	No
+50m_S10_L004_5184	2	1	0	1	0	0	0	Low-quality	3.02	10695	No
+50m_S10_L004_5190	3	1	1	1	0	0	0	Low-quality	26.79	10479	No
+50m_S10_L004_5193	3	1	1	1	0	0	0	Low-quality	17.28	10688	No
+50m_S10_L004_5203	3	1	1	1	0	0	0	Low-quality	6.24	10671	No
+50m_S10_L004_5219	3	1	1	1	0	0	0	Medium-quality	74.65	10654	No
+50m_S10_L004_5223	2	1	0	1	0	0	0	Low-quality	3.13	9320	No
+50m_S10_L004_5248	3	1	1	1	0	0	0	Low-quality	36.6	10607	No
+50m_S10_L004_5252	3	1	1	1	0	0	0	Low-quality	27.98	10461	No
+50m_S10_L004_5254	3	1	1	1	0	0	0	Low-quality	18.16	10619	No
+50m_S10_L004_5267	3	1	1	1	0	0	0	Low-quality	27.91	10380	No
+50m_S10_L004_5275	6	1	1	1	3	3	3	Low-quality	17.73	10512	No
+50m_S10_L004_5280	3	1	1	1	0	0	0	Low-quality	25.66	10253	No
+50m_S10_L004_5287	3	1	1	1	0	0	0	Low-quality	17.72	10576	No
+50m_S10_L004_5294	3	1	1	1	0	0	0	Low-quality	9.66	10442	No
+50m_S10_L004_5314	3	1	1	1	0	0	0	Low-quality	13.11	10554	No
+50m_S10_L004_5322	3	1	1	1	0	0	0	Low-quality	7.91	10546	No
+5_S3_L001_5552	1	0	0	1	0	0	0	Not-determined		5492	No
+5_S3_L001_5562	1	0	0	1	0	0	0	Not-determined		5487	No
+5_S3_L001_5581	1	0	0	1	0	0	0	Not-determined		5477	No
+5_S3_L001_5582	1	0	0	1	0	0	0	Not-determined		5477	No
+5_S3_L001_5617	3	1	1	1	0	0	0	Low-quality	1.6	5399	No
+5_S3_L001_5635	2	0	1	1	0	0	0	Low-quality	0.43	5452	No
+5_S3_L001_5637	1	0	0	1	0	0	0	Not-determined		5451	No
+5_S3_L001_5652	2	1	0	1	0	0	0	Not-determined		5295	No
+5_S3_L001_5666	3	1	1	1	0	0	0	Low-quality	3.41	5435	No
+5_S3_L001_5694	1	0	0	1	0	0	0	Not-determined		5422	No
+5_S3_L001_5698	3	1	1	1	0	0	0	Low-quality	12.49	5420	No
+5_S3_L001_5709	1	0	0	1	0	0	0	Low-quality	1.36	5414	No
+5_S3_L001_5733	2	1	0	1	0	0	0	Low-quality	3.4	5327	No
+5_S3_L001_5740	2	1	0	1	0	0	0	Not-determined		5397	No
+5_S3_L001_5746	1	0	0	1	0	0	0	Low-quality	1.23	5396	No
+5_S3_L001_5775	1	0	0	1	0	0	0	Not-determined		5382	No
+5_S3_L001_5778	1	0	0	1	0	0	0	Not-determined		5382	No
+5_S3_L001_5792	1	0	0	1	0	0	0	Not-determined		5375	No
+5_S3_L001_5866	1	0	0	1	0	0	0	Low-quality	8.46	5337	No
+5_S3_L001_5867	1	0	0	1	0	0	0	Not-determined		5337	No
+5_S3_L001_5872	3	1	1	1	0	0	0	Low-quality	1.6	5334	No
+5_S3_L001_5909	3	1	1	1	0	0	0	Low-quality	1.6	5310	No
+5_S3_L001_5910	1	0	0	1	0	0	0	Low-quality	3.18	5313	No
+5_S3_L001_5954	1	0	0	1	0	0	0	Not-determined		5292	No
+5_S3_L001_5966	1	0	0	1	0	0	0	Not-determined		5284	No
+5_S3_L001_5969	2	0	1	1	0	0	0	Not-determined		5280	No
+5_S3_L001_5981	1	0	0	1	0	0	0	Not-determined		5273	No
+5_S3_L001_5984	1	0	0	1	0	0	0	Not-determined		5271	No
+5_S3_L001_5988	1	0	0	1	0	0	0	Not-determined		5270	No
+5_S3_L001_6017	3	1	1	1	0	0	0	Low-quality	5.4	5247	No
+5_S3_L001_6072	1	0	0	1	0	0	0	Not-determined		5222	No
+5_S3_L001_6074	1	0	0	1	0	0	0	Not-determined		5221	No
+5_S3_L001_6075	1	0	0	1	0	0	0	Not-determined		5221	No
+5_S3_L001_6087	3	1	1	1	0	0	0	Low-quality	1.49	5211	No
+5_S3_L001_6109	1	0	0	1	0	0	0	Not-determined		5202	No
+5_S3_L001_6222	1	0	0	1	0	0	0	Low-quality	1.53	5142	No
+5_S3_L001_6224	1	0	0	1	0	0	0	Not-determined		5142	No
+5_S3_L001_6226	1	0	0	1	0	0	0	Not-determined		5141	No
+5_S3_L001_6235	3	1	1	1	0	0	0	Low-quality	8.77	5130	No
+5_S3_L001_6251	3	1	1	1	0	0	0	Low-quality	31.08	5011	No
+5_S3_L001_6252	2	1	0	1	0	0	0	Not-determined		5127	No
+5_S3_L001_6281	1	0	0	1	0	0	0	Not-determined		5111	No
+5_S3_L001_6283	1	0	0	1	0	0	0	Not-determined		5111	No
+5_S3_L001_6320	1	0	0	1	0	0	0	Not-determined		5093	No
+5_S3_L001_6322	2	1	0	1	0	0	0	Not-determined		4985	No
+5_S3_L001_6390	1	0	0	1	0	0	0	Not-determined		5050	No
+5_S3_L001_6405	1	0	0	1	0	0	0	Low-quality	26.15	5041	No
+5_S3_L001_6438	1	0	0	1	0	0	0	Not-determined		5027	No
+5_S3_L001_6443	1	0	0	1	0	0	0	Not-determined		5026	No
+5_S3_L001_6456	1	0	0	1	0	0	0	Not-determined		5020	No
+5_S3_L001_6458	1	0	0	1	0	0	0	Not-determined		5020	No
+5_S3_L001_6544	1	0	0	1	0	0	0	Low-quality	0.79	4970	No
+5_S3_L001_6566	1	0	0	1	0	0	0	Not-determined		4960	No
+5_S3_L001_6576	1	0	0	1	0	0	0	Not-determined		4955	No
+5_S3_L001_6652	1	0	0	1	0	0	0	Not-determined		4917	No
+5_S3_L001_6719	1	0	0	1	0	0	0	Not-determined		4885	No
+5_S3_L001_6726	1	0	0	1	0	0	0	Low-quality	2.42	4882	No
+5_S3_L001_6742	1	0	0	1	0	0	0	Not-determined		4873	No
+5_S3_L001_6746	1	0	0	1	0	0	0	Not-determined		4871	No
+5_S3_L001_6761	1	0	0	1	0	0	0	Not-determined		4863	No
+5_S3_L001_6770	2	0	0	1	0	0	1	Not-determined		4862	No
+5_S3_L001_6795	1	0	0	1	0	0	0	Not-determined		4853	No
+5_S3_L001_6801	1	0	0	1	0	0	0	Not-determined		4851	No
+5_S3_L001_6807	1	0	0	1	0	0	0	Not-determined		4849	No
+5_S3_L001_6812	1	0	0	1	0	0	0	Low-quality	45.18	4846	No
+5_S3_L001_6843	1	0	0	1	0	0	0	Not-determined		4830	No
+5_S3_L001_6888	3	1	1	1	0	0	0	Low-quality	6.74	4811	No
+5_S3_L001_6913	2	1	0	1	0	0	0	Low-quality	1.03	4514	No
+5_S3_L001_6935	1	0	0	1	0	0	0	Low-quality	2.59	4786	No
+5_S3_L001_6952	2	1	0	1	0	0	0	Low-quality	1.56	4663	No
+5_S3_L001_6990	1	0	0	1	0	0	0	Not-determined		4762	No
+5_S3_L001_6994	1	0	0	1	0	0	0	Not-determined		4761	No
+5_S3_L001_7005	1	0	0	1	0	0	0	Low-quality	36.82	4756	No
+5_S3_L001_7016	1	0	0	1	0	0	0	Not-determined		4752	No
+5_S3_L001_7045	1	0	0	1	0	0	0	Not-determined		4739	No
+5_S3_L001_7054	2	1	0	1	0	0	0	Not-determined		4737	No
+5_S3_L001_7083	1	0	0	1	0	0	0	Not-determined		4727	No
+5_S3_L001_7088	2	0	0	1	0	0	1	Not-determined		4726	No
+5_S3_L001_7137	1	0	0	1	0	0	0	Low-quality	1.4	4702	No
+5_S3_L001_7149	1	0	0	1	0	0	0	Not-determined		4694	No
+5_S3_L001_7156	3	1	1	1	0	0	0	Not-determined		4690	No
+5_S3_L001_7201	1	0	0	1	0	0	0	Not-determined		4671	No
+5_S3_L001_7210	1	0	0	1	0	0	0	Not-determined		4667	No
+5_S3_L001_7255	1	0	0	1	0	0	0	Not-determined		4651	No
+5_S3_L001_7266	1	0	0	1	0	0	0	Not-determined		4648	No
+5_S3_L001_7276	1	0	0	1	0	0	0	Not-determined		4643	No
+5_S3_L001_7292	1	0	0	1	0	0	0	Not-determined		4637	No
+5_S3_L001_7308	1	0	0	1	0	0	0	Not-determined		4632	No
+5_S3_L001_7318	1	0	0	1	0	0	0	Not-determined		4628	No
+5_S3_L001_7322	2	1	0	1	0	0	0	Low-quality	1.59	4401	No
+5_S3_L001_7323	1	0	0	1	0	0	0	Low-quality	43.1	4623	No
+5_S3_L001_7329	1	0	0	1	0	0	0	Low-quality	1.73	4621	No
+5_S3_L001_7345	1	0	0	1	0	0	0	Not-determined		4615	No
+5_S3_L001_7364	3	1	1	1	0	0	0	Low-quality	0.45	4601	No
+5_S3_L001_7388	1	0	0	1	0	0	0	Not-determined		4594	No
+5_S3_L001_7399	1	0	0	1	0	0	0	Not-determined		4588	No
+5_S3_L001_7419	1	0	0	1	0	0	0	Not-determined		4580	No
+5_S3_L001_7430	1	0	0	1	0	0	0	Not-determined		4575	No
+65m_S11_L005_11786	1	0	0	1	0	0	0	Not-determined		5854	No
+65m_S11_L005_11806	1	0	0	1	0	0	0	Low-quality	3.17	5847	No
+65m_S11_L005_11845	6	1	1	1	3	3	3	Low-quality	5.05	5555	No
+65m_S11_L005_11853	1	0	0	1	0	0	0	Not-determined		5837	No
+65m_S11_L005_11870	1	0	0	1	0	0	0	Not-determined		5834	No
+65m_S11_L005_11909	1	0	0	1	0	0	0	Not-determined		5823	No
+65m_S11_L005_11932	3	1	1	1	0	0	0	Low-quality	8.93	5633	No
+65m_S11_L005_11964	1	0	0	1	0	0	0	Not-determined		5804	No
+65m_S11_L005_11967	2	0	0	1	0	0	1	Not-determined		5804	No
+65m_S11_L005_11968	3	1	1	1	0	0	0	Low-quality	12.22	5487	No
+65m_S11_L005_11982	2	0	1	1	0	0	0	Not-determined		5800	No
+65m_S11_L005_12106	1	0	0	1	0	0	0	Low-quality	1.27	5756	No
+65m_S11_L005_12180	1	0	0	1	0	0	0	Low-quality	1.93	5730	No
+65m_S11_L005_12203	1	0	0	1	0	0	0	Not-determined		5721	No
+65m_S11_L005_12237	1	0	0	1	0	0	0	Low-quality	12.52	5709	No
+65m_S11_L005_12240	1	0	0	1	0	0	0	Not-determined		5707	No
+65m_S11_L005_12244	2	1	0	1	0	0	0	Not-determined		5705	No
+65m_S11_L005_12328	3	1	1	1	0	0	0	Not-determined		5628	No
+65m_S11_L005_12433	5	1	1	1	0	2	2	Low-quality	18.7	5320	No
+65m_S11_L005_12436	3	1	1	1	0	0	0	Low-quality	7.72	5589	No
+65m_S11_L005_12519	1	0	0	1	0	0	0	Not-determined		5623	No
+65m_S11_L005_12567	6	1	1	1	3	3	3	Low-quality	12.0	5609	No
+65m_S11_L005_12593	1	0	0	1	0	0	0	Not-determined		5598	No
+65m_S11_L005_12606	6	1	1	1	3	3	3	Low-quality	8.61	5433	No
+65m_S11_L005_12628	2	0	0	1	0	0	1	Not-determined		5587	No
+65m_S11_L005_12675	1	0	0	1	0	0	0	Not-determined		5573	No
+65m_S11_L005_12762	3	1	1	1	0	0	0	Low-quality	10.8	5547	No
+65m_S11_L005_12767	1	0	0	1	0	0	0	Not-determined		5546	No
+65m_S11_L005_12805	1	0	0	1	0	0	0	Not-determined		5537	No
+65m_S11_L005_12831	2	0	0	1	0	0	1	Low-quality	2.53	5530	No
+65m_S11_L005_12971	1	0	0	1	0	0	0	Not-determined		5495	No
+65m_S11_L005_12977	3	1	1	1	0	0	0	Low-quality	1.99	5137	No
+65m_S11_L005_12980	3	1	1	1	0	0	0	Low-quality	5.41	5487	No
+65m_S11_L005_13009	3	1	1	1	0	0	0	Low-quality	6.19	5340	No
+65m_S11_L005_13033	1	0	0	1	0	0	0	Not-determined		5475	No
+65m_S11_L005_13042	1	0	0	1	0	0	0	Not-determined		5472	No
+65m_S11_L005_13146	1	0	0	1	0	0	0	Not-determined		5443	No
+65m_S11_L005_13174	2	1	0	1	0	0	0	Low-quality	3.56	5433	No
+65m_S11_L005_13180	2	1	0	1	0	0	0	Not-determined		5289	No
+65m_S11_L005_13188	1	0	0	1	0	0	0	Low-quality	3.81	5432	No
+65m_S11_L005_13217	3	1	1	1	0	0	0	Low-quality	4.49	5422	No
+65m_S11_L005_13222	4	1	0	1	2	0	2	Not-determined		5420	No
+65m_S11_L005_13235	2	1	0	1	0	0	0	Low-quality	8.32	5152	No
+65m_S11_L005_13296	1	0	0	1	0	0	0	Not-determined		5405	No
+65m_S11_L005_13298	3	1	1	1	0	0	0	Low-quality	2.55	5383	No
+65m_S11_L005_13324	1	0	0	1	0	0	0	Not-determined		5399	No
+65m_S11_L005_13328	8	1	1	1	5	3	5	Low-quality	3.31	5178	No
+65m_S11_L005_13338	1	0	0	1	0	0	0	Not-determined		5394	No
+65m_S11_L005_13378	2	0	0	1	0	0	1	Not-determined		5382	No
+65m_S11_L005_13386	3	1	1	1	0	0	0	Low-quality	8.05	5333	No
+65m_S11_L005_13440	1	0	0	1	0	0	0	Not-determined		5362	No
+65m_S11_L005_13464	2	1	0	1	0	0	0	Low-quality	3.45	5335	No
+65m_S11_L005_13493	6	1	1	1	1	3	3	Low-quality	4.38	5348	No
+65m_S11_L005_13521	1	0	0	1	0	0	0	Not-determined		5343	No
+65m_S11_L005_13568	2	0	1	1	0	0	0	Not-determined		5332	No
+65m_S11_L005_13588	2	1	0	1	0	0	0	Not-determined		5231	No
+65m_S11_L005_13642	3	1	1	1	0	0	0	Low-quality	14.64	5153	No
+65m_S11_L005_13653	3	0	0	1	2	0	2	Not-determined		5310	No
+65m_S11_L005_13680	2	0	0	1	0	0	1	Not-determined		5303	No
+65m_S11_L005_13691	1	0	0	1	0	0	0	Not-determined		5299	No
+65m_S11_L005_13716	1	0	0	1	0	0	0	Not-determined		5293	No
+65m_S11_L005_13737	2	0	0	1	0	0	1	Not-determined		5287	No
+65m_S11_L005_13788	1	0	0	1	0	0	0	Not-determined		5278	No
+65m_S11_L005_13793	1	0	0	1	0	0	0	Not-determined		5277	No
+65m_S11_L005_13798	1	0	0	1	0	0	0	Low-quality	8.55	5277	No
+65m_S11_L005_13863	1	0	0	1	0	0	0	Not-determined		5262	No
+65m_S11_L005_13916	1	0	0	1	0	0	0	Not-determined		5249	No
+65m_S11_L005_13921	3	1	1	1	0	0	0	Low-quality	2.78	5247	No
+65m_S11_L005_14104	2	0	0	1	0	0	1	Low-quality	8.24	5205	No
+65m_S11_L005_14158	2	1	0	1	0	0	0	Low-quality	8.37	5194	No
+65m_S11_L005_14204	2	1	1	1	0	0	0	Low-quality	8.09	5183	No
