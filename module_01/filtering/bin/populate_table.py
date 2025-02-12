@@ -221,7 +221,7 @@ if __name__ == '__main__':
 
     df_tool.drop(columns=["tool", "ecosystem", "member"], inplace=True)
 
-    df_tool.to_csv(f"{out}/representative_cluster2.tsv", sep='\t', index_label="Representative_contig")
+    df_tool.to_csv(f"{out}/representative_cluster.tsv", sep='\t', index_label="Representative_contig")
 
 
 
