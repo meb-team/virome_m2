@@ -21,6 +21,7 @@ If you are not working on a HPC :
 ```bash
 chmod +x data_prep/bin/data_prep/bin/merge_prediction.sh
 ./data_prep/bin/merge_prediction.sh
+./data_prep/bin/doublons_verif.sh
 ```
 
 If you are working on a HPC :
