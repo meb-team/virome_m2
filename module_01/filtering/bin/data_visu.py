@@ -6,10 +6,9 @@ import matplotlib.pyplot as plt
 import os
 import pandas as pd
 import seaborn
-from upsetplot import UpSet
 
 
-def quality(file, out):
+def quality(file, out, test):
     """
     Function to create a barplot of the different quality categories from CheckV analysis.
 
@@ -28,13 +27,19 @@ def quality(file, out):
     seaborn.set_style("whitegrid")
     plt.figure(figsize=(10,6))
     seaborn.countplot(x="checkv_quality",data=df_quality,order=Lorder,palette=Lcolor)
-    plt.savefig(f"{out}/quality_summary.png",format='png')
+
+    if test==True:
+        plt.savefig(f"{out}/quality_summary.png",format='png')
+    elif not test:
+        plt.savefig(f"{out}/filtered_quality_summary.png",format='png')
+    else:
+        print("ERROR ???")
 
     return None
 
 
 
-def prophage_quality(file, out):
+def prophage_quality(file, out, test):
     """
     Function to create a barplot of the different quality categories from CheckV analysis,
     separating the data into provirus and other categories.
@@ -60,7 +65,13 @@ def prophage_quality(file, out):
     plt.title("Distribution of Quality Categories (Provirus vs Non-provirus)")
 
     plt.tight_layout()
-    plt.savefig(f"{out}/quality_summary_provirus.png", format='png')
+
+    if test==True:
+        plt.savefig(f"{out}/quality_summary_provirus.png", format='png')
+    elif not test:
+        plt.savefig(f"{out}/filtered_quality_summary_provirus.png", format='png')
+    else:
+        print("ERROR ???")
 
     return None
 
@@ -71,8 +82,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description = """This script aims to create some figures using the quality reports from CheckV analysis.""")
 
-    parser.add_argument("--path", "-p", help="Defines the path where the report  are located. Usage : -p path folder/", type=str)
+    parser.add_argument("--path", "-p", help="Defines the path where the TSV file located. Usage : -p path folder/", type=str)
     parser.add_argument("--out", "-o", help="Defines the path where the figure created can be stored. Usage : -o path folder/", type=str)
+    parser.add_argument("--fpath", "-fp", help="Defines the path where the filtered TSV file is located. Usage : -fp path/folder", type=str)
 
     args = parser.parse_args()
 
@@ -80,6 +92,11 @@ if __name__ == '__main__':
         path = args.path
     else:
         path="module_01/filtering/results/representative_cluster.tsv"
+
+    if args.fpath:
+        fpath = args.fpath
+    else:
+        fpath="module_01/filtering/results/filtered_representative_cluster.tsv"
 
     if args.out:
         out = args.out
@@ -91,7 +108,11 @@ if __name__ == '__main__':
 
     print("Start the visualizations for quality...")
 
-    quality(path, out)
-    prophage_quality(path, out)
+    test=True
+    quality(path, out, test)
+    prophage_quality(path, out, test)
+    test=False
+    quality(fpath, out, test)
+    prophage_quality(fpath, out, test)
 
     print("Job finish : figure created !")
