@@ -1,11 +1,3 @@
-premiere étape : création de la base de données refseq viral avec mmseq2 (script module_02/MMseq2/bin/crea_db.sh)
-
-deuxième étape : rassembler tous les contigs représentatifs isolés au module d'avant dans un fichier fasta (module_02/MMseq2/bin/tax_fasta.sh).
-etape longue donc recommandation slurm HPC parallélisation
-
-troisième étape : annotation taxonomique
-
-
 # 🎈 🎈 🎈 Welcome to the module number two ! 🎈 🎈 🎈 
 
 This second module includes the assignement of viral taxonomy for representative contigs of each cluster (cf. module_01).. 
@@ -62,4 +54,18 @@ faire snakemake XXXXXXXXXXXXXx
 
 ### Module step-by-step
 
-XXXXXXXXX
+The **first** step is to create a viral database from RefSeq NCBI database !
+```
+./module_02/MMseq2/bin/crea_db.sh
+```
+The **second** step is to collect fasta sequences of representative contigs (cf. module_01) into one fasta file :
+```
+./module_02/MMseq2/bin/tax_fasta.sh
+```
+The **third** step is to do the taxonomic annotation !
+```
+./taxo_annot.sh
+```
+The fourth step is XXXXXXXX
+
+
