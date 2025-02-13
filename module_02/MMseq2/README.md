@@ -1,7 +1,7 @@
 # Welcome to the MMseq2 part !
 Here you can find some informations about what we are actually performing here.
 
-If you want more information about MMseq2, click (here)[https://github.com/soedinglab/MMseqs2].
+If you want more information about MMseq2, click [here](https://github.com/soedinglab/MMseqs2).
 ## Database creation
 The first step is to create a viral database. Here, we use the RefSeq NCBI database as reference. 
 You can find the script here : module_02/MMseq2/bin/crea_db.sh
