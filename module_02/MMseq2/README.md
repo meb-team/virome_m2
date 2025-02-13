@@ -2,7 +2,7 @@
 Here you can find some informations about what we are actually performing here.
 
 If you want more information about MMseq2, click (here)[https://github.com/soedinglab/MMseqs2].
-# Database creation
+## Database creation
 The first step is to create a viral database. Here, we use the RefSeq NCBI database as reference. 
 You can find the script here : module_02/MMseq2/bin/crea_db.sh
 
@@ -35,20 +35,20 @@ module_02/MMseq2/taxonomy/
 │   └── nodes.dmp
 ```
 
-# Collect fasta sequences
+## Collect fasta sequences
 Here, we are collecting the fasta sequences related to the contigs identified as representative at the end of the module_01.
 Each representative contigs (named 'seeds') are associated with their fasta sequence. A single fasta file is created at the end of the script.
 You can find the script here : module_02/MMseq2/bin/tax_fasta.sh
 The final file is named *'tax_fasta_seed.fa'*.
 
-# Taxonomic annotations
+## Taxonomic annotations
 In this part, we are using the Refseq database and the *'tax_fasta_seed.fa'* fasta file previously created to perform a taxonomic annotations of the sequences.
 The Last Common Ancestor (LCA) is the method used to retrieve taxonomy with MMseq2.
 At the end, you would have this folder as taxonomic results :
 
 XXXXXXXX
 
-# Data mining
+## Data mining
 
 XXXX
 
