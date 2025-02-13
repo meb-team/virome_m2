@@ -14,7 +14,7 @@ You will probably have to modify the paths in the scripts.
 I suggest you to work on a HPC because this step can take a while...
 For this module, you will need of some programs on your machine.
 
-We are using (MMseqs2)[https://github.com/soedinglab/MMseqs2] Version: 24479bc27c3f33a3c0121f916038c605beef3e79.
+We are using [MMseqs2](https://github.com/soedinglab/MMseqs2) Version: 24479bc27c3f33a3c0121f916038c605beef3e79.
 ```
 # install by brew
 brew install mmseqs2
@@ -64,7 +64,7 @@ The **second** step is to collect fasta sequences of representative contigs (cf.
 ```
 The **third** step is to do the taxonomic annotation !
 ```
-./taxo_annot.sh
+./module_02/MMseq2/bin/taxo_annot.sh
 ```
 The fourth step is XXXXXXXX
 
