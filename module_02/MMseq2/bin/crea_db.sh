@@ -15,25 +15,23 @@ set -o pipefail
 
 # === Variable definition ===
 TAX_DIR="module_02/MMseq2/taxonomy"
+mkdir -p "$TAX_DIR"
 
 # === Process database creation ===
-if [ ! -d "$TAX_DIR" ];
-then
-	mkdir "$TAX_DIR";
-fi
 
 if [ ! -d "$TAX_DIR"/taxdump ];
 then
-	mkdir dl_taxdump
+	mkdir "$TAX_DIR"/dl_taxdump
 	mkdir "$TAX_DIR"/taxdump
-	cd "$TAX_DIR"/dl_taxdump
 
-	wget -O taxdump.zip https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_archive/taxdmp_2022-08-01.zip
-	unzip taxdump.zip
+	wget -O "$TAX_DIR"/dl_taxdump/taxdump.zip https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_archive/taxdmp_2022-08-01.zip
+	unzip -d "$TAX_DIR"/dl_taxdump "$TAX_DIR"/dl_taxdump/taxdump.zip
 
-	mv names.dmp nodes.dmp delnodes.dmp merged.dmp ../"$TAX_DIR"/taxdump
-	cd ..
-	rm -r dl_taxdump
+	mv "$TAX_DIR"/dl_taxdump/names.dmp "$TAX_DIR"/taxdump
+        mv "$TAX_DIR"/dl_taxdump/nodes.dmp "$TAX_DIR"/taxdump
+        mv "$TAX_DIR"/dl_taxdump/delnodes.dmp "$TAX_DIR"/taxdump
+        mv "$TAX_DIR"/dl_taxdump/merged.dmp "$TAX_DIR"/taxdump
+	rm -r "$TAX_DIR"/dl_taxdump
 fi
 
 if [ ! -d "$TAX_DIR"/mmseqs_vrefseq ];
@@ -44,12 +42,11 @@ then
 
 	tar -zxvf "$TAX_DIR"/mmseqs_vrefseq.tar.gz -C "$TAX_DIR"
 	rm "$TAX_DIR"/mmseqs_vrefseq.tar.gz
-	cd "$TAX_DIR"/mmseqs_vrefseq
 
-	mmseqs createdb refseq_viral.faa refseq_viral
-	mmseqs createtaxdb refseq_viral tmp --ncbi-tax-dump ../taxdump --tax-mapping-file virus.accession2taxid
-	mmseqs createindex refseq_viral tmp
+	mmseqs createdb "$TAX_DIR"/mmseqs_vrefseq/refseq_viral.faa "$TAX_DIR"/mmseqs_vrefseq/refseq_viral
+	mmseqs createtaxdb "$TAX_DIR"/mmseqs_vrefseq/refseq_viral "$TAX_DIR"/mmseqs_vrefseq/tmp --ncbi-tax-dump "$TAX_DIR"/taxdump --tax-mapping-file "$TAX_DIR"/mmseqs_vrefseq/virus.accession2taxid
+	mmseqs createindex "$TAX_DIR"/mmseqs_vrefseq/refseq_viral "$TAX_DIR"/mmseqs_vrefseq/tmp
 
-	rm -rf tmp mmseqs_vrefseq.tar.gz
-	cd ../../
+	rm -rf "$TAX_DIR"/mmseqs_vrefseq/tmp "$TAX_DIR"/mmseqs_vrefseq.tar.gz
+
 fi
