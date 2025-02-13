@@ -17,33 +17,17 @@ set -o pipefail
 
 # === Variable definition ===
 TSV="module_01/filtering/results/filtered_representative_cluster.tsv"
-FASTA="module_01/annotate/results/all_annotated_contigs.fasta"
+FASTA="module_01/MMseq2/results/clusterRes_rep_seq.fasta"
 OUTPUT="module_02/MMseq2/results"
 mkdir -p "$OUTPUT"
 
 # === Process ===
-cut -f1 "$TSV" > "$OUTPUT"/contig_ids.txt
 
-declare -A sequences
-current_id=""
+cut -f1 "$TSV" > "$OUTPUT/contig_ids.txt"
+sed 's/==.*//' "$FASTA" > "$OUTPUT/cleaned_fasta.fa"
 
-while IFS= read -r line; do
-    if [[ $line == ">"* ]]; then
-        current_id=$(echo "$line" | sed -E 's/>([^=]+)==.*/\1/')
-        sequences["$current_id"]=""
-    elif [[ -n "$current_id" ]]; then
-        sequences["$current_id"]+="$line"
-    fi
-done < "$FASTA"
+seqtk subseq "$OUTPUT/cleaned_fasta.fa" "$OUTPUT/contig_ids.txt" > "$OUTPUT/tax_fasta_seed.fa"
 
-echo "" > "$OUTPUT/tax_fasta_seed.fa"
-while IFS= read -r id; do
-    if [[ -n "${sequences[$id]}" ]]; then
-        echo ">$id" >> "$OUTPUT/tax_fasta_seed.fa"
-        echo "${sequences[$id]}" >> "$OUTPUT/tax_fasta_seed.fa"
-    fi
-done < "$OUTPUT"/contig_ids.txt
+rm "$OUTPUT/contig_ids.txt" "$OUTPUT/cleaned_fasta.fa"
 
-rm contig_ids.txt
-
-echo "File {$OUTPUT}/tax_fasta_seed.fa created !"
+echo "File $OUTPUT/tax_fasta_seed.fa created !"
