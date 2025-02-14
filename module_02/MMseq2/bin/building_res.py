@@ -3,27 +3,50 @@
 import argparse
 
 
-def parse_file(path):
-    Dtaxo = {}
-    with open(path, 'r') as f1:
-        for lig in f1:
-            Dline = {'d': 'NA', 'k': 'NA', 'p': 'NA', 'c': 'NA', 'o': 'NA', 'f': 'NA', 'g': 'NA', 's': 'NA'}
-            li = lig.rstrip().split("\t")
-            for r in (l[-1].split(";")):
-                if r[0] in Dline:
-                    Dline[r[0]] = r[2:]
-            Dtaxo[l[0]] = Dline
-    return Dtaxo
+
+import pandas as pd
+
+# Chargement du fichier d'entrée
+input_taxo = "input_taxo.tsv"  # Fichier source
+output_taxo = "output_taxo.tsv"  # Fichier de sortie
+
+# Définition des colonnes taxonomiques
+columns = ["ID", "Domain", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"]
+
+# Initialisation d'une liste pour stocker les résultats
+data = []
+
+# Lecture et traitement du fichier
+with open(input_taxo, 'r') as f:
+    for line in f:
+        line = line.rstrip().split("\t")  # Séparation des colonnes du TSV
+        taxo_dict = {"ID": line[0], "Domain": "NA", "Kingdom": "NA", "Phylum": "NA", "Class": "NA", 
+                     "Order": "NA", "Family": "NA", "Genus": "NA", "Species": "NA"}  # Valeurs par défaut
+        
+        # Traitement de la classification taxonomique
+        for rank in line[-1].split(";"):
+            if rank[0] in ["d", "k", "p", "c", "o", "f", "g", "s"]:  # Vérifie si le préfixe est valide
+                key = {"d": "Domain", "k": "Kingdom", "p": "Phylum", "c": "Class", "o": "Order", 
+                       "f": "Family", "g": "Genus", "s": "Species"}[rank[0]]  # Conversion en colonne DataFrame
+                taxo_dict[key] = rank[2:]  # Extraction du nom taxonomique
+        
+        data.append(taxo_dict)  # Ajout de la ligne à la liste
+
+# Création du DataFrame
+df = pd.DataFrame(data, columns=columns)
+
+# Sauvegarde en TSV
+df.to_csv(output_taxo, sep="\t", index=False)
+
+print(f"✅ Fichier généré : {output_taxo}")
 
 
-def write_tsv(dict, out):
-    with open(f"{out}/test.tsv") as f2:
-        f2.write("ID\tDomain\tKingdom\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecies\n")
-        for i, j in dict.items():
-            f2.write(i)
-            for r in ['d', 'k', 'p', 'c', 'o', 'f', 'g', 's']:  # Respect de l'ordre des colonnes
-                f2.write(f"\t{j[r]}")
-            f2.write("\n") # nouvelle ligne
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
