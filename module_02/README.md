@@ -1,6 +1,6 @@
 # 🎈 🎈 🎈 Welcome to the module number two ! 🎈 🎈 🎈 
 
-This second module includes the assignement of viral taxonomy for representative contigs of each cluster (cf. module_01).. 
+This second module includes the assignement of viral taxonomy for representative contigs of each cluster (cf. module_01).
 
 XXXXXXXX Mettre schéma XXXXXXX
 
