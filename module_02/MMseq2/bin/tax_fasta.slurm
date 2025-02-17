@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=fasta_seed_creation
-#SBATCH --output=fasta_seed_creation.out
-#SBATCH --error=fasta_seed_creation.err
+#SBATCH --output=module_02/MMseq2/fasta_seed_creation.out
+#SBATCH --error=module_02/MMseq2/fasta_seed_creation.err
 #SBATCH --time=01:00:00  # Max time execution
 #SBATCH --ntasks=1        # Nb of tasks
 #SBATCH --cpus-per-task=2 # Nb of CPUs per tasks

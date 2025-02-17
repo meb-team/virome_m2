@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=viral_db_setup
-#SBATCH --output=viral_db_setup.out
-#SBATCH --error=viral_db_setup.err
+#SBATCH --output=module_02/MMseq2/viral_db_setup.out
+#SBATCH --error=module_02/MMseq2/viral_db_setup.err
 #SBATCH --time=02:00:00  # Max time execution
 #SBATCH --ntasks=1        # Nb of tasks
 #SBATCH --cpus-per-task=4 # Nb CPU per tasks
