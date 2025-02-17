@@ -57,15 +57,20 @@ faire snakemake XXXXXXXXXXXXXx
 The **first** step is to create a viral database from RefSeq NCBI database !
 ```
 ./module_02/MMseq2/bin/crea_db.sh
+sbatch module_02/MMseq2/bin/crea_db.slurm # WORKS ON HPC ONLY
 ```
 The **second** step is to collect fasta sequences of representative contigs (cf. module_01) into one fasta file :
 ```
 ./module_02/MMseq2/bin/tax_fasta.sh
+sbatch module_02/MMseq2/bin/tax_fasta.slurm # WORKS ON HPC ONLY
 ```
 The **third** step is to do the taxonomic annotation !
 ```
 ./module_02/MMseq2/bin/taxo_annot.sh
+sbatch module_02/MMseq2/bin/taxo_annot.slurm # WORKS ON HPC ONLY
 ```
 The fourth step is XXXXXXXX
+
+
 
 
