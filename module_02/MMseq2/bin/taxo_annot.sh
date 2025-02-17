@@ -28,3 +28,9 @@ mmseqs taxonomy "$OUTPUT/indexed" "$DB" "$OUTPUT/res" "$OUTPUT/tmp" --tax-lineag
 mmseqs createtsv "$OUTPUT/indexed" "$OUTPUT/res" "$OUTPUT/taxo_results.tsv"
 
 mmseqs taxonomyreport "$DB" "$OUTPUT/res" "$OUTPUT/taxo_report"
+
+# ===Cleaning results ===
+rm "$OUTPUT"/res.*
+rm "$OUTPUT"/indexed*
+rm -r "$OUTPUT"/tmp/
+
