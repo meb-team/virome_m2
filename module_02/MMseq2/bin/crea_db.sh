@@ -24,7 +24,7 @@ then
 	mkdir "$TAX_DIR"/dl_taxdump
 	mkdir "$TAX_DIR"/taxdump
 
-	wget -O "$TAX_DIR"/dl_taxdump/taxdump.zip https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_archive/taxdmp_2022-08-01.zip
+	wget -O "$TAX_DIR"/dl_taxdump/taxdump.zip https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_archive/new_taxdump_2025-02-01.zip
 	unzip -d "$TAX_DIR"/dl_taxdump "$TAX_DIR"/dl_taxdump/taxdump.zip
 
 	mv "$TAX_DIR"/dl_taxdump/names.dmp "$TAX_DIR"/taxdump
