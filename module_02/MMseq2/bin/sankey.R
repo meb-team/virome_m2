@@ -1,76 +1,132 @@
-# Charger les bibliothèques nécessaires
-install.packages("pavian")
-install.packages("sankeyD3")
-install.packages("htmlwidgets")
-install.packages("webshot")
+#script_sankey.R
+
+#command shell : R --vanilla < script_sankey <_input_report_>
+
+if (!require(remotes)) { install.packages("remotes") }
+remotes::install_github("fbreitwieser/pavian")
+
+packages <- c("htmlwidgets", "webshot")
+
+install_if_missing <- function(pkg) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    install.packages(pkg, dependencies = TRUE)
+  }
+  library(pkg, character.only = TRUE)
+}
+
+sapply(packages, install_if_missing)
+
 
 library("htmlwidgets")
-library("sankeyD3")
+library("pavian")
 library("webshot")
-library("data.table")  # Pour charger efficacement le TSV
 
-# Vérifier que l'argument (fichier d'entrée) est fourni
-args <- commandArgs(trailingOnly = TRUE)
-if (length(args) == 0) {
-  stop("Erreur : Aucun fichier TSV fourni en argument.")
-}
-file <- args[1]  # Récupération du fichier TSV
 
-# Charger le fichier TSV
-df <- fread(file, sep = "\t", header = TRUE)
+# https://github.com/fbreitwieser/pavian/blob/master/R/sample-build_sankey_network.R
 
-# Vérifier que le fichier contient bien les colonnes attendues
-expected_cols <- c("ID", "Domain", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
-missing_cols <- setdiff(expected_cols, colnames(df))
-if (length(missing_cols) > 0) {
-  stop(paste("Colonnes manquantes dans le fichier :", paste(missing_cols, collapse = ", ")))
-}
 
-# Convertir en format liens pour Sankey
-edges <- list()
-ranks <- expected_cols[-1]  # Exclure ID
-for (i in seq_along(ranks)[-length(ranks)]) {
-  source_col <- ranks[i]
-  target_col <- ranks[i + 1]
+build_sankey_network <- function(my_report, taxRanks =  c("D","K","P","C","O","F","G","S"), maxn=10,
+                                 zoom = F, title = NULL,
+                                 ...) {
+  stopifnot("taxRank" %in% colnames(my_report))
+  if (!any(taxRanks %in% my_report$taxRank)) {
+    warning("report does not contain any of the taxRanks - skipping it")
+    return()
+  }
+  my_report <- subset(my_report, taxRank %in% taxRanks)
+  my_report <- plyr::ddply(my_report, "taxRank", function(x) x[utils::tail(order(x$cladeReads,-x$depth), n=maxn), , drop = FALSE])
   
-  sub_df <- df[, .(source = get(source_col), target = get(target_col))]
-  sub_df <- sub_df[!is.na(target) & target != "NA" & target != "", ]
+  my_report <- my_report[, c("name","taxLineage","taxonReads", "cladeReads","depth", "taxRank")]
   
-  edges[[i]] <- sub_df
+  my_report <- my_report[!my_report$name %in% c('-_root'), ]
+  #my_report$name <- sub("^-_root.", "", my_report$name)
+  
+  splits <- strsplit(my_report$taxLineage, "\\|")
+  
+  ## for the root nodes, we'll have to add an 'other' link to account for all cladeReads
+  root_nodes <- sapply(splits[sapply(splits, length) ==2], function(x) x[2])
+  
+  sel <- sapply(splits, length) >= 3
+  splits <- splits[sel]
+  
+  links <- data.frame(do.call(rbind,
+                              lapply(splits, function(x) utils::tail(x[x %in% my_report$name], n=2))), stringsAsFactors = FALSE)
+  colnames(links) <- c("source","target")
+  links$value <- my_report[sel,"cladeReads"]
+  
+  my_taxRanks <- taxRanks[taxRanks %in% my_report$taxRank]
+  taxRank_to_depth <- stats::setNames(seq_along(my_taxRanks)-1, my_taxRanks)
+    
+  nodes <- data.frame(name=my_report$name,
+                      depth=taxRank_to_depth[my_report$taxRank],
+                      value=my_report$cladeReads,
+                      stringsAsFactors=FALSE)
+  
+  for (node_name in root_nodes) {
+    diff_sum_vs_all <- my_report[my_report$name == node_name, "cladeReads"] - sum(links$value[links$source == node_name])
+    if (diff_sum_vs_all > 0) {
+      nname <- paste("other", sub("^._","",node_name))
+      #nname <- node_name
+      #links <- rbind(links, data.frame(source=node_name, target=nname, value=diff_sum_vs_all, stringsAsFactors = FALSE))
+      #nodes <- rbind(nodes, nname)
+    }
+  }
+  
+  names_id = stats::setNames(seq_len(nrow(nodes)) - 1, nodes[,1])
+  links$source <- names_id[links$source]
+  links$target <- names_id[links$target]
+  links <- links[links$source != links$target, ]
+  
+  nodes$name <- sub("^._","", nodes$name)
+  links$source_name <- nodes$name[links$source + 1]
+  
+  if (!is.null(links))
+    sankeyD3::sankeyNetwork(
+      Links = links,
+      Nodes = nodes,
+      doubleclickTogglesChildren = TRUE,
+      Source = "source",
+      Target = "target",
+      Value = "value",
+      NodeID = "name",
+      NodeGroup = "name",
+      NodePosX = "depth",
+      NodeValue = "value",
+      dragY = TRUE,
+      xAxisDomain = my_taxRanks,
+      numberFormat = "pavian",
+      title = title,
+      nodeWidth = 15,
+      linkGradient = TRUE,
+      nodeShadow = TRUE,
+      nodeCornerRadius = 5,
+      units = "cladeReads",
+      fontSize = 12,
+      iterations = maxn * 100,
+      align = "none",
+      highlightChildLinks = TRUE,
+      orderByPath = TRUE,
+      scaleNodeBreadthsByString = TRUE,
+      zoom = zoom,
+      ...
+    )
 }
 
-edges_df <- rbindlist(edges)
-edges_df <- unique(edges_df[, .(source, target)])
+file <- commandArgs()[3]
 
-# Création des nœuds
-nodes <- unique(c(edges_df$source, edges_df$target))
-nodes_df <- data.frame(name = nodes, stringsAsFactors = FALSE)
+sank <- build_sankey_network(read_report(file))
 
-# Création des liens
-edges_df$source <- match(edges_df$source, nodes_df$name) - 1
-edges_df$target <- match(edges_df$target, nodes_df$name) - 1
-edges_df$value <- 1  # On met une valeur constante pour les liens
+output1=paste("sankey_",file,".html",sep="")
+output2=paste("sankey_",file,".pdf",sep="")
 
-# Générer le Sankey diagram
-sankey <- sankeyNetwork(
-  Links = edges_df,
-  Nodes = nodes_df,
-  Source = "source",
-  Target = "target",
-  Value = "value",
-  NodeID = "name",
-  fontSize = 12,
-  nodeWidth = 15,
-  nodeCornerRadius = 5,
-  units = "reads",
-  linkGradient = TRUE
+saveWidget(                                        #save an html file of sankey
+  sank,
+  output1,
+  selfcontained = TRUE,
+  libdir = NULL,
+  background = "white",
+  title = class(sank)[[1]],
+  knitrOptions = list()  
 )
 
-# Sauvegarde en HTML et PDF
-output_html <- paste0("sankey_", tools::file_path_sans_ext(basename(file)), ".html")
-output_pdf <- paste0("sankey_", tools::file_path_sans_ext(basename(file)), ".pdf")
-
-saveWidget(sankey, output_html, selfcontained = TRUE)
-webshot(output_html, output_pdf)
-
-cat("✅ Sankey généré :", output_html, "et", output_pdf, "\n")
+webshot(output1,output2)                          #save in pdf format
