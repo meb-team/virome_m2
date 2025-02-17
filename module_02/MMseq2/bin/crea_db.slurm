@@ -22,7 +22,7 @@ then
     mkdir "$TAX_DIR"/dl_taxdump
     mkdir "$TAX_DIR"/taxdump
 
-    wget -O "$TAX_DIR"/dl_taxdump/taxdump.zip https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_archive/taxdmp_2022-08-01.zip
+    curl -O "$TAX_DIR"/dl_taxdump/taxdump.zip https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_archive/taxdmp_2022-08-01.zip
     unzip -d "$TAX_DIR"/dl_taxdump "$TAX_DIR"/dl_taxdump/taxdump.zip
 
     mv "$TAX_DIR"/dl_taxdump/names.dmp "$TAX_DIR"/taxdump
@@ -36,7 +36,7 @@ if [ ! -d "$TAX_DIR"/mmseqs_vrefseq ];
 then
     mkdir "$TAX_DIR"/mmseqs_vrefseq
 
-    wget -O "$TAX_DIR"/mmseqs_vrefseq.tar.gz "https://zenodo.org/record/7044674/files/mmseqs_vrefseq.tar.gz"
+    curl -O "$TAX_DIR"/mmseqs_vrefseq.tar.gz "https://zenodo.org/record/7044674/files/mmseqs_vrefseq.tar.gz"
 
     tar -zxvf "$TAX_DIR"/mmseqs_vrefseq.tar.gz -C "$TAX_DIR"
     rm "$TAX_DIR"/mmseqs_vrefseq.tar.gz
