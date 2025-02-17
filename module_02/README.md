@@ -2,7 +2,9 @@
 
 This second module includes the assignement of viral taxonomy for representative contigs of each cluster (cf. module_01).
 
-XXXXXXXX Mettre schéma XXXXXXX
+<p align="center">
+  <img src="img/module_02_schema.png" alt="Description" width="100%">
+</p>
 
 ## Requirements
 
