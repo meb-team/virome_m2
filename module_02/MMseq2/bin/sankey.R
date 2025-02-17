@@ -16,7 +16,7 @@ install_if_missing <- function(pkg) {
 
 sapply(packages, install_if_missing)
 
-
+webshot::install_phantomjs()
 library("htmlwidgets")
 library("pavian")
 library("webshot")
@@ -122,7 +122,7 @@ output2=paste("sankey_",file,".pdf",sep="")
 saveWidget(                                        #save an html file of sankey
   sank,
   output1,
-  selfcontained = TRUE,
+  selfcontained = FALSE,
   libdir = NULL,
   background = "white",
   title = class(sank)[[1]],
