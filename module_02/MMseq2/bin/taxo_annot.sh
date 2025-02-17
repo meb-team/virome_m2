@@ -15,14 +15,16 @@ set -o pipefail
 
 # === Variable definition ===
 query="module_02/MMseq2/results/tax_fasta_seed.fa"
+#query="module_02/MMseq2/results/test.fa"
 DB="module_02/MMseq2/taxonomy/mmseqs_vrefseq/refseq_viral"
 OUTPUT="module_02/MMseq2/results"
 
 # === Process ===
+
 mmseqs createdb "$query" "$OUTPUT/indexed"
 
 mmseqs taxonomy "$OUTPUT/indexed" "$DB" "$OUTPUT/res" "$OUTPUT/tmp" --tax-lineage 1 --lca-mode 3
 
-mmseqs createtsv $OUTPUT/indexed $OUTPUT taxo_results.tsv
+mmseqs createtsv "$OUTPUT/indexed" "$OUTPUT/res" "$OUTPUT/taxo_results.tsv"
 
-mmseqs taxonomyreport $DB $OUTPUT taxo_report
+mmseqs taxonomyreport "$DB" "$OUTPUT/res" "$OUTPUT/taxo_report"
