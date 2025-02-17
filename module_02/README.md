@@ -3,7 +3,7 @@
 This second module includes the assignement of viral taxonomy for representative contigs of each cluster (cf. module_01).
 
 <p align="center">
-  <img src="img/module_02_schema.png" alt="Description" width="100%">
+  <img src="img/module_02_schema.png" alt="Description" width="50%">
 </p>
 
 ## Requirements
