@@ -44,12 +44,27 @@ The final file is named *'tax_fasta_seed.fa'*.
 ## Taxonomic annotations
 In this part, we are using the Refseq database and the *'tax_fasta_seed.fa'* fasta file previously created to perform a taxonomic annotations of the sequences.
 The Last Common Ancestor (LCA) is the method used to retrieve taxonomy with MMseq2.
-At the end, you would have this folder as taxonomic results :
+At the end, you would have a taxonomic report and a TSV file.
 
-XXXXXXXX
 
 ## Data mining
 
-XXXX
+This finale part aims to create a TSV file more readable. Indeed, each columns correspond the classifications for each seeds (representative contigs of clusters).
+The TSV is looking like that :
+| ID                                      | Domain  | Kingdom         | Phylum       | Class          | Order         | Family        | Genus           | Species                  |
+|-----------------------------------------|---------|----------------|--------------|---------------|--------------|--------------|----------------|--------------------------|
+| 50m_S10_L004_9350                      | Viruses | Heunggongvirae  | Uroviricota  | Caudoviricetes | NA           | Kyanoviridae | NA             | NA                       |
+| 10S1_S5_L002_5558                      | Viruses | Heunggongvirae  | Uroviricota  | Caudoviricetes | NA           | NA           | NA             | NA                       |
+| 10S1_S5_L002_5810                      | Viruses | Heunggongvirae  | Uroviricota  | Caudoviricetes | Crassvirales | NA           | NA             | Crassvirales sp.        |
+| ZellerG_2014__CCIS45793747ST-4-0.part-1_727 | Viruses | Heunggongvirae  | Uroviricota  | Caudoviricetes | NA           | NA           | NA             | NA                       |
+| 50m_S10_L004_40096                      | Viruses | Heunggongvirae  | Uroviricota  | Caudoviricetes | NA           | NA           | NA             | NA                       |
+| DRR147671_3193                          | Viruses | Heunggongvirae  | Uroviricota  | Caudoviricetes | NA           | Kyanoviridae | Bellamyvirus   | Bellamyvirus bellamy    |
+| ERR3230155_218241                       | Viruses | Heunggongvirae  | Uroviricota  | Caudoviricetes | NA           | NA           | NA             | NA                       |
+| 3_S1_L001_106                           | Viruses | Heunggongvirae  | Uroviricota  | Caudoviricetes | NA           | NA           | NA             | Rhodoferax phage P26218 |
+| CosteaPI_2017__peacemaker-11-0-0.part-1_105 | Viruses | Heunggongvirae  | Uroviricota  | Caudoviricetes | NA           | NA           | Brigitvirus    | Brigitvirus brigit      |
+
+
+All the results are from the MMseq2 tool.
+You have one TSV file per ecosystem.
 
 
