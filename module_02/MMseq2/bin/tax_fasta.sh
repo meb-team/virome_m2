@@ -16,18 +16,35 @@ set -o pipefail
 
 
 # === Variable definition ===
-TSV="module_01/filtering/results/filtered_representative_cluster.tsv"
+TSV_DIR="module_01/filtering/results/biome"
 FASTA="module_01/MMseq2/results/clusterRes_rep_seq.fasta"
-OUTPUT="module_02/MMseq2/results"
-mkdir -p "$OUTPUT"
+OUTPUT_DIR="module_02/MMseq2/results/biome_fasta"
+mkdir -p "$OUTPUT_DIR"
 
 # === Process ===
 
-cut -f1 "$TSV" > "$OUTPUT/contig_ids.txt"
-sed 's/==.*//' "$FASTA" > "$OUTPUT/cleaned_fasta.fa"
+for TSV in "$TSV_DIR"/*.tsv; do
+    # Récupérer le nom du biome sans l'extension
+    BIOME_NAME=$(basename "$TSV" .tsv)
 
-seqtk subseq "$OUTPUT/cleaned_fasta.fa" "$OUTPUT/contig_ids.txt" > "$OUTPUT/tax_fasta_seed.fa"
+    echo "Processing $BIOME_NAME..."
 
-rm "$OUTPUT/contig_ids.txt" "$OUTPUT/cleaned_fasta.fa"
+    # Définir les fichiers temporaires
+    CONTIG_IDS="$OUTPUT_DIR/${BIOME_NAME}_contig_ids.txt"
+    CLEANED_FASTA="$OUTPUT_DIR/${BIOME_NAME}_cleaned_fasta.fa"
+    OUTPUT_FASTA="$OUTPUT_DIR/${BIOME_NAME}_tax_fasta_seed.fa"
 
-echo "File $OUTPUT/tax_fasta_seed.fa created !"
+    # Extraction des IDs et nettoyage du FASTA
+    cut -f1 "$TSV" > "$CONTIG_IDS"
+    sed 's/==.*//' "$FASTA" > "$CLEANED_FASTA"
+
+    # Filtrage des séquences
+    seqtk subseq "$CLEANED_FASTA" "$CONTIG_IDS" > "$OUTPUT_FASTA"
+
+    # Suppression des fichiers temporaires
+    rm "$CONTIG_IDS" "$CLEANED_FASTA"
+
+    echo "File $OUTPUT_FASTA created!"
+done
+
+echo "Processing completed!"
