@@ -18,8 +18,10 @@ RESULTS_DIR="module_01/checkV/results"
 mkdir -p "module_01/annotate/results"
 OUTPUT_FILE="module_01/annotate/results/all_annotated_contigs.fasta"
 TSV_FILE="module_01/annotate/results/contig_tools_list.tsv"
+ECO_FILE="module_01/annotate/results/contig_biome_list.tsv"
 > "$OUTPUT_FILE"
 > "$TSV_FILE"
+> "$ECO_FILE"
 
 # === Function definition ===
 process_fasta() {
@@ -64,6 +66,9 @@ for tool_dir in "$RESULTS_DIR"/*/; do
         done
     done
 done
+
+
+cat "$OUTPUT_FILE" | grep '>' | sed 's/^.//' | sort | uniq > "$ECO_FILE"
 
 echo "Job finished! You can retrieve the results here:"
 echo "FASTA file: module_01/annotate/results/all_annotated_contigs.fasta"
