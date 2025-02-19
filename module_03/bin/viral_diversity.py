@@ -10,6 +10,14 @@ import re
 
 
 def diversity(path):
+    """
+    This function calculates Shannon index, alpha diversity, and Simpson index for a given ecosystem TSV file.
+    This TSV file contains at least a column "Species" for each contig.
+
+    :param path : the path where the TSV file is stocked
+    :return result_df : a dataframe containing Shannon, Alpha-diversity, Simpson, Simpson-1 columns
+    :return species_counts : the count of each species in the ecosystem
+    """
     data = pd.read_csv(path, sep="\t")
     file_name = os.path.basename(path)
 
@@ -39,6 +47,13 @@ def diversity(path):
 
 
 def beta_diversity(species_counts_1, species_counts_2):
+    """
+    This function calculates the beta diversity (Bray-Curtis) for couples of ecosystems.
+
+    :param species_counts_1 : the count of each species for the ecosystem 1
+    :param species_counts_2 : the count of each species for the ecosystem 2
+    :return the result of the beta-diversity for the couple eco1-eco2
+    """
     intersection = sum(min(species_counts_1.get(species, 0), species_counts_2.get(species, 0)) for species in species_counts_1)
     union = sum(species_counts_1) + sum(species_counts_2)
 
@@ -49,6 +64,14 @@ def beta_diversity(species_counts_1, species_counts_2):
 
 
 def jaccard_index(species_counts_1, species_counts_2):
+    """
+    This function calculate the Jaccard index for couples of ecosystems.
+
+    :param species_counts_1 : the count of each species for the ecosystem 1
+    :param species_counts_2 : the count of each species for the ecosystem 2
+    :return the result of the Jaccard index for the couple eco1-eco2
+
+    """
     species_1 = set(species_counts_1.index)
     species_2 = set(species_counts_2.index)
 
