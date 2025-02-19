@@ -74,5 +74,5 @@ sbatch module_02/MMseq2/bin/taxo_annot.slurm # WORKS ON HPC ONLY
 The **fourth** step is to re-build the results from MMseq2 into a more readable and accessible table. And, during this step, you can create some figures.
 ```
 ./module_02/MMseq2/bin/building_res.py # re-Building results
-Rscript module_02/MMseq2/bin/sankey.R module_02/MMseq2/results/taxo_seeds.tsv
+./module_02/MMseq2/bin/sankey.sh # Create Sankey graph
 ```
