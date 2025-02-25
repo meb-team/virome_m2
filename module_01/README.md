@@ -29,7 +29,6 @@ data_test/results/
 ```
 
 You will probably have to modify the paths in the scripts.
-s
 
 I suggest you to work on a HPC because this step can take a while...
 For this module, you will need of some programs on your machine.
