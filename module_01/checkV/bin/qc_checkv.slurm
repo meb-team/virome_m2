@@ -4,7 +4,7 @@
 #SBATCH --output=logs/checkV_QC_%A_%a.out
 #SBATCH --error=logs/checkV_QC_%A_%a.err
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=8
 #SBATCH --mem=16G
 #SBATCH --time=04:00:00
 #SBATCH --partition=fast
@@ -31,6 +31,7 @@ vib_out="module_01/checkV/results/vibrant"
 mkdir -p "$vs2_out" "$vib_out" "$dvf_out" "logs"
 
 # === Process ===
+
 # Collect all FASTA files
 data_files=($(find "$vs2_file" "$dvf_file" "$vib_file" -type f -name "*.fa"))
 num_files=${#data_files[@]}
@@ -61,7 +62,7 @@ else
     exit 1
 fi
 
-singularity exec --bind "$home" "$path_checkv" checkv end_to_end "$file" "$output_dir/${base_name}_checkv" -t4
+singularity exec --bind "$home" "$path_checkv" checkv end_to_end "$file" "$output_dir/${base_name}_checkv" -t8
 
 echo "Processing completed for $file"
 
