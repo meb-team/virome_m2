@@ -100,7 +100,7 @@ chmod+x module_01/checkV/bin/qc_checkv.sh
 
 If you are working on a HPC (recommended) :
 ```bash
-In building (slurm)... XXXXXXXXXXXXXXXXXXX
+sbatch -p fast -q fast module_01/checkV/bin/qc_checkv.slurm
 ```
 The **second step** is to annotate the contigs with their prediction tool and their ecosysems before the clustering. This step is usefull because some contigs could have
 the same IDs between prediction tools because the same SSR has been analyzed for the three prediction tools. Thus, the clustering could smash some important informations.
