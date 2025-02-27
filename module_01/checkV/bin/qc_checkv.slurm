@@ -8,21 +8,25 @@
 #SBATCH --mem=16G
 #SBATCH --time=04:00:00
 #SBATCH --partition=fast
-#SBATCH --array=0-2
+#SBATCH --array=0-76
 
 # === Initialization ===
 set -e  # Stop the script if error
 set -u  # Stop the script on unknown variables
 set -o pipefail
 
+module load rclone
+
 # === Variable definition ===
 
-home="/home/huservil" # Path to your home (useful to bind your home to the singularity structure)
+home="/home/$USER" # Path to your home (useful to bind your home to the singularity structure)
 path_checkv="module_01/checkV/bin/checkv.sif" # Path to the checkV tool
 
-dvf_file="../data_test/dvf/" # Path to DeepVirFinder results
-vs2_file="../data_test/vs2/" # Path to VirSorter2 results
-vib_file="../data_test/vibrant/" # Path to VIBRANT results
+dvf_file="../data/dvf/" # Path to DeepVirFinder results
+vs2_file="../data/vs2/" # Path to VirSorter2 results
+vib_file="../data/vibrant/" # Path to VIBRANT results
+
+# SCRATCH_DIR="/storage/scratch/huservil"
 
 dvf_out="module_01/checkV/results/dvf"
 vs2_out="module_01/checkV/results/vs2"
@@ -49,7 +53,6 @@ base_name=$(basename "$file" .fa)
 base_name=${base_name/_predicted_seq/}
 
 echo "Processing $file with CheckV..."
-
 # Determine output directory based on input file path
 if [[ "$file" == *"vs2"* ]]; then
     output_dir="$vs2_out"
@@ -63,6 +66,8 @@ else
 fi
 
 singularity exec --bind "$home" "$path_checkv" checkv end_to_end "$file" "$output_dir/${base_name}_checkv" -t8
+rclone copy $output_dir/${base_name}_checkv lmge-microstore:huserville/$output_dir/${base_name}_checkv
+rm -r $output_dir/${base_name}_checkv
 
 echo "Processing completed for $file"
 
