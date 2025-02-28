@@ -15,7 +15,7 @@ set -u  # Stop the script unknown variables
 set -o pipefail
 
 # === Variable definition ===
-directories=("data_test/results/dvf" "data_test/results/vibrant" "data_test/results/vs2")
+directories=("../data_test/dvf" "../data_test/vibrant" "../data_test/vs2")
 
 
 # === Process ===
