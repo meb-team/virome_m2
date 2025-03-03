@@ -105,11 +105,16 @@ sbatch -p fast -q fast module_01/checkV/bin/qc_checkv.slurm
 The **second step** is to annotate the contigs with their prediction tool and their ecosysems before the clustering. This step is usefull because some contigs could have
 the same IDs between prediction tools because the same SSR has been analyzed for the three prediction tools. Thus, the clustering could smash some important informations.
 
-No need to work on a slurm script here :
+If you are not working on a HPC :
 ```bash
 chmod +x module_01/annotate/bin/annotate.sh
 ./module_01/annotate/bin/annotate.sh
 ```
+If you are working on a HPC : 
+```bash
+./module_01/annotate/bin/annotate.slurm
+```
+
 The **third step** is to cluster the different contigs. The MMseq2 tool is used to cluster the annotate sequences.
 ```bash
 chmod +x module_01/MMseq2/bin/clustering.sh
@@ -137,7 +142,8 @@ Here are the results collected working with shell (no HPC) :
 2. MMseq2 : time : around 40 s for a 1.4Go of inputs corresponding of the test dataset.
 
 Here are the results collected working with HPC :
-1. XXXXXXXX
-2. XXXXXXXX
-
+1. For the CheckV analysis, the fast partition is enough (max time : 4 hours, 8 CPUs per task). All the run inputs are parallelized.
+2. For the annotation step, the fast partition is enough (max time : 4 hours, 8	CPUs per task). No parallelization here
+3. For the clustering step, the	fast partition is enough (max time : 4 hours, 8 CPUs per task).	No parallelization here
+4. For the populate table and filtering steps : XXXXXXXXXXXXXXX
 
