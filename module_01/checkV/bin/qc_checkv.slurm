@@ -26,8 +26,6 @@ dvf_file="../data/dvf/" # Path to DeepVirFinder results
 vs2_file="../data/vs2/" # Path to VirSorter2 results
 vib_file="../data/vibrant/" # Path to VIBRANT results
 
-# SCRATCH_DIR="/storage/scratch/huservil"
-
 dvf_out="module_01/checkV/results/dvf"
 vs2_out="module_01/checkV/results/vs2"
 vib_out="module_01/checkV/results/vibrant"
@@ -49,25 +47,34 @@ fi
 
 # Get the specific file for this array task
 file=${data_files[$SLURM_ARRAY_TASK_ID]}
+echo $file
 base_name=$(basename "$file" .fa)
 base_name=${base_name/_predicted_seq/}
 
+# Extract ecosystem and tool from file path
+tool=$(basename "$(dirname "$(dirname "$file")")")
+ecosystem=$(basename "$(dirname "$file")")
+
 echo "Processing $file with CheckV..."
+
 # Determine output directory based on input file path
-if [[ "$file" == *"vs2"* ]]; then
-    output_dir="$vs2_out"
-elif [[ "$file" == *"dvf"* ]]; then
-    output_dir="$dvf_out"
-elif [[ "$file" == *"vib"* ]]; then
-    output_dir="$vib_out"
-else
-    echo "Unknown source for file $file. Skipping."
-    exit 1
+if [[ "$tool" == "vs2" ]]; then
+    output_dir="$vs2_out/$ecosystem"
+elif [[ "$tool" == "dvf" ]]; then
+    output_dir="$dvf_out/$ecosystem"
+elif [[ "$tool" == "vibrant" ]]; then
+    output_dir="$vib_out/$ecosystem"
 fi
 
-singularity exec --bind "$home" "$path_checkv" checkv end_to_end "$file" "$output_dir/${base_name}_checkv" -t8
-rclone copy $output_dir/${base_name}_checkv lmge-microstore:huserville/$output_dir/${base_name}_checkv
-rm -r $output_dir/${base_name}_checkv
+# Create the ecosystem-specific directory if it doesn't exist
+mkdir -p "$output_dir"
+
+# Run CheckV and save the output
+singularity exec --bind "$home" "$path_checkv" checkv end_to_end "$file" "$output_dir/${base_name}_checkV" -t8
+
+# Upload results and clean up
+rclone copy "$output_dir/${base_name}_checkV" "lmge-microstore:huserville/$output_dir/${base_name}_checkV"
+rm -r "$output_dir/${base_name}_checkV"
 
 echo "Processing completed for $file"
 

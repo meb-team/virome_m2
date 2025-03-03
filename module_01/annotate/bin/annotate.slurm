@@ -61,19 +61,16 @@ echo "Début du traitement..."
 for tool_dir in "$LOCAL_DIR"/*/; do
     tool=$(basename "$tool_dir")
 
-    for eco_dir in "$tool_dir"/*/; do
+    for eco_dir in "$tool_dir"*/; do
         ecosystem=$(basename "$eco_dir" | cut -d'_' -f1)
 
-        # Parcourir les sous-dossiers des SRR
-        find "$eco_dir" -type d -name "SRR*" | while read srr_dir; do
-            for fasta in "$srr_dir/proviruses.fna" "$srr_dir/viruses.fna"; do
-                if [[ -f "$fasta" ]]; then
-                    process_fasta "$fasta" "$ecosystem" "$tool"
-                fi
-            done
+        # Trouver tous les fichiers proviruses.fna et viruses.fna dans tous les sous-dossiers
+        find "$eco_dir" -type f \( -name "proviruses.fna" -o -name "viruses.fna" \) | while read fasta; do
+            process_fasta "$fasta" "$ecosystem" "$tool"
         done
     done
 done
+
 
 cat "$OUTPUT_FILE" | grep '>' | sed 's/^.//' | sort | uniq > "$ECO_FILE"
 
@@ -82,7 +79,7 @@ echo "FASTA : $OUTPUT_FILE"
 echo "TSV : $TSV_FILE"
 echo "ECO : $ECO_FILE"
 
-rm -r $LOCAL_DIR
+# rm -r $LOCAL_DIR
 
 exit 0
 
