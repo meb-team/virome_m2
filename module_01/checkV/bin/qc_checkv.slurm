@@ -8,7 +8,7 @@
 #SBATCH --mem=16G
 #SBATCH --time=04:00:00
 #SBATCH --partition=fast
-#SBATCH --array=0-14
+#SBATCH --array=0-1391
 
 # === Initialization ===
 set -e  # Stop the script if error
@@ -22,9 +22,9 @@ module load rclone
 home="/home/$USER" # Path to your home (useful to bind your home to the singularity structure)
 path_checkv="module_01/checkV/bin/checkv.sif" # Path to the checkV tool
 
-dvf_file="../data_test/dvf/" # Path to DeepVirFinder results
-vs2_file="../data_test/vs2/" # Path to VirSorter2 results
-vib_file="../data_test/vibrant/" # Path to VIBRANT results
+dvf_file="../data/dvf/" # Path to DeepVirFinder results
+vs2_file="../data/vs2/" # Path to VirSorter2 results
+vib_file="../data/vibrant/" # Path to VIBRANT results
 
 # SCRATCH_DIR="/storage/scratch/huservil"
 

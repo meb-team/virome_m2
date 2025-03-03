@@ -12,10 +12,10 @@
 # === Initialization ===
 # set -e  # Stop the script if error
 set -u  # Stop the script unknown variables
-set -o pipefail
+# set -o pipefail
 
 # === Variable definition ===
-directories=("../data_test/dvf" "../data_test/vibrant" "../data_test/vs2")
+directories=("../data/dvf" "../data/vibrant" "../data/vs2")
 
 
 # === Process ===
