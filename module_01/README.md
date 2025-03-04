@@ -116,10 +116,17 @@ If you are working on a HPC :
 ```
 
 The **third step** is to cluster the different contigs. The MMseq2 tool is used to cluster the annotate sequences.
+If you are not working on a HPC : 
 ```bash
 chmod +x module_01/MMseq2/bin/clustering.sh
 ./module_01/MMseq2/bin/clustering.sh
 ```
+
+If you are working on a HPC (recommended) :
+```bash
+./module_01/MMseq2/bin/clustering.slurm
+```
+
 The **forth step** is the exploration and the filtration of the clustering results. At the end, only clusters with contigs predicted by at least 2 different prediction tools will
 be keep for the next  analysis. 
 ```
