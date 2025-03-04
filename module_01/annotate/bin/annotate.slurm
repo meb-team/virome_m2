@@ -94,7 +94,9 @@ rclone copy "$OUTPUT_FILE" "$REMOTE/$OUTPUT_DIR/"
 rclone copy "$TSV_FILE" "$REMOTE/$OUTPUT_DIR/"
 rclone copy "$ECO_FILE" "$REMOTE/$OUTPUT_DIR/"
 
-rm $OUTPUT_FILE, $TSV_FILE, $ECO_FILE
+rm $OUTPUT_FILE 
+rm $TSV_FILE
+rm $ECO_FILE
 
 rm -r $LOCAL_DIR
 
