@@ -32,7 +32,6 @@ mkdir -p "$OUTPUT_DIR"
 > "$ECO_FILE"
 
 # === Synchronisation des données ===
-rm -r $LOCAL_DIR
 echo "Synchronisation des données depuis le stockage distant..."
 rclone sync "$REMOTE_PATH" "$LOCAL_DIR" --exclude "**/tmp/**"
 
