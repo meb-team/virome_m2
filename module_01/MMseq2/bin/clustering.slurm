@@ -12,10 +12,10 @@
 #SBATCH --ntasks=1
 #SBATCH --output=logs/clustering_%j.out
 #SBATCH --error=logs/clustering_%j.err
-#SBATCH --cpus-per-task=8
-#SBATCH --mem=16G
-#SBATCH --time=04:00:00
-#SBATCH --partition=fast
+#SBATCH --cpus-per-task=32
+#SBATCH --mem=32G
+#SBATCH --time=7-00:00:00
+#SBATCH --partition=long
 
 
 # === Initialization ===
