@@ -26,7 +26,6 @@ set -o pipefail
 module load MMseqs2/10-6d92c
 
 # === Variable definition ===
-
 output_dir="module_01/MMseq2/results"
 LOCAL_DIR="/storage/scratch/$USER/module_01/annotate/results"
 REMOTE_PATH="lmge-microstore:huserville/module_01/annotate/results"
@@ -34,7 +33,6 @@ REMOTE_PATH="lmge-microstore:huserville/module_01/annotate/results"
 mkdir -p "$output_dir"
 
 # === Synchronisation des données ===
-rm -r $LOCAL_DIR
 echo "Synchronisation des données depuis le stockage distant..."
 rclone sync "$REMOTE_PATH" "$LOCAL_DIR"
 
@@ -47,6 +45,8 @@ echo "Starting clustering..."
 mmseqs easy-linclust "$fasta_input" "$output_dir/clusterRes" "$output_dir/tmp" --min-seq-id 0.95 -c 0.85 --cov-mode 1
 
 echo "End of the clustering !"
+
+rm -r $LOCAL_DIR
 
 exit 0
 
