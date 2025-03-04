@@ -138,7 +138,7 @@ def log_error(message):
     print(message)
 
 
-def get_checkv_data(contig, tool, ecosystem):
+def get_checkv_data(contig, tool, ecosystem, checkv_path):
     """
     Function to collect the informations of each representative contigs for each ecosystems for each prediction tools
     from the results of CheckV quality summary.
@@ -147,7 +147,13 @@ def get_checkv_data(contig, tool, ecosystem):
     :param tool : the tool associated to {contig} (column vs2 or vib or dvf == 1)
     :param ecosystem :  the ecosystem associated to {contig}
     """
-    file_path = f"module_01/checkV/results/{tool}/{ecosystem}_{tool}_checkv/quality_summary.tsv"
+    print(f"TEST CONTIG {contig}")
+    run=contig.split('_')[0]
+
+    if tool=="vs2":
+        file_path = f"{checkv_path}/{tool}/{ecosystem}/{run}.fasta_checkV/quality_summary.tsv"
+    else:
+        file_path = f"{checkv_path}/{tool}/{ecosystem}/{run}_checkV/quality_summary.tsv"
     try:
         checkv_df = pd.read_csv(file_path, sep="\t", index_col=0)
         matched_rows = checkv_df[checkv_df.index.astype(str).str.contains(contig, na=False, regex=False)]
@@ -185,6 +191,7 @@ if __name__ == '__main__':
     parser.add_argument("--path", "-p", help="Defines the path where the report  are located. Usage : -p path folder/", type=str)
     parser.add_argument("--out", "-o", help="Defines the path where the figure created can be stored. Usage : -o path folder/", type=str)
     parser.add_argument("--tool", "-t", help="Defines the path where the metadata of tool predictions are stored for each contigs. Usage : -t path/folder/", type=str)
+    parser.add_argument("--checkv", "-c", help="Defines the path where the results of checkV are located. Usage : -c path/folder/", type=str)
 
     args = parser.parse_args()
 
@@ -197,6 +204,9 @@ if __name__ == '__main__':
         path_tool = args.tool
     else:
         path_tool = "module_01/annotate/results/contig_tools_list.tsv"
+
+    if args.checkv:
+        checkv_path = args.checkv
 
     if args.out:
         out = args.out
@@ -217,7 +227,7 @@ if __name__ == '__main__':
 
     df_tool["ecosystem"] = df_tool.index.map(eco_rep)
 
-    full_data = df_tool[["checkv_quality", "completeness", "seed_length", "provirus_seed"]] = df_tool.apply(lambda row: pd.Series(get_checkv_data(row.name, row["tool"], row["ecosystem"])), axis=1)
+    full_data = df_tool[["checkv_quality", "completeness", "seed_length", "provirus_seed"]] = df_tool.apply(lambda row: pd.Series(get_checkv_data(row.name, row["tool"], row["ecosystem"], checkv_path)), axis=1)
 
     df_tool.drop(columns=["tool", "ecosystem", "member"], inplace=True)
 
