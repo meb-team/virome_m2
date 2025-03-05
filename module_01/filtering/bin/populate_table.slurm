@@ -33,7 +33,7 @@ echo "Synchronisation des données depuis le stockage distant..."
 rclone sync "$REMOTE_PATH/checkV/results" "$LOCAL_DIR/checkV/results" --exclude "**/tmp/**"
 rclone sync "$REMOTE_PATH/annotate/results" "$LOCAL_DIR/annotate/results"
 TOOL="$LOCAL_DIR/annotate/results/contig_tools_list.tsv"
-CLUSTER="module_01/MMseq2/results/clusterRes_rep_seq.fasta"
+CLUSTER="module_01/MMseq2/results/clusterRes_cluster.tsv"
 
 
 # === Process ===

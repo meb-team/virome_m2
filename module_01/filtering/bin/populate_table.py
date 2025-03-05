@@ -217,6 +217,7 @@ if __name__ == '__main__':
         os.makedirs(out)
 
     data = pd.read_csv(path, sep='\t', header=None, names=['representative', 'member'])
+    print(data)
     # data2 = data.head(1000)
 
     data_df,eco_rep = filter(data)
