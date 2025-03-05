@@ -12,8 +12,8 @@
 #SBATCH --ntasks=1
 #SBATCH --output=logs/clustering_%j.out
 #SBATCH --error=logs/clustering_%j.err
-#SBATCH --cpus-per-task=32
-#SBATCH --mem=32G
+#SBATCH --cpus-per-task=40
+#SBATCH --mem=128G
 #SBATCH --time=7-00:00:00
 #SBATCH --partition=long
 
@@ -23,7 +23,9 @@ set -e  # Stop the script if error
 set -u  # Stop the script unknown variables
 set -o pipefail
 
-module load MMseqs2/10-6d92c
+
+module load MMseqs2/13-45111
+#module load MMseqs2/10-6d92c
 
 # === Variable definition ===
 output_dir="module_01/MMseq2/results"
@@ -46,6 +48,8 @@ mmseqs easy-linclust "$fasta_input" "$output_dir/clusterRes" "$output_dir/tmp" -
 
 echo "End of the clustering !"
 
+rclone copy $output_dir lmge-microstore:huserville/module_01/mmseq2/results
+rm -r $output_dir
 rm -r $LOCAL_DIR
 
 exit 0
