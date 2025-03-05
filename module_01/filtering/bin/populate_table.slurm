@@ -4,8 +4,8 @@
 #SBATCH --ntasks=1
 #SBATCH --output=logs/populate_%j.out
 #SBATCH --error=logs/populate_%j.err
-#SBATCH --cpus-per-task=16
-#SBATCH --mem=16G
+#SBATCH --cpus-per-task=32
+#SBATCH --mem=64G
 #SBATCH --time=7-00:00:00
 #SBATCH --partition=long
 
@@ -32,10 +32,8 @@ mkdir -p $OUTPUT_DIR
 echo "Synchronisation des données depuis le stockage distant..."
 rclone sync "$REMOTE_PATH/checkV/results" "$LOCAL_DIR/checkV/results" --exclude "**/tmp/**"
 rclone sync "$REMOTE_PATH/annotate/results" "$LOCAL_DIR/annotate/results"
-# defines cluster path
 TOOL="$LOCAL_DIR/annotate/results/contig_tools_list.tsv"
-
-CLUSTER="tmp2/clusterRes_cluster.tsv"
+CLUSTER="module_01/MMseq2/results/clusterRes_rep_seq.fasta"
 
 
 # === Process ===
