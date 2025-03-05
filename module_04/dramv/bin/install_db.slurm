@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#SBATCH --job-name=populate_table
+#SBATCH --job-name=create_db
 #SBATCH --ntasks=1
-#SBATCH --output=logs/populate_%j.out
-#SBATCH --error=logs/populate_%j.err
+#SBATCH --output=logs/createdb_%j.out
+#SBATCH --error=logs/createdb_%j.err
 #SBATCH --cpus-per-task=32
 #SBATCH --mem=128G
 #SBATCH --time=7-00:00:00
