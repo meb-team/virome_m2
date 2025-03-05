@@ -19,3 +19,11 @@ When you have conda on your machine :
 wget https://raw.githubusercontent.com/WrightonLabCSU/DRAM/master/environment.yaml
 conda env create -f environment.yaml -n DRAM
 ```
+
+## Usage
+The first **step** is to create the databases for Dram-v (KEGG, UniRef90, PFAM, dbscan, RefSeq Viral, VOGDB and MEROPS).
+This step can consume a lot of RAMs and CPUs. More information [here](https://github.com/WrightonLabCSU/DRAM).
+If you are working on a HPC (recommended) :
+```
+sbatch module_04/dramv/bin/install_db.slurm
+```
