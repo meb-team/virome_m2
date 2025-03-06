@@ -19,6 +19,7 @@ scratch="/storage/scratch/$USER"
 output_dir="$scratch/module_04/dramv/db"
 
 mkdir -p $output_dir
+
 # === Process ===
 source miniconda3/bin/activate
 conda init
@@ -26,7 +27,7 @@ conda activate DRAM
 echo "Conda environment loaded successfully for Dram-v tool !"
 
 echo "Start the creation of the database"
-DRAM-setup.py prepare_databases --output_dir $output_dir --skip_uniref
+DRAM-setup.py prepare_databases --output_dir $output_dir --skip_uniref --threads 20
 
 rclone sync $output_dir lmge-microstore:huserville/module_04/dramv/db
 
