@@ -59,8 +59,9 @@ faire snakemake XXXXXXXXXXXXXx
 The **first** step is to create a viral database from RefSeq NCBI database !
 ```
 ./module_02/MMseq2/bin/crea_db.sh
-sbatch module_02/MMseq2/bin/crea_db.slurm # WORKS ON HPC ONLY
+sbatch -p fast -q fast module_02/MMseq2/bin/crea_db.slurm # WORKS ON HPC ONLY
 ```
+
 The **second** step is to collect fasta sequences of representative contigs (cf. module_01) into one fasta file :
 ```
 ./module_02/MMseq2/bin/tax_fasta.sh
