@@ -150,7 +150,7 @@ Here are the results collected working with shell (no HPC) :
 
 Here are the results collected working with HPC :
 1. For the CheckV analysis, the fast partition is enough (max time : 4 hours, 8 CPUs per task). All the run inputs are parallelized.
-2. For the annotation step, the fast partition is enough (max time : 4 hours, 8	CPUs per task). No parallelization here
-3. For the clustering step, the	fast partition is enough (max time : 4 hours, 8 CPUs per task).	No parallelization here
-4. For the populate table and filtering steps : XXXXXXXXXXXXXXX
+2. For the annotation step, the fast partition is enough (max time : 4 hours, 8	CPUs per task). No parallelization here.
+3. For the clustering step, the	fast partition is enough (max time : 4 hours, 8 CPUs per task).	No parallelization here.
+4. For the populate table and filtering steps : the long partition is required (more than 24 hours). No parallelization here.
 
