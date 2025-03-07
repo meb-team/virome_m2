@@ -40,5 +40,9 @@ CLUSTER="module_01/MMseq2/results/clusterRes_cluster.tsv"
 
 ./module_01/filtering/bin/populate_table.py -p $CLUSTER -t $TOOL -c "$LOCAL_DIR/checkV/results" -o $OUTPUT_DIR
 
+rclone sync $OUTPUT_DIR/representative_cluster.tsv lmge-microstore:huserville/module_01/filtering/results
+
+rm -r $OUTPUT_DIR
+
 exit 0
 
