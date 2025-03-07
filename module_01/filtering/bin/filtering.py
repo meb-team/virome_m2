@@ -72,7 +72,7 @@ if __name__ == '__main__':
     if not os.path.exists(out):
         os.makedirs(out)
 
-    out_biome=f"{out}/biome"
+    out_biome=f"{out}/eco"
 
     if not os.path.exists(out_biome):
         os.makedirs(out_biome)
