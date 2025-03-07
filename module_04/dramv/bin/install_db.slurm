@@ -10,9 +10,9 @@
 #SBATCH --partition=long
 
 # === Initialization ===
-set -e  # Stop the script if error
-set -u  # Stop the script unknown variables
-set -o pipefail
+#set -e  # Stop the script if error
+#set -u  # Stop the script unknown variables
+#set -o pipefail
 
 # === Variables ===
 scratch="/storage/scratch/$USER"
@@ -27,7 +27,15 @@ conda activate DRAM
 echo "Conda environment loaded successfully for Dram-v tool !"
 
 echo "Start the creation of the database"
-DRAM-setup.py prepare_databases --output_dir $output_dir --skip_uniref --threads 20
+
+wget -r -np -nH --cut-dirs=2 -R "index.html*" -P $output_dir/vogdb https://fileshare.lisc.univie.ac.at/vog/latest/
+#wget -r -np -nH --cut-dirs=2 -R "index.html*" -P $output_dir/vogdb --no-check-certificate -nv https://fileshare.lisc.univie.ac.at/vog/latest/
+
+echo "AAAAAAAAAAAAAAAAAAAAAAAAA"
+
+DRAM-setup.py prepare_databases --output_dir $output_dir --skip_uniref --threads 20 --vogdb_loc $output_dir/vogdb
+
+echo "BBBBBBBBBBBBBBBBBBBBBBB"
 
 rclone sync $output_dir lmge-microstore:huserville/module_04/dramv/db
 
