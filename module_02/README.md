@@ -16,6 +16,14 @@ You will probably have to modify the paths in the scripts.
 I suggest you to work on a HPC because this step can take a while...
 For this module, you will need of some programs on your machine.
 
+You will have to use seqtk tool.
+```
+conda env create -f seqtk_env.yml
+conda activate seqtk_env
+```
+
+
+If you are not working on a HPC : 
 We are using [MMseqs2](https://github.com/soedinglab/MMseqs2) Version: 24479bc27c3f33a3c0121f916038c605beef3e79.
 ```
 # install by brew
