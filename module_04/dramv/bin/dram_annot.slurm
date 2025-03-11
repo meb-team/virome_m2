@@ -2,9 +2,9 @@
 
 #SBATCH --job-name=dram_annot
 #SBATCH --ntasks=1
-#SBATCH --output=logs/dramannot_%j.out
-#SBATCH --error=logs/dramannot_%j.err
-#SBATCH --cpus-per-task=16
+#SBATCH --output=logs/dramannot_%A_%a.out
+#SBATCH --error=logs/dramannot_%A_%a.err
+#SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
 #SBATCH --time=04:00:00
 #SBATCH --partition=fast
@@ -19,20 +19,14 @@ set -o pipefail
 scratch="/storage/scratch/$USER"
 output_dir="module_04/dramv/results/"
 fasta="$scratch/fasta"
+db="$scratch/module_04/dramv/db"
 
-if [ -d "$output_dir" ]; then
-  rm -rf "$output_dir"/*
-else
-  mkdir -p "$output_dir"
-fi
+mkdir -p $fasta
+mkdir -p $db
+mkdir -p $output_dir
 
-if [ -d "$fasta" ]; then
-  rm -rf "$fasta"/*
-else
-  mkdir -p "$fasta"
-fi
-
-rclone copy lmge-microstore:huserville/module_02/MMseq2/results/eco_fasta $fasta
+rclone copy lmge-microstore:huserville/module_02/MMseq2/results/eco_fasta $fasta --multi-thread-streams 1
+rclone copy lmge-microstore:huserville/module_04/dramv/db $db --multi-thread-streams 1
 
 source miniconda3/bin/activate
 conda init
@@ -49,7 +43,7 @@ eco_output_dir="$output_dir/$ecosystem"
 mkdir -p "$eco_output_dir"
 
 
-DRAM.py annotate -i $query -o $eco_output_dir/annotation
+DRAM.py annotate -i $file -o $eco_output_dir/annotation
 
 DRAM.py distill -i $eco_output_dir/annotation/annotations.tsv -o $eco_output_dir/genome_summaries --trna_path $eco_output_dir/annotation/trnas.tsv --rrna_path $eco_output_dir/annotation/rrnas.tsv
 
