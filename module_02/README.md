@@ -73,7 +73,7 @@ sbatch -p fast -q fast module_02/MMseq2/bin/crea_db.slurm # WORKS ON HPC ONLY
 The **second** step is to collect fasta sequences of representative contigs (cf. module_01) into one fasta file :
 ```
 ./module_02/MMseq2/bin/tax_fasta.sh
-sbatch module_02/MMseq2/bin/tax_fasta.slurm # WORKS ON HPC ONLY
+sbatch -p fast -q fast module_02/MMseq2/bin/tax_fasta.slurm # WORKS ON HPC ONLY
 ```
 The **third** step is to do the taxonomic annotation !
 ```
