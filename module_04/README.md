@@ -15,3 +15,9 @@ If you are working on a HPC (recommended) :
 ```
 sbatch module_04/dramv/bin/install_db.slurm
 ```
+
+The **second** step is to run DRAM-v annotations for your viral contigs !
+You should work on a HPC :
+```
+sbatch -p fast -q fast module_04/dramv/bin/dram_annot.slurm
+```
