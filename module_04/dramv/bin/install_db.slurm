@@ -10,32 +10,33 @@
 #SBATCH --partition=long
 
 # === Initialization ===
-#set -e  # Stop the script if error
-#set -u  # Stop the script unknown variables
-#set -o pipefail
+set -e  # Stop the script if error
+set -u  # Stop the script unknown variables
+set -o pipefail
 
 # === Variables ===
 scratch="/storage/scratch/$USER"
 output_dir="$scratch/module_04/dramv/db"
+home="/home/$USER"
+path_dram="module_04/dramv/bin/dram_1.5.0--pyhdfd78af_0.sif"
 
-mkdir -p $output_dir
+if [ -d "$output_dir" ]; then
+  rm -rf "$output_dir"/*
+else
+  mkdir -p "$output_dir"
+fi
 
-# === Process ===
 source miniconda3/bin/activate
 conda init
 conda activate DRAM
-echo "Conda environment loaded successfully for Dram-v tool !"
+
+# === Process ===
 
 echo "Start the creation of the database"
 
-wget -r -np -nH --cut-dirs=2 -R "index.html*" -P $output_dir/vogdb https://fileshare.lisc.univie.ac.at/vog/latest/
-#wget -r -np -nH --cut-dirs=2 -R "index.html*" -P $output_dir/vogdb --no-check-certificate -nv https://fileshare.lisc.univie.ac.at/vog/latest/
+DRAM-setup.py prepare_databases --output_dir $output_dir --skip_uniref --threads 20
 
-echo "AAAAAAAAAAAAAAAAAAAAAAAAA"
-
-DRAM-setup.py prepare_databases --output_dir $output_dir --skip_uniref --threads 20 --vogdb_loc $output_dir/vogdb
-
-echo "BBBBBBBBBBBBBBBBBBBBBBB"
+#singularity exec --bind $output_dir $path_dram DRAM-setup.py prepare_databases --output_dir $output_dir --skip_uniref --threads 20
 
 rclone sync $output_dir lmge-microstore:huserville/module_04/dramv/db
 
