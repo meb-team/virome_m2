@@ -47,16 +47,19 @@ if __name__ == '__main__':
     tsv_files = glob.glob(os.path.join(input_dir, "*.tsv"))
 
     if not tsv_files:
-        print(f"No file .tsv found here :  {input_dir}")
+        print(f"No file .tsv found here : {input_dir}")
     else:
-        for file_path in tsv_files:
-            file_name = os.path.basename(file_path)
-            prefix = file_name.split("_")[0]
-            output_file = os.path.join(output_dir, f"{prefix}_taxo_seeds.tsv")
+        for root, _, files in os.walk(input_dir):
+            for file in files:
+                if file.endswith(".tsv"):
+                    file_path = os.path.join(root, file)
+                    ecosystem = os.path.basename(root)  # Le nom du dossier parent (l'écosystème)
+                    file_name = os.path.basename(file_path)
+                    output_file = os.path.join(output_dir, f"{ecosystem}_taxo_seeds.tsv")
 
-            print(f"Processing {file_path} → {output_file}")
+                    print(f"Processing {file_path} → {output_file}")
 
-            data = building_TSV(file_path)
-            data.to_csv(output_file, sep="\t", index=False)
+                    data = building_TSV(file_path)
+                    data.to_csv(output_file, sep="\t", index=False)
 
-        print("Job done  !")
+    print("Job done!")

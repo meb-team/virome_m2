@@ -24,9 +24,9 @@ mkdir -p $scratch/module_02/MMseq2/results/eco_fasta
 rclone copy $REMOTE_PATH/module_02/MMseq2/taxonomy/mmseqs_vrefseq/ $scratch/module_02/MMseq2/taxonomy/mmseqs_vrefseq
 rclone copy $REMOTE_PATH/module_02/MMseq2/results/eco_fasta $scratch/module_02/MMseq2/results/eco_fasta
 
-DB="$scratch/module_02/MMseq2/mmseqs_vrefseq/refseq_viral"        # PATH TO REFSEQ DB
+DB="$scratch/module_02/MMseq2/taxonomy/mmseqs_vrefseq/refseq_viral"        # PATH TO REFSEQ DB
 OUTPUT="$scratch/results"                                         # PATH TO OUTPUT
-BIOME_DIR="$scratch/module_02/MMseq2/results/eco_fasta            # PATH TO FASTA
+BIOME_DIR="$scratch/module_02/MMseq2/results/eco_fasta"           # PATH TO FASTA
 
 mkdir -p "$OUTPUT"
 
