@@ -1,3 +1,11 @@
+options(repos = c(CRAN = "https://cran.rstudio.com/"))
+
+install.packages("remotes")
+remotes::install_github("fbreitwieser/pavian")
+
+install.packages("htmlwidgets")
+install.packages("webshot")
+
 # Charger les bibliothèques
 library("htmlwidgets")
 library("pavian")
@@ -77,7 +85,7 @@ build_sankey_network <- function(my_report, taxRanks = c("D","K","P","C","O","F"
 file <- commandArgs(trailingOnly = TRUE)[1]
 
 # Définir le dossier de sortie
-output_dir <- file.path(dirname(file), "../sankey")
+output_dir <- file.path("module_02/MMseq2/results/sankey")
 if (!dir.exists(output_dir)) {
   dir.create(output_dir, recursive = TRUE)
 }
