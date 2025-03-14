@@ -22,7 +22,7 @@ module load numpy
 module load pandas
 
 # === Variables ===
-OUTPUT_DIR="module_01/filtering/results"
+OUTPUT_DIR="tmp/module_01/filtering/results"
 REMOTE_PATH="lmge-microstore:huserville/module_01"
 LOCAL_DIR="/storage/scratch/$USER/module_01"
 
@@ -33,11 +33,11 @@ mkdir -p $LOCAL_DIR/annotate/results
 # === Synchronisation des données ===
 echo "Synchronisation des données depuis le stockage distant..."
 rclone sync $REMOTE_PATH/filtering/results $LOCAL_DIR/filtering/results
-rclone sync $REMOTE_PATH/annotate/results/contig_eco_list.tsv $LOCAL_DIR/annotate/results
+rclone sync $REMOTE_PATH/mmseq2/results/clusterRes_cluster.tsv $LOCAL_DIR/mmseq2/
 
 # === Process ===
 
-./module_01/filtering/bin/filtering.py -p $LOCAL_DIR/filtering/results/representative_cluster.tsv -b $LOCAL_DIR/annotate/results/contig_eco_list.tsv -o $OUTPUT_DIR
+./module_01/filtering/bin/filtering2.py -p module_01/filtering/results/representative_cluster.tsv -c $LOCAL_DIR/mmseq2/clusterRes_cluster.tsv -o $OUTPUT_DIR
 
 rclone sync $OUTPUT_DIR/eco $REMOTE_PATH/filtering/results
 

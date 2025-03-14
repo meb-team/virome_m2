@@ -30,7 +30,7 @@ mkdir -p $scratch/mmseq2/results
 # === Synchronisation des données ===
 echo "Synchronisation des données depuis le stockage distant..."
 
-rclone copy $REMOTE_PATH/filtering/results/eco/ $scratch/filtering/eco
+rclone copy $REMOTE_PATH/filtering/results/ $scratch/filtering/eco
 rclone copy $REMOTE_PATH/mmseq2/results/clusterRes_rep_seq.fasta $scratch/mmseq2/results
 
 ls $scratch/filtering/eco
