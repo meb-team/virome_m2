@@ -86,4 +86,5 @@ The **fourth** step is to re-build the results from MMseq2 into a more readable 
 ./module_02/MMseq2/bin/sankey.sh # Create Sankey graph
 
 sbatch -p fast -q fast module_02/MMseq2/bin/building_res.slurm # WORKS ON HPC ONLY
+sbatch -p fast -q fast module_02/MMseq2/bin/sankey.slurm # WORKS ON HPC ONLY
 ```
