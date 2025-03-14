@@ -42,7 +42,6 @@ wget https://mmseqs.com/latest/mmseqs-linux-sse41.tar.gz; tar xvfz mmseqs-linux-
 wget https://mmseqs.com/latest/mmseqs-linux-sse2.tar.gz; tar xvfz mmseqs-linux-sse2.tar.gz; export PATH=$(pwd)/mmseqs/bin/:$PATH
 ```
 
-I recommend you to have snakemake on your machine to run the pipeline automatically.
 ```
 # If you don't have conda on your machine :
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
@@ -50,9 +49,10 @@ bash miniconda.sh
 source ~/.bashrc
 
 # When you have conda on your machine :
-conda create -c conda-forge -n snakemake snakemake
-conda activate snakemake
 ```
+conda env create -f module_02/env/sankey.yml
+```
+
 ## Usage
 
 I recommand you to follow the all-in-one steps. This option is running the entire module automatically. Make sure you have snakemake (cf. Requirements).
@@ -84,4 +84,6 @@ The **fourth** step is to re-build the results from MMseq2 into a more readable 
 ```
 ./module_02/MMseq2/bin/building_res.py # re-Building results
 ./module_02/MMseq2/bin/sankey.sh # Create Sankey graph
+
+sbatch -p fast -q fast module_02/MMseq2/bin/building_res.slurm # WORKS ON HPC ONLY
 ```
