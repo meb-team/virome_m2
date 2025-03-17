@@ -42,6 +42,7 @@ You can retrieve the results here : module_03/results
 The **seconde** step is to create a matrix of similarity from Jaccard values and to plot the results (Heatmap).
 ```
 ./module_03/bin/visu.py
+sbatch -p fast -q fast module_03/bin/visu.slurm # WORKS ON HPC ONLY
 ```
 The plot is availaible here : module_03/figure
 
