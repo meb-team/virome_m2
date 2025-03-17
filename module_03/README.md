@@ -6,7 +6,19 @@ This third module creates tables with ecosystemic informations such as Shannon, 
 
 First, you need to be sure that you have run the seconde (module_02) to have a full access to data.
 
-Python 3.8.10
+Then, you need a conda environment :
+```
+# If you don't have conda on your machine :
+
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+bash miniconda.sh
+source ~/.bashrc
+
+# When you have conda on your machine :
+
+conda env create -f module_03/env/diversity.yml
+```
+
 
 ## Usage
 
@@ -22,6 +34,7 @@ faire snakemake XXXXXXXXXXXXXx
 The **first** step is to create the tables containing all results of the indexes for each ecosystems.
 ```
 ./module_03/bin/viral_diversity.py
+sbatch -q fast -p fast module_03/bin/viral_diversity.slurm # HPC ONLY
 ```
 This will create to table : a table containing Jaccard and Beta indexes and another table with Shannon, alpha and Simpson diversity.
 You can retrieve the results here : module_03/results

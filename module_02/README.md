@@ -49,8 +49,9 @@ bash miniconda.sh
 source ~/.bashrc
 
 # When you have conda on your machine :
-```
+
 conda env create -f module_02/env/sankey.yml
+conda env create -f module_02/env/seqtk_env.yml
 ```
 
 ## Usage
