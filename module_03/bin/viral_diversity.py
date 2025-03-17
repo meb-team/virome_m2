@@ -126,5 +126,7 @@ if __name__ == '__main__':
 
     jaccard_beta_df = pd.DataFrame(combined_results)
 
-    jaccard_beta_df.to_csv(f"{output_dir}/jaccard_beta.tsv", sep="\t", index=False)
-    final_df.to_csv(f"{output_dir}/diversity.tsv", sep="\t", index=True)
+    #jaccard_beta_df.to_csv(f"{output_dir}/jaccard_beta.tsv", sep="\t", index=False)
+    #final_df.to_csv(f"{output_dir}/diversity.tsv", sep="\t", index=True)
+    jaccard_beta_df.to_csv("{}/jaccard_beta.tsv".format(output_dir), sep="\t", index=False)
+    final_df.to_csv("{}/diversity.tsv".format(output_dir), sep="\t", index=True)

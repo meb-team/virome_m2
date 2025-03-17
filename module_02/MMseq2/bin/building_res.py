@@ -44,7 +44,7 @@ if __name__ == '__main__':
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    tsv_files = glob.glob(os.path.join(input_dir, "*.tsv"))
+    tsv_files = glob.glob(os.path.join(input_dir, "**", "*.tsv"), recursive=True)
 
     if not tsv_files:
         print(f"No file .tsv found here : {input_dir}")

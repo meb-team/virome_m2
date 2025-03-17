@@ -14,7 +14,7 @@ def jac_matrix(path):
         raise ValueError("TSV file does not contains 'Jaccard' column")
     ecosystems = sorted(set(data["Ecosystem1"]).union(set(data["Ecosystem2"])))
     jaccard_matrix = pd.DataFrame(np.nan, index=ecosystems, columns=ecosystems)
-    for _, row in df.iterrows():
+    for _, row in data.iterrows():
         eco1, eco2, jaccard_value = row["Ecosystem1"], row["Ecosystem2"], row["Jaccard"]
         jaccard_matrix.loc[eco1, eco2] = jaccard_value
         jaccard_matrix.loc[eco2, eco1] = jaccard_value
@@ -43,7 +43,7 @@ if __name__ == '__main__':
         description="This script creates a similarity matrix and figure of Jaccard index")
 
     parser.add_argument("--input_dir", "-i", help="Path to the folder containing TSV file. Default: module_03/results/jaccard_beta.tsv", type=str, default="module_03/results/jaccard_beta.tsv")
-    parser.add_argument("--output_dir", "-o", help="Path to the output folder. Default: module_03/figure, type=str, default="module_03/figure")
+    parser.add_argument("--output_dir", "-o", help="Path to the output folder. Default: module_03/figure", type=str, default="module_03/figure")
 
     args = parser.parse_args()
 
