@@ -28,7 +28,7 @@ def jac_matrix(path):
 def jac_heatmap(matrix, out):
 
     plt.figure(figsize=(8, 6))
-    sns.heatmap(matrix, annot=True, cmap="viridis", fmt=".2f", linewidths=0.5)
+    sns.heatmap(matrix, cmap="viridis", fmt=".2f", linewidths=0.5)
     plt.title("Similarity matrix of Jaccard index")
     plt.xticks(rotation=45, ha='right')
     plt.yticks(rotation=0)
