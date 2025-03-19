@@ -59,10 +59,6 @@ conda env create -f module_02/env/seqtk_env.yml
 I recommand you to follow the all-in-one steps. This option is running the entire module automatically. Make sure you have snakemake (cf. Requirements).
 If you want to look after the different steps you can follow the step-by-step part (you don't need snakemake for this).
 
-### Module all-in-one
-
-faire snakemake XXXXXXXXXXXXXx 
-
 ### Module step-by-step
 
 The **first** step is to create a viral database from RefSeq NCBI database !
@@ -88,4 +84,18 @@ The **fourth** step is to re-build the results from MMseq2 into a more readable 
 
 sbatch -p fast -q fast module_02/MMseq2/bin/building_res.slurm # WORKS ON HPC ONLY
 sbatch -p fast -q fast module_02/MMseq2/bin/sankey.slurm # WORKS ON HPC ONLY
+```
+
+The **fifth** step is to map the seed sequences on the [IMG/VR](https://academic.oup.com/nar/article/51/D1/D733/6833254?login=true) database.
+Firstly, you have to make sure that you have an access to the IMG/VR database (file : IMGVR_all_nucleotides.fna.gz).
+If not : I suggest you to read [this](https://genome.jgi.doe.gov/portal/help/download.jsf#/api).
+You can also download the database by the following command but you need first a JGI IMG account. When you have the account, you can modify the slurm script to enter your 
+own login and password.
+```
+sbatch -p fast -q fast module_02/minimap/bin/dl_imgvr.slurm # WORKS ON HPC ONLY
+```
+
+Once you have an access to the IMG/VR database. You are ready to map the seed sequences !
+```
+XXXXXXXX
 ```
