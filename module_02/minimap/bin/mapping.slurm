@@ -39,7 +39,7 @@ for fasta_file in "$fasta"/*.fa; do
         nb=$(grep '>' $fasta_file | wc -l)
         filename=$(basename -- "$fasta_file")
         ecosystem=$(echo "$filename" | cut -d'_' -f1)  # Extraction de l'écosystème
-        output="$output_dir/${ecosystem}_results.txt"
+        output="$output_dir/${ecosystem}_results.paf"
         
         echo "Processing $fasta_file (Ecosystem: $ecosystem)"
         minimap2 -t 32 -x asm5 -N $nb "$fasta_file" "$db/IMGVR_all_nucleotides.fna.gz" > "$output"
