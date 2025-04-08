@@ -91,11 +91,17 @@ Firstly, you have to make sure that you have an access to the IMG/VR database (f
 If not : I suggest you to read [this](https://genome.jgi.doe.gov/portal/help/download.jsf#/api).
 You can also download the database by the following command but you need first a JGI IMG account. When you have the account, you can modify the slurm script to enter your 
 own login and password.
+
 ```
 sbatch -p fast -q fast module_02/minimap/bin/dl_imgvr.slurm # WORKS ON HPC ONLY
 ```
-
 Once you have an access to the IMG/VR database. You are ready to map the seed sequences !
+
 ```
-XXXXXXXX
+sbatch module_02/minimap/bin/mapping.slurm
+```
+
+Then, you can complete the taxonomic informations with IMG/VR database thanks to the mapping. You can do it for each ecosystem.
+```
+XXXXXX
 ```
