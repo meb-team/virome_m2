@@ -12,7 +12,7 @@ To use DRAM-v and to be able to predict AMGs you have to make sure you ran VirSo
 If you didn't, i suggere you to follow the **zero** step here. This step will reprocess the seeds of each ecosystem with virsorter2 and keep only the
 interesting file for DRAM-v. The other prediction files will be deleted. To perform this step, you need a singularity version of virsoter
 ```
-apptainer build virsorter2.sif docker://jiarong/virsorter:latest
+apptainer build module_04/dramv/bin/virsorter2.sif docker://jiarong/virsorter:latest
 ```
 For more information, you can click [here](https://github.com/jiarong/VirSorter2).
 
