@@ -17,7 +17,7 @@ set -o pipefail
 
 source miniconda3/bin/activate
 conda init
-conda activate diversity
+conda activate stat
 
 # === Variables ===
 scratch="/storage/scratch/$USER"

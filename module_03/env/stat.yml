@@ -1,4 +1,4 @@
-name: diversity
+name: stat
 channels:
   - conda-forge
   - bioconda
