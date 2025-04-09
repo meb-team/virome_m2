@@ -21,9 +21,9 @@ module load numpy
 module load pandas
 
 # === Variables ===
-OUTPUT_DIR="tmp/module_02/complete"
 REMOTE_PATH="lmge-microstore:huserville"
 scratch="/storage/scratch/$USER"
+OUTPUT_DIR="$scratch/module_02/complete"
 
 mkdir -p $scratch/mapping
 mkdir -p $scratch/eco
@@ -39,6 +39,8 @@ rclone sync $REMOTE_PATH/module_02/minimap/imgvr_db/IMGVR_all_Sequence_informati
 # === Process ===
 
 ./module_02/minimap/bin/complete_taxo.py -p $scratch/eco -o $OUTPUT_DIR -m $scratch/mapping -i $scratch/info/IMGVR_all_Sequence_information.tsv
+
+rclone sync $OUTPUT_DIR $REMOTE_PATH/module_02/minimap/res_complete_taxo
 
 exit 0
 

@@ -28,8 +28,8 @@ def parse_paf_file(paf_path):
             parts = line.strip().split('\t')
             if len(parts) < 12:
                 continue
-            query = parts[0]  # IMG/VR UID (e.g., IMGVR_UViG_...) 
-            target = parts[5]  # your contig ID
+            query = parts[0]  # IMG/VR UID
+            target = parts[5]  # contig ID (seeds)
             tags = parts[12:]
             score = 0
             for tag in tags:
@@ -88,36 +88,25 @@ if __name__ == '__main__':
 
     img_taxo_dict = parse_imgvr_taxo_file(args.imgvr)
 
-    for ecosystem in os.listdir(args.path):
-        eco_path = os.path.join(args.path, ecosystem)
-        print("AAAAAAA", eco_path)
-        if not os.path.isdir(eco_path):
-            print("PROBLEM")
-            continue
-
-        tsv_filename = f"{ecosystem}_taxo_seeds.tsv"
-        tsv_path = os.path.join(eco_path, tsv_filename)
-        print("BBBBBBB", tsv_path)
-        if not os.path.exists(tsv_path):
-            print(f"\u274c TSV not found for ecosystem {ecosystem}, skipping...")
-            continue
+    for tsv_file in os.listdir(args.path):
+        ecosystem = tsv_file.split('_')[0]
 
         paf_folder = os.path.join(args.minimap, ecosystem)
         paf_matches = defaultdict(list)
 
         if os.path.isdir(paf_folder):
-            for file in os.listdir(paf_folder):
-                if file.endswith(".paf"):
-                    paf_path = os.path.join(paf_folder, file)
+            for paf_file in os.listdir(paf_folder):
+                if paf_file.endswith(".paf"):
+                    paf_path = os.path.join(paf_folder, paf_file)
                     for k, v in parse_paf_file(paf_path).items():
                         paf_matches[k].extend(v)
 
         best_matches = select_best_matches(paf_matches)
-        updated_df, updated_count = update_tsv(tsv_path, best_matches, img_taxo_dict)
-        print(updated_df)
 
-        os.makedirs(os.path.join(args.out, ecosystem), exist_ok=True)
-        output_path = os.path.join(args.out, ecosystem, tsv_filename)
+        tsv_path = os.path.join(args.path, tsv_file)
+        updated_df, updated_count = update_tsv(tsv_path, best_matches, img_taxo_dict)
+
+        output_path = os.path.join(args.out, f"{ecosystem}_taxo_seeds.tsv")
         updated_df.to_csv(output_path, sep='\t', index=False)
 
-        print(f"\u2705 {ecosystem}: {updated_count} ligne(s) mise(s) à jour -> {output_path}")
+        print(f"\u2705 {ecosystem}: {updated_count} updated rows")
