@@ -8,14 +8,15 @@ You can find more informations about Dram-v [here](https://github.com/WrightonLa
 singularity pull docker://quay.io/biocontainers/dram:1.5.0--pyhdfd78af_0
 ```
 
-To use DRAM-v and to be able to predict AMGs you have to make sure you ran VirSorter2 with the correct option : 
+To use DRAM-v and to be able to predict AMGs you have to make sure you ran VirSorter2 with the correct option : virsorter run --prep-for-dramv
 If you didn't, i suggere you to follow the **zero** step here. This step will reprocess the seeds of each ecosystem with virsorter2 and keep only the
-interesting file for DRAM-v. The other prediction files will be deleted. To perform this step, you need a conda version of VirSorter2 : virsorter run --prep-for-dramv -w test.out -i test.fa -j 4 all
+interesting file for DRAM-v. The other prediction files will be deleted. To perform this step, you need a singularity version of virsoter
 ```
-conda create -n vs2 -c conda-forge -c bioconda virsorter=2
+apptainer build virsorter2.sif docker://jiarong/virsorter:latest
 ```
+For more information, you can click [here](https://github.com/jiarong/VirSorter2).
 
-Once you have this conda environment, you can follow the **zero** step in the Usage section.
+Once you have this singularity image, you can follow the **zero** step in the Usage section.
 If you already have the required files, you can pass the **zero** step but you have to make sure that the path to the
 vs2 annotation for dram-v is correct in the sbatch module_04/dramv/bin/dram_annot.slurm script.
 
