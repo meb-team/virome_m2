@@ -16,20 +16,19 @@ set -o pipefail
 
 module load rclone
 
-source miniconda3/bin/activate
-conda init
-conda activate vs2
 
 # === Variable definition ===
 
 scratch="/storage/scratch/$USER"
 remote="lmge-microstore:huserville"
+path_vs="module_04/dramv/bin/virsorter2.sif"
+home="/home/$USER"
 
 mkdir -p $scratch/vs2_db
 
 # === Process ===
 
-virsorter setup -d $scratch/vs2_db -j 4
+singularity exec --bind $scratch $path_vs virsorter setup -d $scratch/vs2_db -j 4
 
 rclone sync $scratch/vs2_db $remote/module_04/dramv/vs2_db
 

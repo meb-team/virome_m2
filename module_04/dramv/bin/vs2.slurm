@@ -17,16 +17,15 @@ set -o pipefail
 # === Variables ===
 scratch="/storage/scratch/$USER"
 output_dir="$scratch/vs2/results"
+path_vs="module_04/dramv/bin/virsorter2.sif"
+home="/home/$USER"
+
 
 mkdir -p $output_dir
 mkdir -p $scratch/vs2_db
 mkdir -p $scratch/eco_fasta
 
 module load seqkit/0.15.0
-
-source miniconda3/bin/activate
-conda init
-conda activate vs2
 
 echo "Synchronizing distant files..."
 rclone copy lmge-microstore:huserville/module_02/MMseq2/results/eco_fasta $scratch/eco_fasta
@@ -40,15 +39,12 @@ for file in $scratch/eco_fasta/*.fa; do
     mv temp2.fa $file
     rm temp.fa
 
-    cat $file | grep '>' | wc -l
-    cat $file | grep '>' | sort | uniq | wc -l
-
     ecosystem=$(basename "$file" | cut -d'_' -f1)
     eco_output_dir="$output_dir/$ecosystem"
 
     mkdir -p $eco_output_dir
 
-    virsorter run --prep-for-dramv -w $eco_output_dir -i $file -j 4 all
+    singularity exec --bind $scratch $path_vs virsorter run --prep-for-dramv -w $eco_output_dir -i $file -j 4 all
     
     echo "AAAAAAAAAAA"
     ls $eco_output_dir
