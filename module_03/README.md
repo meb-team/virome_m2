@@ -1,10 +1,10 @@
-# 🎈 🎈 🎈 Welcome to the module number three (optionnal ! 🎈 🎈 🎈 
+# 🎈 🎈 🎈 Welcome to the module number three 🎈 🎈 🎈 
 
-This third module creates tables with ecosystemic informations such as Shannon, Simpson, Jaccard, alpha and beta (Bray-Curtis) indexes.
+This module aims to analyis the data with some statistical perspective and annotations.
 
 ## Requirements
 
-First, you need to be sure that you have run the seconde (module_02) to have a full access to data.
+First, you need to be sure that you have run all the module to guarantee an access to all the required data.
 
 Then, you need a conda environment :
 ```
@@ -16,33 +16,20 @@ source ~/.bashrc
 
 # When you have conda on your machine :
 
-conda env create -f module_03/env/diversity.yml
+conda env create -f module_03/env/stat.yml
 ```
 
 
 ## Usage
 
-I recommand you to follow the all-in-one steps. This option is running the entire module automatically. Make sure you have snakemake (cf. Requirements).
-If you want to look after the different steps you can follow the step-by-step part (you don't need snakemake for this).
-
-### Module all-in-one
-
-faire snakemake XXXXXXXXXXXXXx 
-
-### Module step-by-step
-
-The **first** step is to create the tables containing all results of the indexes for each ecosystems.
-```
-./module_03/bin/viral_diversity.py
-sbatch -q fast -p fast module_03/bin/viral_diversity.slurm # HPC ONLY
-```
+The **first** analysis is the calculation of ecosystemic indexes such as Shannon, Simpson or Jaccard indexes. 
 This will create to table : a table containing Jaccard and Beta indexes and another table with Shannon, alpha and Simpson diversity.
-You can retrieve the results here : module_03/results
+You will also create a matrix of similarity from Jaccard values and to plot the results (Heatmap).
 
-The **seconde** step is to create a matrix of similarity from Jaccard values and to plot the results (Heatmap).
 ```
-./module_03/bin/visu.py
-sbatch -p fast -q fast module_03/bin/visu.slurm # WORKS ON HPC ONLY
-```
-The plot is availaible here : module_03/figure
+sbatch -q fast -p fast module_03/bin/viral_diversity.slurm
+sbatch -p fast -q fast module_03/bin/visu.slurm
 
+```
+
+The **second** analysis is.. XXXXXXXX
