@@ -17,9 +17,9 @@ set -o pipefail
 # === Variables ===
 scratch="/storage/scratch/$USER"
 output_dir="$scratch/vs2/results"
-path_vs="module_04/dramv/bin/virsorter2.sif"
+#path_vs="module_04/dramv/bin/virsorter2.sif"
 home="/home/$USER"
-
+path_vs="virsorter2.sif"
 
 mkdir -p $output_dir
 mkdir -p $scratch/vs2_db
