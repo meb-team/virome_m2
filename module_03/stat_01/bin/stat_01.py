@@ -42,11 +42,10 @@ def plot_colored_swarm(df, title):
     }
 
     sns.set(style="whitegrid")
-    box_palette = sns.color_palette("Set3")
 
     plt.figure(figsize=(14, 6))
     
-    sns.boxplot(x="ecosystem", y="seed_length", data=df, palette=box_palette, showfliers=False)
+    sns.boxplot(x="ecosystem", y="seed_length", data=df, showfliers=False)
     
     sns.stripplot(
         x="ecosystem",
@@ -65,7 +64,7 @@ def plot_colored_swarm(df, title):
     plt.ylabel("Seed Length (Genome Size)")
     plt.legend(title="CheckV Quality", bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.tight_layout()
-    plt.savefig(f"{out}/{title}_size_distribution.svg", dpi=300)
+    plt.savefig(f"{out}/{title}_size_distribution.svg")
     
 
 if __name__ == '__main__':
