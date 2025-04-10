@@ -1,6 +1,7 @@
 # 🎈 🎈 🎈 Welcome to the module number three 🎈 🎈 🎈 
 
 This module aims to analyis the data with some statistical perspective and annotations.
+You can run this module after running all the other modules, or, you can run this module inside other ones (see usage from other modules_x).
 
 ## Requirements
 
@@ -27,8 +28,8 @@ This will create to table : a table containing Jaccard and Beta indexes and anot
 You will also create a matrix of similarity from Jaccard values and to plot the results (Heatmap).
 
 ```
-sbatch -q fast -p fast module_03/bin/viral_diversity.slurm
-sbatch -p fast -q fast module_03/bin/visu.slurm
+sbatch -q fast -p fast module_03/bin/diversity/viral_diversity.slurm
+sbatch -p fast -q fast module_03/bin/diversity/visu.slurm
 
 ```
 
