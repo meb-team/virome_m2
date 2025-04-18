@@ -47,7 +47,7 @@ sudo apt install singularity-container
 
 Then, you have to install CheckV (v1.0.1) via singularity :
 ```bash
-singularity pull shub://DerrickWood/CheckV
+singularity pull docker://antoniopcamargo/checkv:latest
 ```
 
 Finally, we are also using MMseq2 for clustering :

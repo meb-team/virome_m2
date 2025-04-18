@@ -22,7 +22,9 @@ vs2 annotation for dram-v is correct in the sbatch module_04/dramv/bin/dram_anno
 
 ## Usage
 The **zero** step is to reprocess the seeds with the correct option of VirSorter2 to have required file for AMGs prediction.
-So, firstly you need to download the vs2 database.
+So, firstly you need to download the vs2 database. WARNING : you can skin the installation of the database if you are using the singularity image. It's usefull
+only for Conda environment version.
+
 ```
 sbatch -p fast -q fast module_04/dramv/bin/install_vs2.slurm
 ```

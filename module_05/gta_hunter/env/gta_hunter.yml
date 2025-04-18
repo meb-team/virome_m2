@@ -1,0 +1,12 @@
+name: gta
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - numpy
+  - cvxopt
+  - matplotlib
+  - pandas
+  - biopython
+

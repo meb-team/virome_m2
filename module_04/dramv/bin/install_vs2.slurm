@@ -28,7 +28,7 @@ mkdir -p $scratch/vs2_db
 
 # === Process ===
 
-singularity exec --bind $scratch $path_vs virsorter setup -d $scratch/vs2_db -j 4
+singularity exec --bind $scratch $path_vs virsorter setup -d $scratch/vs2_db -j 8
 
 rclone sync $scratch/vs2_db $remote/module_04/dramv/vs2_db
 
