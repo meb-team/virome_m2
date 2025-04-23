@@ -28,7 +28,7 @@ fi
 
 source miniconda3/bin/activate
 conda init
-conda activate DRAM
+conda activate DRAM14
 
 # === Process ===
 

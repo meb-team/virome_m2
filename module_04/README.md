@@ -4,8 +4,9 @@
 
 Firstly, to use Dram-v, you have to create a conda environment and download the dependencies.
 You can find more informations about Dram-v [here](https://github.com/WrightonLabCSU/DRAM).
+If you have conda, you can create an environment like this :
 ```
-singularity pull docker://quay.io/biocontainers/dram:1.5.0--pyhdfd78af_0
+conda env create -f module_04/env/environment_dram14.yml
 ```
 
 To use DRAM-v and to be able to predict AMGs you have to make sure you ran VirSorter2 with the correct option : virsorter run --prep-for-dramv
