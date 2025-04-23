@@ -10,5 +10,7 @@ On peut faire GTA hunter
 conda env create -f module_05/gta_hunter/env/gta_hunter.yml
 
 git clone https://github.com/kogayr/GTA-Hunter.git
+mv GTA-Hunter/ module_05/gta_hunter/bin/
 
+sbatch module_05/gta_hunter/bin/gta_predict_01.slurm
 
