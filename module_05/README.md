@@ -26,4 +26,8 @@ You need to work on a HPC.
 ```
 sbatch module_05/gta_hunter/bin/gta_predict_01.slurm
 ```
+You can rewrite the prediction results into a TSV file :
+```
+sbatch -p fast -q fast module_05/gta_hunter/bin/gta_building_res.slurm
+```
 
