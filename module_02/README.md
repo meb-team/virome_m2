@@ -56,11 +56,6 @@ conda env create -f module_02/env/seqtk_env.yml
 
 ## Usage
 
-I recommand you to follow the all-in-one steps. This option is running the entire module automatically. Make sure you have snakemake (cf. Requirements).
-If you want to look after the different steps you can follow the step-by-step part (you don't need snakemake for this).
-
-### Module step-by-step
-
 The **first** step is to create a viral database from RefSeq NCBI database !
 ```
 ./module_02/MMseq2/bin/crea_db.sh
