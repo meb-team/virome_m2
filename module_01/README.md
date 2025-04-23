@@ -68,27 +68,13 @@ wget https://mmseqs.com/latest/mmseqs-linux-sse41.tar.gz; tar xvfz mmseqs-linux-
 # static build with SSE2 (slowest, for very old systems)
 wget https://mmseqs.com/latest/mmseqs-linux-sse2.tar.gz; tar xvfz mmseqs-linux-sse2.tar.gz; export PATH=$(pwd)/mmseqs/bin/:$PATH
 ```
-I recommend you to have snakemake on your machine to run the pipeline automatically.
+I recommend you to have conda on your machine 
 ```
-# If you don't have conda on your machine :
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
 bash miniconda.sh
 source ~/.bashrc
 
-# When you have conda on your machine :
-conda create -c conda-forge -n snakemake snakemake
-conda activate snakemake
-```
 ## Usage
-
-I recommand you to follow the all-in-one steps. This option is running the entire module automatically. Make sure you have snakemake (cf. Requirements).
-If you want to look after the different steps you can follow the step-by-step part (you don't need snakemake for this).
-
-### Module all-in-one
-
-faire snakemake XXXXXXXXXXXXXx 
-
-### Module step-by-step
 
 The **first step** is to run the CheckV tool for each fasta file.
 
