@@ -6,8 +6,8 @@
 #SBATCH --error=logs/dramv_%j.err
 #SBATCH --cpus-per-task=32
 #SBATCH --mem=64G
-#SBATCH --time=7-00:00:00
-#SBATCH --partition=long
+#SBATCH --time=1-00:00:00
+#SBATCH --partition=normal
 
 # === Initialization ===
 set -e  # Stop the script if error
@@ -49,7 +49,7 @@ for file in $fasta/*.fa; do
     mv temp2.fa $file
     rm temp.fa
 
-    cat $file awk -F"__" '{print $1}' | grep -v '>' | sort | uniq > $fasta/contig.txt
+    cat $file | awk -F"__" '{print $1}' | grep -v '>' | sort | uniq > $fasta/contig.txt
     
     ecosystem=$(basename "$file" | cut -d'_' -f1)
     eco_output_dir="$output_dir/$ecosystem"

@@ -1,0 +1,8 @@
+name: gta_env
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+prefix: /home/huservil/virome_m2/miniconda3/envs/gta_env
