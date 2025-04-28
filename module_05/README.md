@@ -32,13 +32,13 @@ sbatch -p fast -q fast module_05/gta_hunter/bin/gta_building_res.slurm
 ```
 
 The **third** step is to perform a Multiple Sequence Alignement (MSA) of the GTAs genes predicted and isolated.
-We are here using ClustalOmega tool. You can retrieve more information about this tool [here](https://github.com/GSLBiotech/clustal-omega).
+We are here using MAFFT tool. You can retrieve more information about this tool [here](https://github.com/GSLBiotech/mafft).
 ```
 # To collect the GTAs sequences into a FASTA format
-sbatch -p fast -q fast module_05/clustalomega/bin/gta_seq.slurm
+sbatch -p fast -q fast module_05/mafft/bin/gta_seq.slurm
 
-# To perform the MSA (ClustalOmega)
-sbatch module_05/clustalomega/bin/msa.slurm
+# To perform the MSA (MAFFT)
+sbatch module_05/mafft/bin/msa.slurm
 ```
 
 Optionnal : You can do some statistics and visualization on GTAs logs :
