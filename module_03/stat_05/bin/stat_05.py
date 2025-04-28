@@ -17,6 +17,24 @@ def get_class_or_domain(row):
         return row['Class']
 
 
+
+def plot_ecosystem_proportions(eco_list, output_dir):
+    eco_df = pd.DataFrame(eco_list, columns=['ID', 'Ecosystem'])
+
+    ecosystem_counts = eco_df['Ecosystem'].value_counts()
+
+    plt.figure(figsize=(10, 6))
+    ecosystem_counts.plot(kind='bar', color='lightgreen', edgecolor='black')
+    plt.xlabel('Ecosystem')
+    plt.ylabel('Number of GTAs')
+    plt.title('Proportion of GTAs by Ecosystem')
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+
+    plt.savefig(f'{output_dir}/ecosystem_proportions.png', dpi=300)
+    plt.close()
+
+
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(
@@ -25,12 +43,14 @@ if __name__ == '__main__':
     parser.add_argument("--tsv", "-t", help="Path to the folder containing TSV files (taxonomy).", type=str, required=True)
     parser.add_argument("--list", "-l", help="Path to the list of IDs.", type=str, required=True)
     parser.add_argument("--output_dir", "-o", help="Path to the output folder.", type=str, required=True)
+    parser.add_argument("--ecosystem", "-e", help="Path to the list of IDs and ecosystems.", type=str, required=True)
 
     args = parser.parse_args()
 
     path = args.tsv
     out = args.output_dir
     liste= args.list
+    eco = args.ecosystem
 
     if not os.path.exists(out):
         os.makedirs(out)
@@ -63,3 +83,7 @@ if __name__ == '__main__':
     plt.savefig(f'{out}/repartition_classes.png', dpi=300)
     plt.close()
 
+    with open(eco, 'r') as f:
+        eco_list = [line.strip().split('==') for line in f]
+
+    plot_ecosystem_proportions(eco_list, out)

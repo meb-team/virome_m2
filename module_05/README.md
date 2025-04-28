@@ -40,3 +40,8 @@ sbatch -p fast -q fast module_05/clustalomega/bin/gta_seq.slurm
 # To perform the MSA (ClustalOmega)
 sbatch module_05/clustalomega/bin/msa.slurm
 ```
+
+Optionnal : You can do some statistics and visualization on GTAs logs :
+```
+sbatch -p fast -q fast module_03/stat_05/bin/stat_05.slurm
+```

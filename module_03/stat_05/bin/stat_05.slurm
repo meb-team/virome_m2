@@ -42,13 +42,16 @@ rclone copy $remote/module_05/gta_hunter/prediction/gta_seq.faa $data
 
 echo "Begin the statistical analysis for module_01..."
 
+
+cat $data/gta_seq.faa | grep '>' | sed 's/^>//' | sed -E 's/==([^_]+)_[0-9]+$/==\1/' > $data/ecosystem_list.txt
+
 cat $data/gta_seq.faa \
 | grep '>' \
 | sed -E 's/^>([^=]+)==.*/\1/' > $data/id_list.txt
 
 sort "$data/id_list.txt" | uniq > "$data/id_list.txt.tmp" && mv "$data/id_list.txt.tmp" "$data/id_list.txt"
 
-./module_03/stat_05/bin/stat_05.py -t $tsv_path -l $data/id_list.txt -o $result
+./module_03/stat_05/bin/stat_05.py -t $tsv_path -l $data/id_list.txt -o $result -e $data/ecosystem_list.txt
 
 exit 0
 
