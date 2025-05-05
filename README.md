@@ -10,3 +10,5 @@ Puis module_02 (assignation taxonomique)
 puis module_03 (optionnel => analyse diversité viral via Shannon, alpha, beta, Simpson, Jaccard)
 
 Puis module_04 (annotation fonctionnelle)
+
+Puis module_05 (prédiction GTA)
