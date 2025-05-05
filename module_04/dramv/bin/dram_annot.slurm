@@ -34,7 +34,7 @@ rclone copy lmge-microstore:huserville/module_04/results/vs2/ $annot
 
 source miniconda3/bin/activate
 conda init
-conda activate DRAM14
+conda activate DRAM
 
 module load seqkit/0.15.0
 
@@ -52,6 +52,8 @@ for file in $fasta/*.fa; do
     cat $file | awk -F"__" '{print $1}' | grep -v '>' | sort | uniq > $fasta/contig.txt
     
     ecosystem=$(basename "$file" | cut -d'_' -f1)
+    echo $ecosystem
+    echo "BBBBBBBB"
     eco_output_dir="$output_dir/$ecosystem"
 
     mkdir -p "$eco_output_dir"
