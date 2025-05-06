@@ -26,7 +26,7 @@ data="module_00/results/try"      # Path to the results from module_00/bin/data_
 
 scratch="/storage/scratch/$USER"
 #result="$scratch/module_00/result/merge"
-result="module_00/results/merge"
+result="module_00/results"
 
 mkdir -p $result
 
@@ -48,14 +48,16 @@ SRR_DIR=${SRR_DIRS[$SLURM_ARRAY_TASK_ID]}
 ecosystem=$(basename "$(dirname "$SRR_DIR")")
 srrname=$(basename "$SRR_DIR")
 
-outdir="$result/$ecosystem/$srrname"
+outdir="$result/merge/$ecosystem/$srrname"
 tmp_outfile="$outdir/${srrname}_tmp_sequences.fa"
 outfile="$outdir/${srrname}_sequences.fa"
+annot="$result/annotate"
 
 mkdir -p "$outdir"
+mkdir -p $annot
 
-prediction_file="$outdir/${srrname}_tool.tsv"
-ecosystem_file="$outdir/${srrname}_eco.txt"
+prediction_file="$annot/${srrname}_tool.tsv"
+ecosystem_file="$annot/${srrname}_eco.txt"
 
 > "$prediction_file"
 > "$ecosystem_file"
@@ -92,6 +94,7 @@ rm "$MERGED" "$tmp_outfile" "$outdir"/*_mod.fa
 if [[ -n "$remote" ]]; then
     echo "Remote : $remote"
     rclone copy $outdir $remote/module_00/results/merge
+    rclone copy $annot $remote/module_00/results/annotate
 else
     echo "No remote, no rclone :). Please define the remote variable if you want to export your results in a distant server using rclone."
 fi

@@ -76,6 +76,16 @@ sbatch -p fast -q fast module_00/bin/data_prep.slurm YourListofSRR.txt
 
 The **second** step is to merge the 3 sequences file from the 3 different prediction tools for each SRR. At the end, you will have only one fasta file per SRR.
 This step also include an annotation step to keep the prediction tool metadata for each contig.
+```
+sbatch -p fast -q fast module_00/bin/merge_prediction.slurm
+```
+
+The **third** step is to finalish the annotation. All the annotations made before (during step two) will be merged into two metadata files. One for the
+prediction tool and one for the ecosystem (relative to each contig).
+```
+```
+
+
 
 ## Results 
 As a result of the **first** step you should have a directory structure like this : 
@@ -96,5 +106,21 @@ result/
 ```
 
 As a result of the **second** step you should have a directory structure like this : 
-
+```
+module_00/results/merge/
+├── ecosystem_1/
+│   ├── SRR1/
+│   │   └── SRR1_sequences.fa
+│   ├── SRR2/
+│   │   └── SRR2_sequences.fa
+│   └── SRR3/
+│       └── SRR3_sequences.fa
+└── ecosystem_2
+    ├── SRR4/
+    │   └── SRR4_sequences.fa
+    ├── SRR5/
+    │   └── SRR5_sequences.fa
+    └── SRR6/
+        └── SRR6_sequences.fa
+```
 
