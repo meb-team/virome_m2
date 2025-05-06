@@ -31,8 +31,8 @@ remote=""                         # Path to stock the results for rclone : exemp
 ##############################
 
 scratch="/storage/scratch/$USER"
-#result="$scratch/module_00/result"
-result="module_00/results"
+result="$scratch/module_00/result"
+#result="module_00/results"
 
 mkdir -p $result
 
