@@ -83,8 +83,8 @@ sbatch -p fast -q fast module_00/bin/merge_prediction.slurm
 The **third** step is to finalish the annotation. All the annotations made before (during step two) will be merged into two metadata files. One for the
 prediction tool and one for the ecosystem (relative to each contig).
 ```
+sbatch -p fast -q fast module_00/bin/annotation.slurm
 ```
-
 
 
 ## Results 
@@ -123,4 +123,33 @@ module_00/results/merge/
     └── SRR6/
         └── SRR6_sequences.fa
 ```
+
+As a result of the **third** step you should have two files like these : 
+```
+$ cat module_00/results/annotation/contig_eco_list.tsv | head
+ERR3230156_240481==air
+ERR3230156_111360==air
+ERR3230156_185297==air
+ERR3230156_333266==air
+ERR3230156_370292==air
+ERR3230156_388916==air
+ERR3230156_148612==air
+ERR3230156_426215==air
+ERR3230156_518683==air
+ERR3230156_574273==air
+
+$ cat module_00/results/annotation/contig_tools_list.tsv | head
+ERR3230156_240481	dvf
+ERR3230156_111360	dvf
+ERR3230156_185297	dvf
+ERR3230156_333266	dvf
+ERR3230156_370292	dvf
+ERR3230156_388916	dvf
+ERR3230156_148612	dvf
+ERR3230156_426215	dvf
+ERR3230156_518683	dvf
+ERR3230156_574273	dvf
+```
+
+
 
