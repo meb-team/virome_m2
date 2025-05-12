@@ -26,7 +26,7 @@ scratch="/storage/scratch/$USER"
 remote="lmge-microstore:huserville"
 
 data="$scratch/msa"
-results="module_05/phyml/results/"
+results="module_05/iqtree/results/"
 
 mkdir -p $data
 mkdir -p $results

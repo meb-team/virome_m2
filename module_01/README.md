@@ -3,7 +3,7 @@
 This first module includes the steps of quality control of the predicted viral contigs. 
 
 <p align="center">
-  <img src="img/module_01.png" alt="Description" width="100%">
+  <img src="img/module_01.svg" alt="Description" width="100%">
 </p>
 
 
@@ -191,8 +191,8 @@ huserville/module_01/mmseq2/results/
 ### The **forth step** is the exploration and the filtration of the clustering results. At the end, only clusters with contigs predicted by at least 2 different prediction tools will
 be keep for the next  analysis. 
 ```
-sbatch populate_table.slurm 
-sbatch -p fast -q fast filtering.slurm
+sbatch module_01/filtering/bin/populate_table.slurm 
+sbatch -p fast -q fast module_01/filtering/bin/filtering.slurm
 ```
 For this script, you will need different variables. 
 1. The path to the results from CheckV analysis.
