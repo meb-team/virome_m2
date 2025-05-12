@@ -76,7 +76,7 @@ I recommend you to have conda on your machine
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
 bash miniconda.sh
 source ~/.bashrc
-
+```
 ## Usage
 
 ### The **first step** is to run the CheckV tool for each SRR fasta file.
