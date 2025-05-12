@@ -1,5 +1,9 @@
 #       Welcome to the module number zero !      
 
+<p align="center">
+  <img src="img/module_00.png" alt="Description" width="100%">
+</p>
+
 This module aims to pre-process the results from the three prediction tool : VIBRANT, DeepVirFinder and VirSorter2.
 The viral predictions are collected and the viral contig sequences are re-created thanks to the assembling data.
 Make sure you have the assembling data !
