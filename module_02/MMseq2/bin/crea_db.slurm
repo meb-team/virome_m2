@@ -18,7 +18,7 @@ module load MMseqs2/13-45111
 
 # === Variable definition ===
 scratch="/storage/scratch/$USER"
-TAX_DIR="$scratch/module_02/MMseq2/taxonomy"
+TAX_DIR="$scratch/module_02/MMseq2/taxonomy"   # Path to stock the refseq Viral database
 
 mkdir -p "$TAX_DIR"
 

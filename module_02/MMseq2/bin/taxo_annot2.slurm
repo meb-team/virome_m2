@@ -9,10 +9,12 @@
 #SBATCH --time=3-00:00:00
 #SBATCH --partition=lmge
 
+
 # === Initialization ===
 set -e  # Stop the script if error
 set -u  # Stop the script if unknown variables are used
 set -o pipefail
+
 
 # === Variable definition ===
 REMOTE_PATH="lmge-microstore:huserville"    # REMOTE CLOUD
@@ -26,11 +28,12 @@ rclone copy $REMOTE_PATH/module_02/MMseq2/results/eco_fasta $scratch/module_02/M
 
 DB="$scratch/module_02/MMseq2/taxonomy/mmseqs_vrefseq/refseq_viral"        # PATH TO REFSEQ DB
 OUTPUT="$scratch/results"                                         # PATH TO OUTPUT
-BIOME_DIR="$scratch/module_02/MMseq2/results/eco_fasta"           # PATH TO FASTA
+BIOME_DIR="$scratch/module_02/MMseq2/results/eco_fasta"           # PATH TO FASTA CREATED PREVIOUSLY WITH tax_fasta.slurm
 
 mkdir -p "$OUTPUT"
 
 module load MMseqs2/10-6d92c
+
 
 # === Process each FASTA file ===
 
