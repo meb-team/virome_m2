@@ -3,7 +3,7 @@
 This first module includes the steps of quality control of the predicted viral contigs. 
 
 <p align="center">
-  <img src="img/module_01_schema.png" alt="Description" width="100%">
+  <img src="img/module_01.png" alt="Description" width="100%">
 </p>
 
 
