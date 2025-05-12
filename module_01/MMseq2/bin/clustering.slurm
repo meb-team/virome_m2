@@ -28,8 +28,8 @@ module load MMseqs2/13-45111
 #module load MMseqs2/10-6d92c
 
 # === Variable definition ===
-output_dir="module_01/MMseq2/results"
-LOCAL_DIR="/storage/scratch/$USER/module_01/annotate/results"
+output_dir="module_01/MMseq2/results"                                  # Path to the results of clustering
+LOCAL_DIR="/storage/scratch/$USER/module_01/annotate/results"          # Path to the results of the previous script (annotate.slurm)
 REMOTE_PATH="lmge-microstore:huserville/module_01/annotate/results"
 
 mkdir -p "$output_dir"
