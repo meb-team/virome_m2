@@ -30,10 +30,10 @@ mkdir -p $OUTPUT_DIR
 
 # === Synchronisation des données ===
 echo "Synchronisation des données depuis le stockage distant..."
-rclone sync "$REMOTE_PATH/checkV/results" "$LOCAL_DIR/checkV/results" --exclude "**/tmp/**"
-rclone sync "$REMOTE_PATH/annotate/results" "$LOCAL_DIR/annotate/results"
+rclone sync "$REMOTE_PATH/checkV/results" "$LOCAL_DIR/checkV/results" --exclude "**/tmp/**"   # Path to the CheckV results
+rclone sync "$REMOTE_PATH/annotate/results" "$LOCAL_DIR/annotate/results"                     # path to the contig_tools_list.tsv created in module_00
 TOOL="$LOCAL_DIR/annotate/results/contig_tools_list.tsv"
-CLUSTER="module_01/MMseq2/results/clusterRes_cluster.tsv"
+CLUSTER="module_01/MMseq2/results/clusterRes_cluster.tsv"                                     # Path to the TSV file created during clustering
 
 
 # === Process ===

@@ -18,86 +18,32 @@ set -o pipefail
 module load rclone
 
 # === Variables ===
-REMOTE_PATH="lmge-microstore:huserville/module_01/checkV/results"
-REMOTE="lmge-microstore:huserville/"
-LOCAL_DIR="/storage/scratch/$USER/module_01/checkV/results"
-OUTPUT_DIR="module_01/annotate/results"
-OUTPUT_FILE="$OUTPUT_DIR/all_annotated_contigs.fasta"
-TSV_FILE="$OUTPUT_DIR/contig_tools_list.tsv"
-ECO_FILE="$OUTPUT_DIR/contig_eco_list.tsv"
+scratch="/storage/scratch/$USER"
+remote=""
+base_dir="module_01/results/checkv"                                     # path to the results of CheckV
+mkdir -p module_01/annotate/results                                     # Path to the results of this script (annotation)
+output_file="module_01/annotate/results/all_annotated_contigs.fasta"    # File created
 
-mkdir -p "$OUTPUT_DIR"
-> "$OUTPUT_FILE"
-> "$TSV_FILE"
-> "$ECO_FILE"
+> "$output_file"
 
-# === Synchronisation des données ===
-echo "Synchronisation des données depuis le stockage distant..."
-rclone sync "$REMOTE_PATH" "$LOCAL_DIR" --exclude "**/tmp/**"
+# === Process ===
 
-# === Fonction d'annotation ===
-process_fasta() {
-    local fasta_file="$1"
-    local ecosystem="$2"
-    local tool="$3"
+for ecosystem in "$base_dir"/*; do
+    if [ -d "$ecosystem" ]; then
+        eco_name=$(basename "$ecosystem")
+        echo "Traitement de l'écosystème : $eco_name"
 
-    echo "   ➡️  Traitement du fichier $fasta_file avec $tool et $ecosystem"
-
-    # Test du contenu du fichier fasta
-    echo "   ➡️  Contenu du fichier $fasta_file :"
-
-    # Test du awk
-    awk -v eco="$ecosystem" -v tool="$tool" '
-        /^>/ {
-            sub(/\|\|.*/, "", $0);
-            sub(/ .*/, "", $0);
-            print $0 "==" eco;
-            next
-        }
-        {print}
-    ' "$fasta_file" >> "$OUTPUT_FILE"
-
-    # Test du grep
-    grep "^>" "$fasta_file" | sed 's/^>//' | while read contig; do
-        echo -e "$contig\t$tool" >> "$TSV_FILE"
-    done
-}
-
-# === Traitement des données ===
-echo "Début du traitement..."
-
-for tool_dir in "$LOCAL_DIR"/*/; do
-    tool=$(basename "$tool_dir")
-    echo "Traitement de l'outil : $tool"
-
-    for eco_dir in "$tool_dir"*/; do
-        ecosystem=$(basename "$eco_dir")
-        echo " Traitement de l'écosystème : $ecosystem"
-
-        find "$eco_dir" -type f \( -name "proviruses.fna" -o -name "viruses.fna" \) | while read fasta; do
-            echo "  Fichier trouvé : $fasta"
-            process_fasta "$fasta" "$ecosystem" "$tool"
+        find "$ecosystem" -type f \( -name "viruses.fna" -o -name "proviruses.fna" \) | while read -r fasta_file; do
+            while IFS= read -r line; do
+                if [[ $line == ">"* ]]; then
+                    # Ajoute le suffixe ==ecosystem au header
+                    echo "${line}==${eco_name}" >> "$output_file"
+                else
+                    echo "$line" >> "$output_file"
+                fi
+            done < "$fasta_file"
         done
-    done
+    fi
 done
 
-
-cat "$OUTPUT_FILE" | grep '>' | sed 's/^.//' | sort | uniq > "$ECO_FILE"
-
-echo "Traitement terminé ! Résultats disponibles :"
-echo "FASTA : $OUTPUT_FILE"
-echo "TSV : $TSV_FILE"
-echo "ECO : $ECO_FILE"
-
-rclone copy "$OUTPUT_FILE" "$REMOTE/$OUTPUT_DIR/"
-rclone copy "$TSV_FILE" "$REMOTE/$OUTPUT_DIR/"
-rclone copy "$ECO_FILE" "$REMOTE/$OUTPUT_DIR/"
-
-rm $OUTPUT_FILE 
-rm $TSV_FILE
-rm $ECO_FILE
-
-rm -r $LOCAL_DIR
-
-exit 0
-
+echo "✅ File generated : $output_file"

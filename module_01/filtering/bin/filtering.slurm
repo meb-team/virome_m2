@@ -32,12 +32,12 @@ mkdir -p $LOCAL_DIR/annotate/results
 
 # === Synchronisation des données ===
 echo "Synchronisation des données depuis le stockage distant..."
-rclone sync $REMOTE_PATH/filtering/results $LOCAL_DIR/filtering/results
-rclone sync $REMOTE_PATH/mmseq2/results/clusterRes_cluster.tsv $LOCAL_DIR/mmseq2/
+rclone sync $REMOTE_PATH/filtering/results $LOCAL_DIR/filtering/results                   # Path to the results from populate_table.slurm
+rclone sync $REMOTE_PATH/mmseq2/results/clusterRes_cluster.tsv $LOCAL_DIR/mmseq2/         # Path to the results of the clustering
 
 # === Process ===
 
-./module_01/filtering/bin/filtering2.py -p module_01/filtering/results/representative_cluster.tsv -c $LOCAL_DIR/mmseq2/clusterRes_cluster.tsv -o $OUTPUT_DIR
+./module_01/filtering/bin/filtering.py -p module_01/filtering/results/representative_cluster.tsv -c $LOCAL_DIR/mmseq2/clusterRes_cluster.tsv -o $OUTPUT_DIR
 
 rclone sync $OUTPUT_DIR/eco $REMOTE_PATH/filtering/results
 

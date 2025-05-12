@@ -71,11 +71,11 @@ for fa_file in "$SRR_DIR"/*_predicted.fa; do
     awk -v tool="$tool" -v eco="$ecosystem" -v pred="$prediction_file" -v map="$ecosystem_file" '
     BEGIN { OFS = "\t" }
     /^>/ {
-        header = substr($0, 2)
-        print header, tool >> pred
-        print header "==" eco >> map
-        print ">" header "==" eco
-        next
+    header = substr($0, 2)
+    print header, tool >> pred
+    print header, eco >> map
+    print ">" header
+    next
     }
     { print }
     ' "$fa_file" > "$tmp_modified"
