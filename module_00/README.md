@@ -1,7 +1,7 @@
 #       Welcome to the module number zero !      
 
 <p align="center">
-  <img src="img/module_00.png" alt="Description" width="100%">
+  <img src="img/module_00.svg" alt="Description" width="100%">
 </p>
 
 This module aims to pre-process the results from the three prediction tool : VIBRANT, DeepVirFinder and VirSorter2.
