@@ -11,21 +11,24 @@ This first module includes the steps of quality control of the predicted viral c
 
 First, you need to be sure that you have the correct files. I suggest you to look after the data_prep/ or data_test/ folders.
 You should have a result folder like this : 
+I suggest you to look forward the module_00 for more informations.
 
 ```
-data_test/results/
-├── dvf/
-│   ├── air_predicted_seq.fa
-│   ├── human_predicted_seq.fa
-│   └── metalakes_predicted_seq.fa
-├── vibrant/
-│   ├── air_predicted_seq.fa
-│   ├── human_predicted_seq.fa
-│   └── metalakes_predicted_seq.fa
-└── vs2/
-    ├── air_predicted_seq.fa
-    ├── human_predicted_seq.fa
-    └── metalakes_predicted_seq.fa
+module_00/results/merge/
+├── ecosystem_1/
+│   ├── SRR1/
+│   │   └── SRR1_sequences.fa
+│   ├── SRR2/
+│   │   └── SRR2_sequences.fa
+│   └── SRR3/
+│       └── SRR3_sequences.fa
+└── ecosystem_2
+    ├── SRR4/
+    │   └── SRR4_sequences.fa
+    ├── SRR5/
+    │   └── SRR5_sequences.fa
+    └── SRR6/
+	└── SRR6_sequences.fa
 ```
 
 You will probably have to modify the paths in the scripts.
@@ -76,55 +79,148 @@ source ~/.bashrc
 
 ## Usage
 
-The **first step** is to run the CheckV tool for each fasta file.
-
-If you are not working on a HPC : 
-```bash
-chmod+x module_01/checkV/bin/qc_checkv.sh
-./module_01/checkV/bin/qc_checkv.sh
-```
+### The **first step** is to run the CheckV tool for each SRR fasta file.
 
 If you are working on a HPC (recommended) :
-```bash
+```
 sbatch -p fast -q fast module_01/checkV/bin/qc_checkv.slurm
 ```
-The **second step** is to annotate the contigs with their prediction tool and their ecosysems before the clustering. This step is usefull because some contigs could have
-the same IDs between prediction tools because the same SSR has been analyzed for the three prediction tools. Thus, the clustering could smash some important informations.
+This script needs the results from the module_00 structured like this :
 
-If you are not working on a HPC :
-```bash
-chmod +x module_01/annotate/bin/annotate.sh
-./module_01/annotate/bin/annotate.sh
 ```
+module_00/results/merge/
+├── ecosystem_1/
+│   ├── SRR1/
+│   │   └── SRR1_sequences.fa
+│   ├── SRR2/
+│   │   └── SRR2_sequences.fa
+│   └── SRR3/
+│       └── SRR3_sequences.fa
+└── ecosystem_2
+    ├── SRR4/
+    │   └── SRR4_sequences.fa
+    ├── SRR5/
+    │   └── SRR5_sequences.fa
+    └── SRR6/
+	└── SRR6_sequences.fa
+```
+At the end of this **first** step, you should have a structure like this :
+```
+module_01/results/checkv/
+├── ecosystem_1
+│   ├── ERR3230156
+│   │   └── ERR3230156_sequences_checkV
+│   │       ├── complete_genomes.tsv
+│   │       ├── completeness.tsv
+│   │       ├── contamination.tsv
+│   │       ├── proviruses.fna
+│   │       ├── quality_summary.tsv
+│   │       ├── tmp
+│   │       └── viruses.fna
+│   └── K7GSL311029
+│       └── K7GSL311029_sequences_checkV
+│           ├── complete_genomes.tsv
+│           ├── completeness.tsv
+│           ├── contamination.tsv
+│           ├── proviruses.fna
+│           ├── quality_summary.tsv
+│           ├── tmp
+│           └── viruses.fna
+└── ecosystem_2
+    ├── SRR6050903
+    │   └── SRR6050903_sequences_checkV
+    │       ├── complete_genomes.tsv
+    │       ├── completeness.tsv
+    │       ├── contamination.tsv
+    │       ├── proviruses.fna
+    │       ├── quality_summary.tsv
+    │       ├── tmp
+    │       └── viruses.fna
+    └── SRR6050920
+        └── SRR6050920_sequences_checkV
+            ├── complete_genomes.tsv
+            ├── completeness.tsv
+            ├── contamination.tsv
+            ├── proviruses.fna
+            ├── quality_summary.tsv
+            ├── tmp
+            └── viruses.fna
+```
+
+### The **second step** is to annotate the contigs and regroups the cleaned viral sequences.
+
 If you are working on a HPC : 
 ```bash
 ./module_01/annotate/bin/annotate.slurm
 ```
 
-The **third step** is to cluster the different contigs. The MMseq2 tool is used to cluster the annotate sequences.
-If you are not working on a HPC : 
-```bash
-chmod +x module_01/MMseq2/bin/clustering.sh
-./module_01/MMseq2/bin/clustering.sh
+As entry, you needs the result structure from the **first** step. 
+At the end, you should have one Fasta file containing all the cleaned viral sequences from CheckV analysis.
+This Fasta file will be used for clustering in the next step.
 ```
+module_01/annotate/results/
+└── all_annotated_contigs.fasta
+```
+
+### The **third step** is to cluster the different contigs. The MMseq2 tool is used to cluster the annotate sequences.
 
 If you are working on a HPC (recommended) :
 ```bash
 ./module_01/MMseq2/bin/clustering.slurm
 ```
+As entry, this script is using the all_annotated_contigs.fasta file created just before in **second** step.
+At the end of the clustering, you should have something like this :
+```
+huserville/module_01/mmseq2/results/
+├── clusterRes_all_seqs.fasta
+├── clusterRes_cluster.tsv
+├── clusterRes_rep_seq.fasta
+└── tmp
+    └── 15354580863310092783
+        ├── clu_tmp
+        │   └── 14992683302536304478
+        │       └── linclust.sh
+        ├── easycluster.sh
+        ├── input.dbtype
+        ├── input.index
+        ├── input.source
+        ├── input_h.dbtype
+        └── input_h.index
+```
 
-The **forth step** is the exploration and the filtration of the clustering results. At the end, only clusters with contigs predicted by at least 2 different prediction tools will
+### The **forth step** is the exploration and the filtration of the clustering results. At the end, only clusters with contigs predicted by at least 2 different prediction tools will
 be keep for the next  analysis. 
 ```
-chmod +x module_01/filtering/bin/filtering.py
-chmod +x module_01/filtering/bin/data_visu.py
-
-./module_01/filtering/bin/populate_table.py
-./module_01/filtering/bin/filtering.py
-
-./module_01/filtering/bin/data_visu.py
-./module_01/filtering/bin/data_visu.R
+sbatch populate_table.slurm 
+sbatch -p fast -q fast filtering.slurm
 ```
+For this script, you will need different variables. 
+1. The path to the results from CheckV analysis.
+2. The path to the contig_tools_list.tsv file created in module_00.
+3. The path to the clusterRes_cluster.tsv file created just before during clustering.
+
+At the end of the populate AND filtering, you should have something like that :
+```
+huserville/module_01/filtering/results/
+├── eco1_filtered_representative_cluster.tsv
+├── eco2_filtered_representative_cluster.tsv
+├── eco3_filtered_representative_cluster.tsv
+├── eco4_filtered_representative_cluster.tsv
+```
+
+The results are TSV file for each ecosystem. All the TSV file looks like that :
+| Representative_contig   | cluster_size | vs2_seed | vibrant_seed | dvf_seed | vs2_cluster | vibrant_cluster | dvf_cluster | checkv_quality  | completeness | seed_length | provirus_seed |
+|--------------------------|--------------|----------|--------------|----------|-------------|-----------------|-------------|-----------------|--------------|-------------|---------------|
+| 7KYSL273102_1            | 9            | 1        | 0            | 1        | 1           | 0               | 8           | Low-quality     | 1.16         | 3792.0      | Yes           |
+| BCN-094-29786_4          | 32           | 1        | 0            | 1        | 28          | 0               | 30          | Not-determined  |              | 10435.0     | No            |
+| ERR3230156_100082        | 3            | 1        | 1            | 1        | 0           | 0               | 0           | Low-quality     | 7.5          | 4492.0      | No            |
+| ERR3230156_111360        | 3            | 1        | 1            | 1        | 0           | 0               | 0           | Low-quality     | 7.46         | 5467.0      | No            |
+| ERR3230156_169427        | 2            | 1        | 0            | 1        | 0           | 0               | 0           | Medium-quality  | 82.65        | 5615.0      | No            |
+| ERR3230156_247723        | 2            | 1        | 0            | 1        | 0           | 0               | 0           | Not-determined  |              | 3875.0      | No            |
+| ERR3230156_270015        | 2            | 1        | 0            | 1        | 0           | 0               | 0           | Not-determined  |              | 5575.0      | No            |
+| ERR3230156_287436        | 2            | 1        | 1            | 0        | 0           | 0               | 0           | Low-quality     | 9.02         | 3789.0      | No            |
+| ERR3230156_289942        | 2            | 1        | 1            | 0        | 0           | 0               | 0           | Low-quality     | 32.91        | 3932.0      | No            |
+
 
 ## Computational analysis 
 This computational analysis has been performed on the subdataset created by the data_test/ folder. This dataset is containing approximately 180,000 contigs.
