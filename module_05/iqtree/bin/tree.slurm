@@ -6,8 +6,8 @@
 #SBATCH --error=logs/iqtree_%j.err
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=150G
-#SBATCH --time=7-00:00:00
-#SBATCH --partition=long
+#SBATCH --time=06:00:00
+#SBATCH --partition=normal
 
 # === Initialization ===
 set -e  # Stop the script if error
