@@ -38,6 +38,8 @@ mkdir -p $scratch/data/new
 mv $scratch/data/sequences_proteines.faa.split/* $scratch/data/new
 ls $scratch/data/new
 
+#cd $gta_path
+
 count=1
 for file in $scratch/data/new/*.faa; do
     echo "$file"
