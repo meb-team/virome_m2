@@ -2,6 +2,10 @@
 
 This module aims to predict the Gene Transfert Agents (GTAs) from all the viral sequences of the dataset.
 
+<p align="center">
+  <img src="img/module_05.svg" alt="Description" width="80%">
+</p>
+
 ## Requirements
 Firstly, you need to have the GTA_hunter bio-informatic tool. 
 I suggest you to follow the next commands : 

@@ -4,9 +4,9 @@
 #SBATCH --ntasks=1
 #SBATCH --output=logs/iqtree_%j.out
 #SBATCH --error=logs/iqtree_%j.err
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=10
 #SBATCH --mem=150G
-#SBATCH --time=06:00:00
+#SBATCH --time=01-00:00:00
 #SBATCH --partition=normal
 
 # === Initialization ===
