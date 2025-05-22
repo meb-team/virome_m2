@@ -7,6 +7,14 @@ import pandas as pd
 
 
 def filter_tsv(data, out):
+    """
+    This function aims to delete the rows with an e-value > 0.001.
+
+    :param data : the dataframe containing informations from eggNOGmapper
+    :param out : the output path to stock the filtered TSV file
+    : return : the filtered dataframe
+    """
+
     data.columns = [col.lstrip('#') for col in data.columns]
 
     data['evalue'] = pd.to_numeric(data['evalue'], errors='coerce')
@@ -25,6 +33,16 @@ def filter_tsv(data, out):
 
 
 def collect_ko(df, kolist_df):
+    """
+    This function keeps the rows with the selected KEGG Ontology (KO) from a list from VIBRANT bio-informatic tool.
+    This list of KO are used to predict the AMGs from other functionnal proteins. At the end, the dataframe will contain
+    only information about hypothetical AMGs proteins.
+
+    :param df : the filtered dataframe (e-value < 0.001)
+    :param kolist_df : the dataframe containing the list of the selected KO
+    :return the dataframe of AMGs
+    """
+
     ko_set = set(kolist_df['KO'].astype(str))
 
     def has_matching_ko(ko_field):
@@ -38,6 +56,15 @@ def collect_ko(df, kolist_df):
 
 
 def rebuild_tsv(df, ecosystem_txt_path):
+    """
+    This function creates a column to add ecosystem information about the AMG protein. Each
+    protein is associated with an ecosystem from where the sequence has been collected.
+
+    :param df : the AMG dataframe
+    :param ecosystem_txt_path : the path to the ecosystem annotation for each contig 
+    :return : the AMG dataframe with the ecosystem informations for each proteins
+    """
+
     columns_to_keep = [
         "query",
         "KEGG_ko",
@@ -93,8 +120,8 @@ if __name__ == '__main__':
     amg_df=collect_ko(filtered_data, ko_df)
     amg_df=rebuild_tsv(amg_df, eco_txt)
     amg_df.replace('-', np.nan, inplace=True)
-    #amg_df['max_annot_lvl'] = amg_df['max_annot_lvl'].str.split('|').str[1]
     amg_df['max_annot_lvl'] = amg_df['max_annot_lvl'].where(~amg_df['max_annot_lvl'].str.contains('\|'), amg_df['max_annot_lvl'].str.split('|').str[1])
+
     amg_df.to_csv(f"{out}/AMG.tsv", sep='\t', index=False)
 
 
