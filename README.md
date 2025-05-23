@@ -10,6 +10,8 @@ by a high proportion of uncharacterized sequences and atypical viral elements su
 To achieve this, a comprehensive pipeline encompassing all these analyses was created.
 It is structured into six distinct modules, each addressing a specific aspect of the study.
 
+I suggest you to open the different module folders and read the different README.md for more informations about a specific module.
+
 ## Module 00
 
 The first module is dedicated to the preprocessing and standardization of raw input data.
