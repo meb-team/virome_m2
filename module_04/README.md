@@ -41,7 +41,7 @@ Then, you can use the tool to do the annotation :
 ```
 sbatch module_04/eggmapper/bin/run_eggmapper.slurm
 ```
-### The **Third** step is to collect the AMG from the annotations
+#### The **Third** step is to collect the AMG from the annotations
 ```
 sbatch module_04/eggmapper/bin/AMG_prediction.slurm
 ```
